@@ -108,24 +108,23 @@
 \begin{frame}{Tiến độ thực hiện (từ Báo cáo 1)}
     \begin{columns}[T]
         \column{0.55\textwidth}
-        \textbf{Các hạng mục đã hoàn thành:}
+        \textbf{Đã thực hiện:}
         \begin{itemize}
-            \item[\color{successgreen}\checkmark] \textbf{Mô hình hóa lại bài toán:} Mở rộng DLA sang \textbf{multi-page cross-page} với các liên kết inter-page relations.
-            \item[\color{successgreen}\checkmark] Xác định \textbf{khoảng trống nghiên cứu} (research gap) về layout đa trang.
-            \item[\color{successgreen}\checkmark] Thử nghiệm các baseline hiện hành (Qwen3-VL-235B, Gemini 3.1 Pro, PaddleOCR, MinerU) $\rightarrow$ \textbf{Phát hiện nhiều giới hạn} trong xử lý ngữ cảnh dài.
-            \item[\color{successgreen}\checkmark] Đề xuất \& hiện thực \textbf{multi-phase pipeline} dựa trên MLLM (3 pha, trailing state, cross-page continuity).
-            \item[\color{successgreen}\checkmark] Thử nghiệm thành công trên tài liệu có cấu trúc phức tạp (Quality Manual, ISO).
-            \item[\color{successgreen}\checkmark] Chứng minh sự vượt trội của Pipeline đề xuất so với phương pháp End-to-End.
-            \item[\color{successgreen}\checkmark] Mã nguồn mở: \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{\small github.com/tuandung222/multipage-dla}}
+            \item[\color{successgreen}\checkmark] Tìm hiểu và mô hình hóa lại bài toán DLA cho ngữ cảnh đa trang (cross-page).
+            \item[\color{successgreen}\checkmark] Khảo sát các giải pháp hiện có: Qwen3-VL-235B, Gemini 3.1 Pro (E2E), PaddleOCR, MinerU — ghi nhận các hạn chế.
+            \item[\color{successgreen}\checkmark] Hiện thực bước đầu một giải pháp \textbf{prompt-based dựa trên MLLM} (3 pha, có cơ chế truyền trạng thái qua các trang).
+            \item[\color{successgreen}\checkmark] Demo thử nghiệm trên 2 tài liệu mẫu (Quality Manual 11 trang, ISO Generic 7 trang) — thu được kết quả sơ bộ khả quan.
+            \item[\color{successgreen}\checkmark] Mã nguồn demo: \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{\small github.com/tuandung222/multipage-dla}}
         \end{itemize}
+        {\small\textit{Lưu ý: Đây là bản demo giải pháp prompt-based phục vụ làm nhãn benchmark sắp tới, chưa phải giải pháp cuối cùng.}}
 
         \column{0.42\textwidth}
         \textbf{Nội dung Báo cáo lần 2:}
         \begin{enumerate}
-            \item Định chuẩn bài toán (Problem Formulation)
-            \item Phân tích hạn chế của phương pháp hiện tại
-            \item Pipeline đề xuất \& Đánh giá sơ bộ
-            \item Kế hoạch xây dựng Data Engine \& Distillation
+            \item Mô hình hóa bài toán mở rộng
+            \item Phân tích khó khăn \& hạn chế hiện tại
+            \item Demo pipeline prompt-based \& kết quả sơ bộ
+            \item Kế hoạch xây dựng Data Engine \& hướng distillation
         \end{enumerate}
     \end{columns}
 \end{frame}
@@ -168,32 +167,48 @@
 %====================================================
 % SLIDE: Trailing state chi tiết
 %====================================================
-\begin{frame}{1.2 \; Trailing State — Hạn chế của Visual Context thuần túy}
-    \begin{block}{Trailing State $\mathcal{S}_t$ — Trạng thái cấu trúc tích lũy qua các trang}
+\begin{frame}{1.2 \; Tại sao cần ``bộ nhớ'' khi phân tích từng trang?}
+    \textbf{Vấn đề:} Khi phân tích trang 8, ta chỉ \textit{nhìn} được trang 7 và 8 (visual context). Nhưng heading ``Section 3'' nằm ở trang 3 — làm sao biết đoạn văn ở trang 8 thuộc Section 3?
+
+    \vspace{0.4em}
+    \begin{block}{Giải pháp: Trạng thái tích lũy $\mathcal{S}_t$ (Trailing State)}
+        Một cấu trúc JSON nhỏ được \textbf{truyền từ trang này sang trang kế}, mang theo những gì đã ``học'' được từ tất cả trang trước đó. Tương tự \textit{hidden state} trong RNN.
     \end{block}
+
     \vspace{0.3em}
-    \begin{table}[]
-        \centering
-        \resizebox{\textwidth}{!}{
-        \begin{tabular}{lp{5.5cm}p{5.5cm}}
-        \toprule
-        \textbf{Thành phần} & \textbf{Vai trò lưu trữ} & \textbf{Lý do Visual Context không đủ đáp ứng} \\
-        \midrule
-        \texttt{last\_assigned\_node\_id} & Bộ đếm ID toàn cục & Đảm bảo tính duy nhất của ID qua toàn bộ tài liệu. \\
-        \midrule
-        \texttt{active\_parent\_stack} & Ngữ cảnh phân cấp logic\newline (VD: Section 1 $>$ 1.1 $>$ 1.1.1) & Heading cha ở trang 3 có thể bao hàm các đoạn văn ở trang 7 — vượt quá giới hạn cửa sổ $k$ trang của visual. \\
-        \midrule
-        \texttt{element\_cut\_off\_at\_bottom} & Lưu vết phần tử bị ngắt trang & Giúp ghép nối các node bị chia cắt (continuation). \\
-        \midrule
-        \texttt{suggested\_new\_categories} & Tập nhãn động (Dynamic Vocabulary) & Nhãn định nghĩa ở trang đầu cần được nhất quán áp dụng cho các trang sau. \\
-        \bottomrule
-        \end{tabular}
+    \textbf{Ví dụ cụ thể} — Phân tích tài liệu Quality Manual ISO 9001:
+
+    \vspace{0.2em}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        {\small
+        \textbf{Sau khi phân tích trang 5}, trạng thái mang theo:
+        \begin{itemize}
+            \item \texttt{node\_id}: đếm tới \texttt{node\_045}\\
+                  {\scriptsize $\rightarrow$ trang 6 bắt đầu từ \texttt{node\_046}}
+            \item \texttt{parent\_stack}: [``Section 1: Scope'']\\
+                  {\scriptsize $\rightarrow$ trang 6 biết các đoạn mới vẫn thuộc Section 1}
+            \item \texttt{cut\_off}: ``node\_045 (đoạn văn bị cắt ngang)''\\
+                  {\scriptsize $\rightarrow$ trang 6 ghép nối tiếp phần còn lại}
+        \end{itemize}
         }
-    \end{table}
+
+        \column{0.48\textwidth}
+        {\small
+        \textbf{Nếu không có trạng thái này:}
+        \begin{itemize}
+            \item[\color{dangerred}$\times$] Trang 6 không biết paragraph thuộc section nào
+            \item[\color{dangerred}$\times$] ID bị trùng lặp giữa các trang
+            \item[\color{dangerred}$\times$] Đoạn văn bị cắt ngang không được ghép lại
+            \item[\color{dangerred}$\times$] Mất hoàn toàn cấu trúc phân cấp
+        \end{itemize}
+        }
+    \end{columns}
 
     \vspace{0.4em}
     \begin{center}
-        \textbf{Nhận xét quan trọng:} Việc trích xuất cấu trúc của một trang đòi hỏi sự kết hợp đồng thời giữa \textbf{Visual Context} (ảnh trang kề) và \textbf{Layout Context} (Trailing state logic từ tất cả các trang trước).
+        $\Rightarrow$ \textbf{Visual context} (ảnh trang kề) cho biết trang trông như thế nào.\\
+        \textbf{Trailing state} cho biết trang đó \textit{nằm ở đâu} trong cấu trúc tài liệu.
     \end{center}
 \end{frame}
 
@@ -361,88 +376,120 @@
 \end{frame}
 
 %====================================================
-% SLIDE: So sánh visual — Single E2E vs Pipeline
+% SLIDE: So sánh chất lượng trên từng trang
 %====================================================
-\begin{frame}{3.2 \; Phân tích trực quan — Single-Page E2E vs Pipeline (Gemini 3.1 Pro)}
+\begin{frame}{3.2 \; So sánh chất lượng — Qwen3-VL-235B (E2E) vs Pipeline}
     \begin{columns}[c]
         \column{0.48\textwidth}
         \begin{center}
-            \textbf{Single-Page E2E}\\(161 elements / 3 trang)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/single_e2e_page01.jpg}\\
+            \textbf{Qwen3-VL-235B (E2E)}\\{\small Page 5 — Nội dung phức tạp}\\
             \vspace{0.2em}
-            {\small\color{dangerred} Hiện tượng Over-fragmentation: Nhận diện thừa thãi từng ô, từng dòng độc lập làm mất đi cấu trúc tổng thể.}
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
+            \vspace{0.2em}
+            {\scriptsize\color{dangerred} Bbox lệch, category generic (\texttt{paragraph}), không biết paragraph thuộc section nào.}
         \end{center}
 
         \column{0.48\textwidth}
         \begin{center}
-            \textbf{Pipeline đề xuất}\\(21 elements / 3 trang)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page01.jpg}\\
+            \textbf{Pipeline (Gemini 3.1 Pro)}\\{\small Page 5 — Cùng trang}\\
             \vspace{0.2em}
-            {\small\color{successgreen} Độ hạt (Granularity) tối ưu: Gom nhóm các khối logic hoàn chỉnh, phục vụ tốt cho RAG/Parsing.}
-        \end{center}
-    \end{columns}
-\end{frame}
-
-%====================================================
-% SLIDE: Qwen3-VL kết quả
-%====================================================
-\begin{frame}{3.3 \; Hạn chế của MLLM Opensource SOTA (Qwen3-VL-235B)}
-    \begin{columns}[c]
-        \column{0.48\textwidth}
-        \begin{center}
-            \textbf{Qwen3-VL-235B} (Page 3 — Mục lục)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/qwen3_page03.jpg}\\
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
             \vspace{0.2em}
-            {\small Tọa độ Bbox sai lệch, gán nhãn thiếu tính phân cấp (\texttt{table}, \texttt{section\_header}), mất cấu trúc hierarchy.}
-        \end{center}
-
-        \column{0.48\textwidth}
-        \begin{center}
-            \textbf{Pipeline (Gemini 3.1 Pro)} (Page 3 — Mục lục)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page03.jpg}\\
-            \vspace{0.2em}
-            {\small\color{successgreen} Nhận diện chính xác Table of Contents, Bbox bao quát tốt, phân loại ngữ nghĩa phù hợp.}
+            {\scriptsize\color{successgreen} Category rõ ràng (Section\_Heading, Text\_Block, Diagram). Có \texttt{parent\_node\_id} liên kết hierarchy.}
         \end{center}
     \end{columns}
 
     \vspace{0.3em}
     \begin{center}
-        \textit{Dù sở hữu 235B parameters, Qwen3-VL vẫn bộc lộ yếu điểm trong chế độ End-to-End.}\\
-        \textbf{$\rightarrow$ Trở ngại chính nằm ở cách định chuẩn bài toán (task formulation) thay vì giới hạn năng lực mô hình.}
+        \textit{Dù 235B params, Qwen3-VL vẫn thất bại ở chế độ E2E.} \textbf{Vấn đề nằm ở task formulation, không phải năng lực model.}
     \end{center}
 \end{frame}
 
 %====================================================
-% SLIDE: So sánh page 5
+% SLIDE: Kết quả đa trang — Cross-page ToC continuation
 %====================================================
-\begin{frame}{3.4 \; Đánh giá trên trang tài liệu phức tạp (Page 5)}
+\begin{frame}{3.3 \; Kết quả đa trang — Phát hiện nội dung kéo dài qua trang (ToC)}
+    \textbf{Ví dụ:} Mục lục (Table of Contents) bị ngắt giữa trang 3 và trang 4.\\
+    Pipeline tự động phát hiện và ghép nối qua cơ chế \texttt{continues\_previous\_node}.
+
+    \vspace{0.3em}
     \begin{columns}[c]
-        \column{0.48\textwidth}
+        \column{0.45\textwidth}
         \begin{center}
-            \textbf{Qwen3-VL-235B} (Page 5)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
+            \textbf{Trang 3} — ToC bắt đầu\\
             \vspace{0.2em}
-            {\small \color{dangerred} Không trích xuất được mối quan hệ phân cấp (hierarchy) giữa các \texttt{paragraph} và \texttt{section}.}
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p03.jpg}\\
+            \vspace{0.1em}
+            {\scriptsize \texttt{node\_012}: Table\_of\_Contents\\
+            $\rightarrow$ \texttt{cut\_off\_at\_bottom}: \texttt{node\_012}}
         \end{center}
 
-        \column{0.48\textwidth}
+        \column{0.1\textwidth}
         \begin{center}
-            \textbf{Pipeline đề xuất} (Page 5)\\
-            \vspace{0.3em}
-            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
+            \vspace{1.5cm}
+            {\Large $\Longrightarrow$}\\
             \vspace{0.2em}
-            {\small\color{successgreen} Phân rã rõ ràng các khối: Section, Text\_Block, Diagram. Duy trì liên kết cây cấu trúc thông qua \texttt{parent\_node\_id}.}
+            {\scriptsize\textit{cross-page\\continuation}}
+        \end{center}
+
+        \column{0.45\textwidth}
+        \begin{center}
+            \textbf{Trang 4} — ToC tiếp tục\\
+            \vspace{0.2em}
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p04.jpg}\\
+            \vspace{0.1em}
+            {\scriptsize \texttt{node\_013}: Table\_of\_Contents\\
+            $\rightarrow$ \texttt{continues\_previous}: \texttt{node\_012}}
         \end{center}
     \end{columns}
 
     \vspace{0.3em}
     \begin{center}
-        \textit{Kho lưu trữ kết quả đầy đủ:} \href{https://github.com/tuandung222/multipage-dla/tree/master/outputs}{\textcolor{blue}{github.com/tuandung222/multipage-dla/outputs}}
+        {\small Phase 3 (rule-based) sẽ tự động merge \texttt{node\_013} vào \texttt{node\_012} $\rightarrow$ một ToC duy nhất xuyên 2 trang.}
+    \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE: Kết quả đa trang — Hierarchy xuyên trang
+%====================================================
+\begin{frame}{3.4 \; Kết quả đa trang — Phân cấp xuyên trang (Section 3: Definitions)}
+    \textbf{Ví dụ:} Section 3 ``Terms and Definitions'' bắt đầu ở trang 7, kéo dài qua 5 trang liên tiếp.\\
+    Pipeline duy trì \texttt{active\_parent\_stack} $\rightarrow$ 64 mục định nghĩa đều thuộc đúng Section 3.
+
+    \vspace{0.3em}
+    \begin{columns}[c]
+        \column{0.45\textwidth}
+        \begin{center}
+            \textbf{Trang 7} — Section 3 bắt đầu\\
+            \vspace{0.2em}
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p07.jpg}\\
+            \vspace{0.1em}
+            {\scriptsize \texttt{parent\_stack}: [Section 3]\\
+            Các node 3.1.1--3.1.9 $\rightarrow$ parent = Section 3}
+        \end{center}
+
+        \column{0.1\textwidth}
+        \begin{center}
+            \vspace{1.5cm}
+            {\Large $\Longrightarrow$}\\
+            \vspace{0.2em}
+            {\scriptsize\textit{hierarchy\\preserved}}
+        \end{center}
+
+        \column{0.45\textwidth}
+        \begin{center}
+            \textbf{Trang 8} — Section 3 tiếp tục\\
+            \vspace{0.2em}
+            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p08.jpg}\\
+            \vspace{0.1em}
+            {\scriptsize \texttt{parent\_stack}: [Section 3] (giữ nguyên)\\
+            Các node 3.1.10--3.1.26 $\rightarrow$ parent = Section 3}
+        \end{center}
+    \end{columns}
+
+    \vspace{0.3em}
+    \begin{center}
+        {\small Kết quả đầy đủ: \href{https://github.com/tuandung222/multipage-dla/tree/master/outputs}{\textcolor{blue}{github.com/tuandung222/multipage-dla/outputs}}}
     \end{center}
 \end{frame}
 
