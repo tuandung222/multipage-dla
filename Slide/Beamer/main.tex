@@ -135,81 +135,144 @@
 \section{Mô hình hóa bài toán}
 
 %====================================================
-% SLIDE: DLA truyền thống
+% SLIDE 1.1: Thông tin layout nội bộ trang
 %====================================================
-\begin{frame}{1.1 \; DLA truyền thống và Hướng mở rộng đề xuất}
-    \begin{block}{DLA truyền thống — Single-Page, Closed-Set}
-        Học hàm $\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$ với:
-        \begin{itemize}
-            \item $b_i = [x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ — bounding box
-            \item $c_i \in \mathcal{C}_{\text{fixed}}$ — tập nhãn \textbf{tĩnh} (Title, Text, Table, Figure,...)
-        \end{itemize}
-        \textit{Hạn chế:} Phân tích các trang độc lập, thiếu sự liên kết ngữ nghĩa giữa các vùng, tập nhãn đóng.
+\begin{frame}{1.1 \; Thông tin layout nội bộ một trang (Intra-Page)}
+    \begin{block}{DLA truyền thống — Phân tích từng trang độc lập}
+        Với mỗi ảnh trang $\mathcal{I}$, trích xuất tập thực thể layout:
+        $\quad \mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$
     \end{block}
 
     \vspace{0.3em}
-    \begin{block}{Graph-based DLA — Bổ sung quan hệ cấu trúc}
-        $\mathcal{Y} = (\mathcal{V},\; \mathcal{E})$ \quad với $\mathcal{V}$ = tập vùng layout, $\mathcal{E}$ = tập quan hệ (reading order, hierarchy).\\
-        \textit{Hạn chế:} Vẫn giới hạn trong phạm vi trang đơn (single-page), thiếu ngữ cảnh xuyên trang.
-    \end{block}
+    Mỗi phần tử layout trên một trang bao gồm các thông tin sau:
 
-    \vspace{0.3em}
-    \begin{alertblock}{Mô hình bài toán đề xuất — Cross-Page Multi-Page DLA}
-        $$\mathcal{F}\!\left(\mathcal{I}_t \;\big|\; \mathcal{I}_{t-k:t-1},\; \mathcal{S}_{t-1}\right) \;\longrightarrow\; \left(\mathcal{Y}_t,\; \mathcal{S}_t\right)$$
-        \begin{itemize}
-            \item $\mathcal{I}_{t-k:t-1}$: \textbf{Visual context} từ $k$ trang liền trước.
-            \item $\mathcal{S}_{t-1}$: \textbf{Trailing state} — trạng thái cấu trúc tích lũy từ \textit{tất cả} trang trước đó ($1 \ldots t{-}1$).
-            \item $\mathcal{Y}_t = (\mathcal{V}_t, \mathcal{E}_t)$: Layout graph chứa \textbf{inter-page relations} và tính liên tục (continuation).
-        \end{itemize}
-    \end{alertblock}
+    \vspace{0.2em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{5cm}p{6cm}}
+        \toprule
+        \textbf{Thông tin} & \textbf{Ý nghĩa} & \textbf{Ví dụ} \\
+        \midrule
+        $b_i$ = Bounding box & Vị trí vật lý: $[x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ & Hình chữ nhật bao quanh một đoạn văn, bảng, hình \\
+        \midrule
+        $c_i$ = Category & Loại thành phần layout & Title, Section\_Heading, Text\_Block, Table, Figure, List, Header, Footer,... \\
+        \midrule
+        Content snippet & Vài chục ký tự đầu tiên & ``3.1 TERMS AND DEFINITIONS...'' \\
+        \midrule
+        \multicolumn{3}{l}{\textit{Các thông tin trên đủ cho single-page. Nhưng khi mở rộng sang multi-page, cần thêm:}} \\
+        \midrule
+        $\text{parent\_id}$ & Quan hệ cha-con (hierarchy) & Paragraph 1.1.1 $\rightarrow$ thuộc Section\_Heading 1.1 \\
+        \midrule
+        $\text{node\_id}$ & Định danh toàn cục duy nhất & \texttt{node\_045} — không trùng qua mọi trang \\
+        \midrule
+        $\text{continuation}$ & Liên kết xuyên trang & ``Nối tiếp \texttt{node\_012} từ trang trước'' \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.2em}
+    {\small \textit{3 dòng cuối (parent\_id, node\_id, continuation) là phần} \textbf{mở rộng của chúng ta} \textit{so với DLA truyền thống.}}
 \end{frame}
 
 %====================================================
-% SLIDE: Trailing state chi tiết
+% SLIDE 1.2: Phân tích đa trang là gì?
 %====================================================
-\begin{frame}{1.2 \; Tại sao cần ``bộ nhớ'' khi phân tích từng trang?}
-    \textbf{Vấn đề:} Khi phân tích trang 8, ta chỉ \textit{nhìn} được trang 7 và 8 (visual context). Nhưng heading ``Section 3'' nằm ở trang 3 — làm sao biết đoạn văn ở trang 8 thuộc Section 3?
+\begin{frame}{1.2 \; Phân tích đa trang là gì? (Cross-Page DLA)}
+    \begin{alertblock}{Bài toán mới: Để phân tích trang $t$, cần ngữ cảnh từ các trang trước}
+        $$\mathcal{F}\!\left(\mathcal{I}_t \;\big|\; \underbrace{\mathcal{I}_{t-k:t-1}}_{\text{ảnh $k$ trang trước}},\; \underbrace{\mathcal{S}_{t-1}}_{\text{bộ nhớ tích lũy}}\right) \;\longrightarrow\; \left(\underbrace{\mathcal{Y}_t}_{\text{layout trang $t$}},\; \underbrace{\mathcal{S}_t}_{\text{bộ nhớ cập nhật}}\right)$$
+    \end{alertblock}
 
-    \vspace{0.4em}
-    \begin{block}{Giải pháp: Trạng thái tích lũy $\mathcal{S}_t$ (Trailing State)}
-        Một cấu trúc JSON nhỏ được \textbf{truyền từ trang này sang trang kế}, mang theo những gì đã ``học'' được từ tất cả trang trước đó. Tương tự \textit{hidden state} trong RNN.
-    \end{block}
-
-    \vspace{0.3em}
-    \textbf{Ví dụ cụ thể} — Phân tích tài liệu Quality Manual ISO 9001:
+    \vspace{0.2em}
+    \textbf{Tại sao phải phân tích đa trang?} Ba tình huống mà single-page bất lực:
 
     \vspace{0.2em}
     \begin{columns}[T]
-        \column{0.48\textwidth}
-        {\small
-        \textbf{Sau khi phân tích trang 5}, trạng thái mang theo:
-        \begin{itemize}
-            \item \texttt{node\_id}: đếm tới \texttt{node\_045}\\
-                  {\scriptsize $\rightarrow$ trang 6 bắt đầu từ \texttt{node\_046}}
-            \item \texttt{parent\_stack}: [``Section 1: Scope'']\\
-                  {\scriptsize $\rightarrow$ trang 6 biết các đoạn mới vẫn thuộc Section 1}
-            \item \texttt{cut\_off}: ``node\_045 (đoạn văn bị cắt ngang)''\\
-                  {\scriptsize $\rightarrow$ trang 6 ghép nối tiếp phần còn lại}
-        \end{itemize}
-        }
+        \column{0.32\textwidth}
+        \begin{exampleblock}{\small (a) Category phụ thuộc ngữ cảnh}
+            {\scriptsize
+            Trang 8 chứa danh sách ``3.1.10 CALIBRATION, 3.1.11 CAPABILITY,...''\\[0.3em]
+            Nếu \textbf{chỉ nhìn trang 8}: đây là ``List\_Block'' hay ``Definition\_List''?\\[0.3em]
+            \textbf{Cần biết:} Trang 7 có heading ``Section 3: Terms and Definitions'' $\rightarrow$ đây là Definition\_List.
+            }
+        \end{exampleblock}
 
-        \column{0.48\textwidth}
-        {\small
-        \textbf{Nếu không có trạng thái này:}
-        \begin{itemize}
-            \item[\color{dangerred}$\times$] Trang 6 không biết paragraph thuộc section nào
-            \item[\color{dangerred}$\times$] ID bị trùng lặp giữa các trang
-            \item[\color{dangerred}$\times$] Đoạn văn bị cắt ngang không được ghép lại
-            \item[\color{dangerred}$\times$] Mất hoàn toàn cấu trúc phân cấp
-        \end{itemize}
-        }
+        \column{0.32\textwidth}
+        \begin{exampleblock}{\small (b) Nội dung bị cắt ngang trang}
+            {\scriptsize
+            Trang 3: Mục lục (ToC) hiển thị đến mục 8.5...\\[0.3em]
+            Trang 4: Tiếp tục từ mục 8.5 đến phụ lục.\\[0.3em]
+            \textbf{Cần biết:} Đây là \textit{một} ToC bị ngắt, không phải hai bảng riêng biệt.
+            }
+        \end{exampleblock}
+
+        \column{0.32\textwidth}
+        \begin{exampleblock}{\small (c) Hierarchy xuyên trang}
+            {\scriptsize
+            Section 1 ``Scope'' bắt đầu ở trang 5.\\
+            Paragraphs 1.1--1.7 kéo dài đến trang 6.\\[0.3em]
+            \textbf{Cần biết:} Paragraphs ở trang 6 thuộc Section 1 (ở trang 5), không phải top-level.
+            }
+        \end{exampleblock}
     \end{columns}
 
     \vspace{0.4em}
     \begin{center}
-        $\Rightarrow$ \textbf{Visual context} (ảnh trang kề) cho biết trang trông như thế nào.\\
-        \textbf{Trailing state} cho biết trang đó \textit{nằm ở đâu} trong cấu trúc tài liệu.
+        $\Rightarrow$ \textbf{Output} không chỉ là tập bbox + category, mà là \textbf{đồ thị cấu trúc} $\mathcal{Y}_t = (\mathcal{V}_t, \mathcal{E}_t)$ với các liên kết \textit{xuyên trang}.
     \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE 1.3: Bộ nhớ (Trailing State) mô hình hóa thế nào
+%====================================================
+\begin{frame}{1.3 \; Bộ nhớ tích lũy $\mathcal{S}_t$ — Mô hình hóa chi tiết}
+    \textbf{Bộ nhớ} $\mathcal{S}_t$ là một cấu trúc dữ liệu được \textbf{cập nhật sau mỗi trang} và \textbf{truyền sang trang kế tiếp}.\\
+    Tương tự \textit{hidden state} $h_t$ trong mạng hồi quy (RNN): $\;h_t = f(x_t, h_{t-1})$.
+
+    \vspace{0.4em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{4.5cm}p{7cm}}
+        \toprule
+        \textbf{Trường trong $\mathcal{S}_t$} & \textbf{Lưu trữ gì} & \textbf{Ví dụ (sau khi phân tích trang 7)} \\
+        \midrule
+        \texttt{last\_node\_id} & Bộ đếm ID toàn cục & \texttt{``node\_089''} $\rightarrow$ trang 8 bắt đầu từ \texttt{node\_090} \\
+        \midrule
+        \texttt{active\_parent\_stack} & Ngăn xếp các heading đang ``mở'' (ngoài $\rightarrow$ trong) &
+            \texttt{[} \\
+            & & \texttt{\ \ \{id: node\_060, cat: Section\_Heading, text: ``3. Terms''\},} \\
+            & & \texttt{\ \ \{id: node\_061, cat: Section\_Header, text: ``3.1 Definitions''\}} \\
+            & & \texttt{]} \\
+            & & $\rightarrow$ Trang 8: mọi definition entry có \texttt{parent = node\_061} \\
+        \midrule
+        \texttt{element\_cut\_off} & Phần tử bị cắt cuối trang &
+            \texttt{\{id: node\_089, cat: Text\_Block, text: ``...chưa hết câu''\}} \\
+            & & $\rightarrow$ Trang 8: phần tử đầu tiên sẽ mang \texttt{continues = node\_089} \\
+        \midrule
+        \texttt{new\_categories} & Nhãn mới phát sinh & \texttt{[``Definition\_Entry'': lý do...]} — bổ sung vào vocabulary \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.3em}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        {\small \textbf{Visual context} $\mathcal{I}_{t-k:t-1}$ (ảnh trang kề):
+        \begin{itemize}
+            \item Cho biết trang trông \textbf{như thế nào}
+            \item Giới hạn: chỉ ``nhìn'' được $k$ trang gần nhất
+        \end{itemize}}
+
+        \column{0.48\textwidth}
+        {\small \textbf{Bộ nhớ} $\mathcal{S}_{t-1}$ (trailing state):
+        \begin{itemize}
+            \item Cho biết trang đó \textbf{nằm ở đâu} trong cấu trúc tài liệu
+            \item Tích lũy từ \textit{tất cả} trang trước — không bị giới hạn bởi $k$
+        \end{itemize}}
+    \end{columns}
 \end{frame}
 
 %====================================================
