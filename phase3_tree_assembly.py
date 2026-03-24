@@ -202,46 +202,144 @@ def tree_to_outline(roots: list[TreeNode], indent: int = 0) -> str:
     return "\n".join(lines)
 
 
-def tree_to_mermaid(roots: list[TreeNode]) -> str:
+def tree_to_mermaid(
+    roots: list[TreeNode],
+    continuations: list[dict] | None = None,
+) -> str:
     """
-    Render the tree as a Mermaid flowchart (top-down).
+    Render the document tree as a vertical Mermaid flowchart.
 
-    Can be pasted into any Mermaid renderer or GitHub markdown.
+    Design choices for GitHub readability:
+      - Top-down (TB) layout for vertical reading.
+      - Edge labels show the relationship type (contains, defines, etc.).
+      - Continuation (cross-page merge) shown as dashed "continues" edges.
+      - Nodes grouped by page using subgraphs.
+      - Category-specific shapes for visual distinction.
+      - Styling via classDef for category colours.
     """
-    lines: list[str] = ["graph TD"]
+    lines: list[str] = ["graph TB"]
 
-    # Category → shape mapping for visual clarity.
+    # ── Category → shape mapping ─────────────────────────────────
     shape_map = {
-        "Title": ('([', "])"),           # stadium
-        "Section_Heading": ("[[", "]]"), # subroutine
-        "Section_Header": ("[[", "]]"),
-        "Table": ("[/", "/]"),           # parallelogram
-        "Diagram": ("{{", "}}"),         # hexagon
-        "Image": ("{{", "}}"),
-        "Logo": ("{{", "}}"),
+        "Title":           ('([', "])"),    # stadium
+        "Section_Heading": ("[[", "]]"),    # subroutine
+        "Section_Header":  ("[[", "]]"),
+        "Table":           ("[/", "/]"),    # parallelogram
+        "Table_of_Contents": ("[/", "/]"),
+        "Diagram":         ("{{", "}}"),    # hexagon
+        "Image":           ("{{", "}}"),
+        "Logo":            ("{{", "}}"),
+        "List_Block":      ("[(", ")]"),    # cylindrical
     }
-    default_shape = ("[", "]")           # rectangle
+    default_shape = ("[", "]")
+
+    # ── Relation label based on parent→child category pair ───────
+    def relation_label(parent: TreeNode, child: TreeNode) -> str:
+        p, c = parent.category, child.category
+        if p in ("Section_Heading", "Section_Header"):
+            if c in ("Section_Header",):
+                return "has_subsection"
+            if c in ("Text_Block",):
+                return "contains_text"
+            if c in ("Table",):
+                return "contains_table"
+            if c in ("List_Block",):
+                return "contains_list"
+            if c in ("Diagram", "Image"):
+                return "contains_figure"
+            if c in ("Table_of_Contents",):
+                return "contains_toc"
+            return "contains"
+        return "contains"
 
     def sanitize(text: str) -> str:
-        """Escape characters that break Mermaid syntax."""
+        """Escape chars that break Mermaid syntax."""
         return (text
                 .replace('"', "'")
                 .replace("\n", " ")
-                .replace("(", "❨")
-                .replace(")", "❩")
-                [:50])
+                .replace("(", "&#40;")
+                .replace(")", "&#41;")
+                .replace("[", "&#91;")
+                .replace("]", "&#93;")
+                [:45])
 
-    def emit(node: TreeNode) -> None:
-        open_b, close_b = shape_map.get(node.category, default_shape)
-        label = f"{node.category}: {sanitize(node.snippet)}"
-        lines.append(f'    {node.node_id}{open_b}"{label}"{close_b}')
+    # ── Collect all nodes + group by page ────────────────────────
+    all_nodes: list[TreeNode] = []
+    edges: list[str] = []
 
+    def collect(node: TreeNode, parent: TreeNode | None) -> None:
+        all_nodes.append(node)
+        if parent is not None:
+            rel = relation_label(parent, node)
+            edges.append(f"    {parent.node_id} -->|{rel}| {node.node_id}")
         for child in node.children:
-            lines.append(f"    {node.node_id} --> {child.node_id}")
-            emit(child)
+            collect(child, node)
 
     for root in roots:
-        emit(root)
+        collect(root, None)
+
+    # Group nodes by page.
+    by_page: dict[int, list[TreeNode]] = {}
+    for n in all_nodes:
+        by_page.setdefault(n.page_number, []).append(n)
+
+    # ── Emit subgraphs per page ──────────────────────────────────
+    for page_num in sorted(by_page):
+        nodes_on_page = by_page[page_num]
+        lines.append(f"")
+        lines.append(f"    subgraph page_{page_num} [Page {page_num}]")
+        lines.append(f"        direction TB")
+        for node in nodes_on_page:
+            open_b, close_b = shape_map.get(node.category, default_shape)
+            snippet = sanitize(node.snippet)
+            label = f"{node.node_id}\\n{node.category}\\n{snippet}"
+            lines.append(f'        {node.node_id}{open_b}"{label}"{close_b}')
+        lines.append(f"    end")
+
+    # ── Emit edges (after subgraphs so Mermaid resolves IDs) ─────
+    lines.append("")
+    lines.append("    %% Parent-child relationships")
+    lines.extend(edges)
+
+    # ── Continuation edges (cross-page merge) ────────────────────
+    if continuations:
+        lines.append("")
+        lines.append("    %% Cross-page continuations")
+        for c in continuations:
+            child_id = c["node_id"]
+            parent_id = c["continues"]
+            lines.append(f"    {parent_id} -.->|continues| {child_id}")
+
+    # ── Styling ──────────────────────────────────────────────────
+    lines.append("")
+    lines.append("    %% Styles")
+    lines.append('    classDef heading fill:#4A90D9,stroke:#2C5F8A,color:#fff,font-weight:bold')
+    lines.append('    classDef text fill:#F5F5F5,stroke:#999,color:#333')
+    lines.append('    classDef table fill:#FFE0B2,stroke:#E65100,color:#333')
+    lines.append('    classDef figure fill:#C8E6C9,stroke:#2E7D32,color:#333')
+    lines.append('    classDef meta fill:#E1BEE7,stroke:#6A1B9A,color:#333')
+    lines.append('    classDef boilerplate fill:#EEEEEE,stroke:#BDBDBD,color:#666,stroke-dasharray:5')
+
+    # Apply styles.
+    style_map = {
+        "Section_Heading": "heading",
+        "Section_Header": "heading",
+        "Title": "heading",
+        "Text_Block": "text",
+        "Table": "table",
+        "Table_of_Contents": "table",
+        "Diagram": "figure",
+        "Image": "figure",
+        "List_Block": "text",
+        "Logo": "meta",
+        "Metadata_Block": "meta",
+        "Header": "boilerplate",
+        "Footer": "boilerplate",
+    }
+    for cls_name, style_name in style_map.items():
+        ids = [n.node_id for n in all_nodes if n.category == cls_name]
+        if ids:
+            lines.append(f"    class {','.join(ids)} {style_name}")
 
     return "\n".join(lines)
 
@@ -296,7 +394,8 @@ def run(input_path: Path | None = None) -> dict:
         data = json.load(f)
 
     elements = data["detected_elements"]
-    print(f"  Loaded {len(elements)} elements")
+    continuations = data.get("document_summary", {}).get("cross_page_continuations", [])
+    print(f"  Loaded {len(elements)} elements, {len(continuations)} continuation(s)")
 
     # Step 1: Merge continuations.
     elements = merge_continuations(elements)
@@ -324,7 +423,7 @@ def run(input_path: Path | None = None) -> dict:
         f.write(outline)
 
     # Mermaid diagram.
-    mermaid = tree_to_mermaid(roots)
+    mermaid = tree_to_mermaid(roots, continuations=continuations)
     mermaid_path = OUTPUT_DIR / "phase3_mermaid.md"
     with open(mermaid_path, "w", encoding="utf-8") as f:
         f.write(f"```mermaid\n{mermaid}\n```\n")
