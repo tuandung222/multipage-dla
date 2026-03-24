@@ -137,10 +137,40 @@
 \section{Mô hình hóa bài toán}
 
 %====================================================
-% SLIDE 1.1: Thông tin layout nội bộ trang
+% SLIDE 1.1: DLA truyền thống và Hướng mở rộng đề xuất
 %====================================================
-\begin{frame}{1.1 \; Thông tin layout nội bộ một trang (Intra-Page)}
-    \begin{block}{DLA truyền thống \cite{zhong2019publaynet, dla_benchmark_2022_sigkdd_2022_doclaynet} — Phân tích từng trang độc lập}
+\begin{frame}{1.1 \; DLA truyền thống và Hướng mở rộng đề xuất}
+    \begin{block}{DLA truyền thống \cite{zhong2019publaynet, dla_benchmark_2022_sigkdd_2022_doclaynet} — Single-Page, Closed-Set}
+        Học hàm $\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$ với:
+        \begin{itemize}
+            \item $b_i = [x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ — bounding box
+            \item $c_i \in \mathcal{C}_{\text{fixed}}$ — tập nhãn \textbf{tĩnh} (Title, Text, Table, Figure,...)
+        \end{itemize}
+        \textit{Hạn chế:} Phân tích các trang độc lập, thiếu sự liên kết ngữ nghĩa giữa các vùng, tập nhãn đóng.
+    \end{block}
+
+    \vspace{0.3em}
+    \begin{block}{Graph-based DLA \cite{dla_2022_coling_2022_doc_gcn_heterogeneous_graph_convolutional_networks_for_document, dla_2023_icdar_2023_a_graphical_approach_to_document_layout_analysis_pdf} — Bổ sung quan hệ cấu trúc}
+        $\mathcal{Y} = (\mathcal{V},\; \mathcal{E})$ \quad với $\mathcal{V}$ = tập vùng layout, $\mathcal{E}$ = tập quan hệ (reading order, hierarchy).\\
+        \textit{Hạn chế:} Vẫn giới hạn trong phạm vi trang đơn (single-page), thiếu ngữ cảnh xuyên trang.
+    \end{block}
+
+    \vspace{0.3em}
+    \begin{alertblock}{Mô hình bài toán đề xuất — Cross-Page Multi-Page DLA}
+        $$\mathcal{F}\!\left(\mathcal{I}_t \;\big|\; \mathcal{I}_{t-k:t-1},\; \mathcal{S}_{t-1}\right) \;\longrightarrow\; \left(\mathcal{Y}_t,\; \mathcal{S}_t\right)$$
+        \begin{itemize}
+            \item $\mathcal{I}_{t-k:t-1}$: \textbf{Visual context} từ $k$ trang liền trước.
+            \item $\mathcal{S}_{t-1}$: \textbf{Trailing state} — trạng thái cấu trúc tích lũy từ \textit{tất cả} trang trước đó ($1 \ldots t{-}1$).
+            \item $\mathcal{Y}_t = (\mathcal{V}_t, \mathcal{E}_t)$: Layout graph chứa \textbf{inter-page relations} và tính liên tục (continuation).
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+%====================================================
+% SLIDE 1.2: Thông tin layout nội bộ trang
+%====================================================
+\begin{frame}{1.2 \; Thông tin layout nội bộ một trang (Intra-Page)}
+    \begin{block}{DLA truyền thống — Phân tích từng trang độc lập}
         Với mỗi ảnh trang $\mathcal{I}$, trích xuất tập thực thể layout:
         $\quad \mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$
     \end{block}
@@ -179,9 +209,9 @@
 \end{frame}
 
 %====================================================
-% SLIDE 1.2: Phân tích đa trang là gì?
+% SLIDE 1.3: Phân tích đa trang là gì?
 %====================================================
-\begin{frame}{1.2 \; Phân tích đa trang là gì? (Cross-Page DLA)}
+\begin{frame}{1.3 \; Phân tích đa trang là gì? (Cross-Page DLA)}
     \begin{alertblock}{Bài toán mới: Để phân tích trang $t$, cần ngữ cảnh từ các trang trước}
         $$\mathcal{F}\!\left(\mathcal{I}_t \;\big|\; \underbrace{\mathcal{I}_{t-k:t-1}}_{\text{ảnh $k$ trang trước}},\; \underbrace{\mathcal{S}_{t-1}}_{\text{bộ nhớ tích lũy}}\right) \;\longrightarrow\; \left(\underbrace{\mathcal{Y}_t}_{\text{layout trang $t$}},\; \underbrace{\mathcal{S}_t}_{\text{bộ nhớ cập nhật}}\right)$$
     \end{alertblock}
@@ -226,9 +256,9 @@
 \end{frame}
 
 %====================================================
-% SLIDE 1.3: Bộ nhớ (Trailing State) mô hình hóa thế nào
+% SLIDE 1.4: Bộ nhớ (Trailing State) mô hình hóa thế nào
 %====================================================
-\begin{frame}{1.3 \; Bộ nhớ tích lũy $\mathcal{S}_t$ — Mô hình hóa chi tiết}
+\begin{frame}{1.4 \; Bộ nhớ tích lũy $\mathcal{S}_t$ — Mô hình hóa chi tiết}
     \textbf{Bộ nhớ} $\mathcal{S}_t$ là một cấu trúc dữ liệu được \textbf{cập nhật sau mỗi trang} và \textbf{truyền sang trang kế tiếp}.\\
     Tương tự \textit{hidden state} $h_t$ trong mạng hồi quy (RNN): $\;h_t = f(x_t, h_{t-1})$.
 
@@ -280,7 +310,7 @@
 %====================================================
 % SLIDE: Target domain
 %====================================================
-\begin{frame}{1.3 \; Target Domain — Tài liệu có cấu trúc phi tiêu chuẩn}
+\begin{frame}{1.5 \; Target Domain — Tài liệu có cấu trúc phi tiêu chuẩn}
     Thay vì tập trung vào sách, báo khoa học (đã có các benchmark như PubLayNet, DocLayNet).\\
     Nghiên cứu hướng đến các tài liệu thực tế mà các giải pháp hiện hành \textbf{vẫn còn nhiều hạn chế}:
 
