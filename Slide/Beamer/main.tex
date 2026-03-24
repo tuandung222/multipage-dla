@@ -686,50 +686,97 @@
 %====================================================
 % SLIDE: Phase 2 chi tiết
 %====================================================
-\begin{frame}{4.3 \; Pha 2 — Phân tích Cấu trúc (Structural Parsing)}
+\begin{frame}{4.3 \; Pha 2 — Phân tích Cấu trúc Tăng dần (Structural Parsing)}
     \begin{columns}[T]
-        \column{0.52\textwidth}
-        \textbf{Pha 2.1 — Khởi tạo (Trang 1):}
-        \begin{itemize}
-            \item Phân tích dựa trên Visual input và tập Categories từ Pha 1.
-            \item Khởi tạo Trailing state $S_0$:
+        \column{0.48\textwidth}
+        \begin{block}{Pha 2.1 — Khởi tạo (Trang 1)}
+            \textbf{Đầu vào:} Ảnh trang 1 + Tập categories $\mathcal{C}$ từ Pha 1.\[0.3em]
+            \textbf{Đầu ra:} Layout $ + Trailing state $ ban đầu.\[0.3em]
+            \textbf{Khởi tạo $:}
             \begin{itemize}
-                \item \texttt{last\_assigned\_node\_id}: \texttt{node\_000}
+                \item \texttt{last\_node\_id}: \texttt{node\_000}
                 \item \texttt{active\_parent\_stack}: \texttt{[]}
-                \item \texttt{element\_cut\_off...}: \texttt{null}
+                \item \texttt{element\_cut\_off}: \texttt{null}
             \end{itemize}
-        \end{itemize}
+        \end{block}
 
-        \vspace{0.4em}
-        \textbf{Pha 2.2 — Cập nhật tăng dần (Trang $2..n$):}
-        \begin{itemize}
-            \item Đầu vào: \textit{Ảnh trang $t-1$} + \textit{Ảnh trang $t$} + \textit{Trailing state $S_{t-1}$} + \textit{Categories}.
-            \item Đầu ra: Bbox, node\_id, category, parent\_node\_id, continuation\_flag.
-            \item Cập nhật $S_{t}$ để truyền tiếp cho trang $t+1$.
-        \end{itemize}
+        \column{0.48\textwidth}
+        \begin{block}{Pha 2.2 — Vòng lặp tăng dần (Trang  \ldots n$)}
+            \textbf{Đầu vào mỗi bước $:}
+            \begin{enumerate}
+                \item Ảnh trang hiện tại $ + ảnh trang trước {t-1}$
+                \item Trailing state {t-1}$ từ bước trước
+                \item Tập categories $\mathcal{C}$ (cố định từ Pha 1)
+            \end{enumerate}
+            \textbf{Đầu ra:}
+            \begin{itemize}
+                \item $: bbox, category, node\_id, parent\_id, continuation
+                \item $: trailing state cập nhật $\rightarrow$ truyền cho {+}1$
+            \end{itemize}
+        \end{block}
+    \end{columns}
 
-        \column{0.45\textwidth}
-        \textbf{Xử lý liên kết xuyên trang (Cross-page):}
-        \begin{exampleblock}{\small Ví dụ 1: Ngắt trang bảng mục lục}
-            {\scriptsize
-            Trang 3: \texttt{node\_012} (Table\_of\_Contents)\\
-            $\rightarrow$ Ghi nhận cắt ngang: \texttt{node\_012}\\[0.3em]
-            Trang 4: \texttt{node\_013} (Table\_of\_Contents)\\
-            $\rightarrow$ Nhận diện tiếp nối: \texttt{node\_012}\\[0.3em]
-            \textit{Pha 3 sẽ thực hiện hợp nhất hai node này.}
+    \vspace{0.4em}
+    \begin{center}
+    \resizebox{0.85\textwidth}{!}{
+    \begin{tikzpicture}[
+        node distance=0.4cm,
+        box/.style={rectangle, rounded corners, draw, minimum height=0.8cm, text width=2.8cm, align=center, font=\scriptsize},
+        arrow/.style={-{Stealth[length=2mm]}, thick},
+        state/.style={font=\scriptsize\itshape, text=successgreen}
+    ]
+        \node[box, fill=blue!10, draw=primaryblue] (i1) {$ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i1] (y1) {$};
+        \node[box, fill=blue!10, draw=primaryblue, right=1.6cm of y1] (i2) {, I_1$ + $ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i2] (y2) {$};
+        \node[right=0.8cm of y2, font=\small] (dots) {$\cdots$};
+        \node[box, fill=blue!10, draw=primaryblue, right=0.8cm of dots] (in) {, I_{n-1}$ + {n-1}$ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of in] (yn) {$};
+
+        \draw[arrow] (i1) -- (y1);
+        \draw[arrow] (i2) -- (y2);
+        \draw[arrow] (in) -- (yn);
+        \draw[arrow, successgreen, dashed] (y1) -- node[above, state] {$} (i2);
+        \draw[arrow, successgreen, dashed] (y2) -- node[above, state] {$} (dots);
+        \draw[arrow, successgreen, dashed] (dots) -- node[above, state] {{n-1}$} (in);
+    \end{tikzpicture}
+    }
+    \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE: Phase 2 — Ví dụ cross-page
+%====================================================
+\begin{frame}{4.3b \; Pha 2 — Cơ chế xử lý liên kết xuyên trang}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \begin{exampleblock}{Tình huống 1: Nội dung bị cắt ngang trang}
+            {\small
+            \textbf{Trang 3:} Mục lục (ToC) hiển thị đến mục 8.5...\
+            $\rightarrow$ MLLM ghi nhận: \texttt{element\_cut\_off = node\_012}\[0.4em]
+            \textbf{Trang 4:} ToC tiếp tục từ mục 8.5.\
+            $\rightarrow$ MLLM đọc $, tạo \texttt{node\_013} với\
+            \quad \texttt{continues\_previous = node\_012}\[0.4em]
+            \textbf{Pha 3:} Tự động merge thành 1 ToC duy nhất.
             }
         \end{exampleblock}
 
-        \vspace{0.3em}
-        \begin{exampleblock}{\small Ví dụ 2: Cấu trúc phân cấp đa trang}
-            {\scriptsize
-            \texttt{active\_parent\_stack}:\\
-            \texttt{[Section 3: ``Terms'',}\\
-            \texttt{\ node\_025: ``3.1 Quality...'']  }\\[0.3em]
-            $\rightarrow$ Hệ thống duy trì thông tin phân cấp (hierarchy) liên tục, dù đoạn văn nằm ở cách xa nhiều trang.
+        \column{0.48\textwidth}
+        \begin{exampleblock}{Tình huống 2: Phân cấp kéo dài qua nhiều trang}
+            {\small
+            \textbf{Trang 7:} Heading Section 3: Terms and Definitions''.\
+            $\rightarrow$ Push vào \texttt{active\_parent\_stack}\[0.4em]
+            \textbf{Trang 8--11:} Các mục 3.1.1 $\sim$ 3.1.26 xuất hiện.\
+            $\rightarrow$ MLLM đọc stack, gán \texttt{parent = Section 3}\[0.4em]
+            \textbf{Kết quả:} 64 mục định nghĩa trải dài 5 trang đều thuộc đúng 1 node cha.
             }
         \end{exampleblock}
     \end{columns}
+
+    \vspace{0.5em}
+    \begin{center}
+        \textbf{Điểm mấu chốt:} Trailing state $ cho phép MLLM nhớ'' cấu trúc từ \textit{tất cả} trang trước — vượt qua giới hạn visual context $ trang.
+    \end{center}
 \end{frame}
 
 %====================================================
@@ -741,7 +788,7 @@
         \textbf{Quy trình (Rule-based):}
         \begin{enumerate}
             \item \textbf{Ghép nối (Merge continuation):}\\ Xử lý chuỗi \texttt{continues\_previous\_node}, nối snippet, cập nhật tham chiếu.
-            \item \textbf{Xây dựng cây (Build Tree):}\\ Khôi phục đồ trúc dựa trên \texttt{parent\_node\_id}.
+            \item \textbf{Xây dựng cây (Build Tree):}\\ Khôi phục cấu trúc dựa trên \texttt{parent\_node\_id}.
             \item \textbf{Xuất dữ liệu (Export):}\\ Định dạng JSON tree, Text outline, và Mermaid diagram.
         \end{enumerate}
 
@@ -778,31 +825,36 @@
 %====================================================
 % SLIDE: Pseudocode
 %====================================================
-\begin{frame}{4.5 \; Mã giả — Kiến trúc tổng thể Pipeline}
+\begin{frame}{4.5 \; Mã giả — Giải thuật phân tích tài liệu PDF đa trang}
     {\small
     \begin{algorithmic}
-    \STATE \textbf{Input:} $D = \{I_1, I_2, \ldots, I_n\}$ \hfill // Tập $n$ ảnh trang tài liệu
-    \STATE \textbf{Output:} $T$ = Document Tree \hfill // Đồ thị cấu trúc tích hợp cross-page links
+    \STATE \textbf{Input:} $D = \{I_1, I_2, \ldots, I_n\}$ (tập $n$ ảnh trang tài liệu)
+    \STATE \textbf{Output:} $T$ = Document Tree (đồ thị cấu trúc với cross-page links)
     \STATE
-    \STATE \textcolor{warnorange}{\textbf{--- Pha 1: Category Discovery ---}}
+    \STATE \textcolor{warnorange}{\textbf{--- Phase 1: Category Discovery ---}}
     \STATE $\mathcal{C} \leftarrow \emptyset$
-    \FOR{mỗi cửa sổ trượt $w$ gồm $k$ trang}
-        \STATE $\mathcal{C}_w \leftarrow \text{MLLM}(w, \text{CATEGORY\_PROMPT})$
-        \STATE $\mathcal{C} \leftarrow \text{MERGE}(\mathcal{C}, \mathcal{C}_w)$
+    \FOR{each sliding window $w$ of $k$ pages with stride $s$}
+        \STATE $\mathcal{C}_w \leftarrow \text{MLLM}(w,\; \textsc{CategoryPrompt})$ \hfill \textcolor{gray}{\textit{// Only category reasoning, no localization}}
+        \STATE $\mathcal{C} \leftarrow \text{Merge\&Dedup}(\mathcal{C},\; \mathcal{C}_w)$
     \ENDFOR
     \STATE
-    \STATE \textcolor{successgreen}{\textbf{--- Pha 2.1: Initial Analysis ---}}
-    \STATE $S_0 \leftarrow \text{INIT\_STATE}()$ \hfill // Thiết lập trạng thái khởi tạo
-    \STATE $(Y_1, S_1) \leftarrow \text{MLLM}(I_1, \text{null}, S_0, \mathcal{C}, \text{PARSE\_PROMPT})$
+    \STATE \textcolor{successgreen}{\textbf{--- Phase 2.1: Initial Analysis (page 1) ---}}
+    \STATE $S_0 \leftarrow$ \{\texttt{last\_id}: 0, \texttt{parent\_stack}: [], \texttt{cut\_off}: null\}
+    \STATE $(Y_1,\; S_1) \leftarrow \text{MLLM}(I_1,\; \text{null},\; S_0,\; \mathcal{C},\; \textsc{ParsePrompt})$
     \STATE
-    \STATE \textcolor{successgreen}{\textbf{--- Pha 2.2: Incremental Loop ---}}
+    \STATE \textcolor{successgreen}{\textbf{--- Phase 2.2: Incremental Loop (pages $2 \ldots n$) ---}}
     \FOR{$t = 2$ \textbf{to} $n$}
-        \STATE $(Y_t, S_t) \leftarrow \text{MLLM}(I_t, I_{t-1}, S_{t-1}, \mathcal{C}, \text{PARSE\_PROMPT})$
-        \hfill // Cập nhật và truyền Trailing State
+        \STATE $(Y_t,\; S_t) \leftarrow \text{MLLM}(I_t,\; I_{t-1},\; S_{t-1},\; \mathcal{C},\; \textsc{ParsePrompt})$
+        \hfill \textcolor{gray}{\textit{// Trailing state propagated}}
     \ENDFOR
     \STATE
-    \STATE \textcolor{purple}{\textbf{--- Pha 3: Tree Assembly (Rule-based) ---}}
-    \STATE Merge continuation nodes $\rightarrow$ Build tree từ \texttt{parent\_node\_id} $\rightarrow$ Export Format
+    \STATE \textcolor{purple}{\textbf{--- Phase 3: Tree Assembly (Rule-based) ---}}
+    \STATE $\mathcal{Y} \leftarrow \bigcup_{t=1}^{n} Y_t$ \hfill \textcolor{gray}{\textit{// Collect all page outputs}}
+    \FOR{each node $v \in \mathcal{Y}$ where $v$.\texttt{continues\_previous} $\neq$ null}
+        \STATE Merge $v$ into predecessor node, concatenate snippets
+    \ENDFOR
+    \STATE $T \leftarrow \text{BuildTree}(\mathcal{Y})$ using \texttt{parent\_node\_id} edges
+    \STATE \textbf{return} $T$ \hfill \textcolor{gray}{\textit{// JSON tree + outline + Mermaid graph}}
     \end{algorithmic}
     }
 \end{frame}
