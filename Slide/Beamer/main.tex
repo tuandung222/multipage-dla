@@ -447,7 +447,7 @@
         \begin{center}
             \textbf{Qwen3-VL-235B (E2E)}\\{\small Page 5 — Nội dung phức tạp}\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
             \vspace{0.2em}
             {\scriptsize\color{dangerred} Bbox lệch, category generic (\texttt{paragraph}), không biết paragraph thuộc section nào.}
         \end{center}
@@ -456,7 +456,7 @@
         \begin{center}
             \textbf{Pipeline (Gemini 3.1 Pro)}\\{\small Page 5 — Cùng trang}\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
             \vspace{0.2em}
             {\scriptsize\color{successgreen} Category rõ ràng (Section\_Heading, Text\_Block, Diagram). Có \texttt{parent\_node\_id} liên kết hierarchy.}
         \end{center}
@@ -481,7 +481,7 @@
         \begin{center}
             \textbf{Trang 3} — ToC bắt đầu\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p03.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_multipage_p03.jpg}\\
             \vspace{0.1em}
             {\scriptsize \texttt{node\_012}: Table\_of\_Contents\\
             $\rightarrow$ \texttt{cut\_off\_at\_bottom}: \texttt{node\_012}}
@@ -499,7 +499,7 @@
         \begin{center}
             \textbf{Trang 4} — ToC tiếp tục\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p04.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_multipage_p04.jpg}\\
             \vspace{0.1em}
             {\scriptsize \texttt{node\_013}: Table\_of\_Contents\\
             $\rightarrow$ \texttt{continues\_previous}: \texttt{node\_012}}
@@ -525,7 +525,7 @@
         \begin{center}
             \textbf{Trang 7} — Section 3 bắt đầu\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p07.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_multipage_p07.jpg}\\
             \vspace{0.1em}
             {\scriptsize \texttt{parent\_stack}: [Section 3]\\
             Các node 3.1.1--3.1.9 $\rightarrow$ parent = Section 3}
@@ -543,7 +543,7 @@
         \begin{center}
             \textbf{Trang 8} — Section 3 tiếp tục\\
             \vspace{0.2em}
-            \includegraphics[width=0.72\linewidth]{Beamer/figures/pipeline_multipage_p08.jpg}\\
+            \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_multipage_p08.jpg}\\
             \vspace{0.1em}
             {\scriptsize \texttt{parent\_stack}: [Section 3] (giữ nguyên)\\
             Các node 3.1.10--3.1.26 $\rightarrow$ parent = Section 3}
