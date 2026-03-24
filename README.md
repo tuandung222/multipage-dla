@@ -509,23 +509,23 @@ This pipeline is the **data engine** — the first step toward a larger research
 Because no benchmark or training data exists for cross-page DLA, we must build it ourselves. Vision-based detectors (YOLO, RT-DETR) are **not suitable** as the core of our data engine — they are limited to a fixed, closed set of categories and cannot reason about cross-page context or dynamic category assignment. Instead, we rely entirely on **SOTA MLLMs** for the full annotation pipeline:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                  MLLM-POWERED DATA ENGINE                    │
-│                                                              │
-│  SOTA MLLM (e.g., Gemini 3.1 Pro)                           │
-│    Phase 1: Discover document-specific categories            │
-│    Phase 2: Locate elements + bounding boxes + hierarchy     │
-│             + cross-page relations (via trailing state)      │
-│    Phase 3: Assemble document tree (rule-based)              │
-│              │                                               │
-│              ▼                                               │
-│  OUTPUT: Full layout annotations                             │
-│    • Bounding boxes (acceptable accuracy, not pixel-perfect) │
-│    • Categories (dynamic, document-specific)                 │
-│    • Inter-page relations + hierarchy                        │
-│    • Benchmark: 2K samples with ground truth                 │
-│    • Training:  20K samples for fine-tuning                  │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────
+│                  MLLM-POWERED DATA ENGINE
+│
+│  SOTA MLLM (e.g., Gemini 3.1 Pro)
+│    Phase 1: Discover document-specific categories
+│    Phase 2: Locate elements + bounding boxes + hierarchy
+│             + cross-page relations (via trailing state)
+│    Phase 3: Assemble document tree (rule-based)
+│              │
+│              ▼
+│  OUTPUT: Full layout annotations
+│    • Bounding boxes (acceptable accuracy, not pixel-perfect)
+│    • Categories (dynamic, document-specific)
+│    • Inter-page relations + hierarchy
+│    • Benchmark: 2K samples with ground truth
+│    • Training:  20K samples for fine-tuning
+└─────────────────────────────────────────────────────────────
 ```
 
 **Trade-off acknowledged**: MLLM-generated bounding boxes are less tight than vision-based detectors. We accept this trade-off because:
