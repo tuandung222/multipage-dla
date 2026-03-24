@@ -140,7 +140,7 @@
 % SLIDE 1.1: Thông tin layout nội bộ trang
 %====================================================
 \begin{frame}{1.1 \; Thông tin layout nội bộ một trang (Intra-Page)}
-    \begin{block}{DLA truyền thống — Phân tích từng trang độc lập}
+    \begin{block}{DLA truyền thống \cite{zhong2019publaynet, dla_benchmark_2022_sigkdd_2022_doclaynet} — Phân tích từng trang độc lập}
         Với mỗi ảnh trang $\mathcal{I}$, trích xuất tập thực thể layout:
         $\quad \mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$
     \end{block}
@@ -325,10 +325,10 @@
         \textbf{Hướng nghiên cứu} & \textbf{Bbox} & \textbf{Cross-page} & \textbf{Inter-page} & \textbf{Dynamic} \\
          & \textbf{Detection} & \textbf{Context} & \textbf{Relations} & \textbf{Categories} \\
         \midrule
-        Single-page DLA (DocLayout-YOLO, RT-DETR) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
-        Single-page + Grounding (Qwen-VL, mPLUG-DocOwl) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
-        Multi-page Doc Parsing (MinerU, Nougat) & \color{dangerred}$\times$ & \color{warnorange}$\sim$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
-        Multi-page Doc VQA (InternVL, DocOwl 1.5) & \color{dangerred}$\times$ & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Single-page DLA (DocLayout-YOLO \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}, RT-DETR \cite{zhao2023detrs}) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Single-page + Grounding (Qwen-VL \cite{qwen2vl_2023}, mPLUG-DocOwl \cite{ye2023mplugdocowl}) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Multi-page Doc Parsing (MinerU \cite{wang2024mineru}, Nougat \cite{nougat_2023}) & \color{dangerred}$\times$ & \color{warnorange}$\sim$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Multi-page Doc VQA (InternVL \cite{chen2024internvl}, DocOwl 1.5 \cite{ye2023mplugdocowl}) & \color{dangerred}$\times$ & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
         \midrule
         \textbf{Nghiên cứu đề xuất: Cross-Page Inter-Page DLA} & \color{successgreen}\checkmark & \color{successgreen}\checkmark & \color{successgreen}\checkmark & \color{successgreen}\checkmark \\
         \bottomrule
@@ -348,7 +348,7 @@
 \begin{frame}{2.2 \; Hạn chế của các phương pháp SOTA hiện hành}
     \begin{columns}[T]
         \column{0.48\textwidth}
-        \begin{block}{\color{dangerred} Vision-based (YOLO, RT-DETR)}
+        \begin{block}{\color{dangerred} Vision-based (YOLO \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}, RT-DETR \cite{zhao2023detrs})}
             \textbf{Ưu điểm:} Bbox chính xác, tốc độ cao.\\
             \textbf{Giới hạn:}
             \begin{itemize}
@@ -359,7 +359,7 @@
         \end{block}
 
         \column{0.48\textwidth}
-        \begin{block}{\color{dangerred} MLLM (Gemini, Qwen3-VL,...)}
+        \begin{block}{\color{dangerred} MLLM (Gemini \cite{gemini_team_2024_gemini}, Qwen3-VL \cite{qwen_team_2025_qwen3vl_thinking})}
             \textbf{Ưu điểm:} Năng lực reasoning mạnh, open-vocabulary.\\
             \textbf{Giới hạn:}
             \begin{itemize}
@@ -371,7 +371,7 @@
     \end{columns}
 
     \vspace{0.4em}
-    \begin{block}{\color{dangerred} Parser Pipelines (PaddleOCR, MinerU)}
+    \begin{block}{\color{dangerred} Parser Pipelines (PaddleOCR \cite{du2020ppocr}, MinerU \cite{wang2024mineru})}
         Hoạt động ổn định trên tài liệu cơ bản, nhưng \textbf{kém hiệu quả} trên layout phức tạp: không ghép nối được các khối văn bản xuyên trang, thiếu cấu trúc phân cấp (hierarchy) rõ ràng và không biểu diễn được quan hệ inter-page.
     \end{block}
 \end{frame}
@@ -392,7 +392,7 @@
     \vspace{0.4em}
     \textbf{Đánh đổi (Trade-off) khi sử dụng MLLM làm Data Engine:}
     \begin{itemize}
-        \item MLLM dự đoán Bounding box \textbf{kém chính xác hơn} mô hình thuần Vision (như DocLayout-YOLO).
+        \item MLLM dự đoán Bounding box \textbf{kém chính xác hơn} mô hình thuần Vision (như DocLayout-YOLO \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}).
         \item Tuy nhiên, mô hình Vision \textbf{không thể} sinh ra logic phân cấp (hierarchy), quan hệ xuyên trang.
         \item $\Rightarrow$ \textbf{Chấp nhận đánh đổi độ chính xác tuyệt đối của bbox}, tập trung khai thác giá trị \textit{chú giải cấu trúc} (structural annotation: hierarchy, relation, cross-page).
         \item Việc tinh chỉnh (refinement) tọa độ bbox sẽ được tối ưu bằng các mô hình hậu xử lý (post-processing) ở giai đoạn sau.
@@ -411,7 +411,7 @@
 % SLIDE: Tổng quan thí nghiệm
 %====================================================
 \begin{frame}{3.1 \; Tổng quan các thiết lập thử nghiệm}
-    \textbf{Mô hình:} Gemini 3.1 Pro (thông qua API), Temperature = 0.\\
+    \textbf{Mô hình:} Gemini 3.1 Pro \cite{gemini_team_2024_gemini} (thông qua API), Temperature = 0.\\
     \textbf{Dữ liệu thử nghiệm:} Quality Manual ISO 9001:2015 (42 trang) — trích 3 trang đầu làm baseline.
 
     \vspace{0.5em}
@@ -435,8 +435,8 @@
     \vspace{0.3em}
     \textbf{Các baseline khác đã kiểm chứng:}
     \begin{itemize}
-        \item \textbf{Qwen3-VL-235B-Thinking} (SOTA Opensource, 235B params): Tọa độ bbox thiếu chính xác, category quá tổng quát, không duy trì được liên kết đa trang.
-        \item \textbf{PaddleOCR / MinerU}: Đầu ra giới hạn ở text/markdown — không trích xuất được tọa độ bbox cũng như đồ thị cấu trúc (layout graph).
+        \item \textbf{Qwen3-VL-235B-Thinking} \cite{qwen_team_2025_qwen3vl_thinking} (SOTA Opensource, 235B params): Tọa độ bbox thiếu chính xác, category quá tổng quát, không duy trì được liên kết đa trang.
+        \item \textbf{PaddleOCR} \cite{du2020ppocr} / \textbf{MinerU} \cite{wang2024mineru}: Đầu ra giới hạn ở text/markdown — không trích xuất được tọa độ bbox cũng như đồ thị cấu trúc (layout graph).
     \end{itemize}
 \end{frame}
 
@@ -447,7 +447,7 @@
     \begin{columns}[c]
         \column{0.48\textwidth}
         \begin{center}
-            \textbf{Qwen3-VL-235B (E2E)}\\{\small Page 5 — Nội dung phức tạp}\\
+            \textbf{Qwen3-VL-235B \cite{qwen_team_2025_qwen3vl_thinking} (E2E)}\\{\small Page 5 — Nội dung phức tạp}\\
             \vspace{0.2em}
             \includegraphics[width=0.68\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
             \vspace{0.2em}
@@ -456,7 +456,7 @@
 
         \column{0.48\textwidth}
         \begin{center}
-            \textbf{Pipeline (Gemini 3.1 Pro)}\\{\small Page 5 — Cùng trang}\\
+            \textbf{Pipeline (Gemini 3.1 Pro \cite{gemini_team_2024_gemini})}\\{\small Page 5 — Cùng trang}\\
             \vspace{0.2em}
             \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
             \vspace{0.2em}
@@ -813,7 +813,7 @@
     \textbf{Định hướng triển khai:}
     \begin{enumerate}
         \item Thu thập tập tài liệu PDF đặc thù mà các công cụ hiện hành chưa xử lý được.
-        \item Khai thác năng lực MLLM SOTA (Gemini 3.1 Pro) làm Data Engine để tổng hợp nhãn (benchmark \& training data).
+        \item Khai thác năng lực MLLM SOTA (Gemini 3.1 Pro \cite{gemini_team_2024_gemini}) làm Data Engine để tổng hợp nhãn (benchmark \& training data).
         \item Fine-tune các mô hình VLM/MLLM nhỏ hơn dựa trên tập dữ liệu tổng hợp này.
         \item Thực hiện Knowledge Distillation nhằm tối ưu hóa chi phí tính toán cho ứng dụng thực tế.
     \end{enumerate}
@@ -900,8 +900,7 @@
     \textbf{Mã nguồn đề xuất:} \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{github.com/tuandung222/multipage-dla}}
 
     \vspace{0.5em}
-    % \nocite{*}
-    % \printbibliography
+    \printbibliography
 \end{frame}
 
 %====================================================
