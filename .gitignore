@@ -23,4 +23,15 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
-Slide/
+# LaTeX build artifacts
+Slide/Beamer/*.aux
+Slide/Beamer/*.log
+Slide/Beamer/*.nav
+Slide/Beamer/*.out
+Slide/Beamer/*.snm
+Slide/Beamer/*.toc
+Slide/Beamer/*.bcf
+Slide/Beamer/*.run.xml
+Slide/Beamer/*.bbl
+Slide/Beamer/*.blg
+Slide/Beamer/*.pytxcode

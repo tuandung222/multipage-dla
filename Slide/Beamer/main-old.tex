@@ -1,0 +1,533 @@
+% !TEX program = xelatex
+\documentclass[aspectratio=1610,8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{caption,subcaption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee,language=english,autolang=other]{biblatex}
+\usepackage[makeroom]{cancel}
+\usepackage{threeparttable}
+\usepackage{tikzsymbols}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{pgf}
+\usepackage{color,soul}
+\usepackage[listings,theorems]{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+\usepackage{xcolor,soul}
+\usepackage{empheq}
+\usepackage{enumerate}
+\usepackage{collcell}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{xcoffins}
+\usepackage{pgfpages}
+\usepackage{stackengine,tikz}
+\usepackage{transparent}
+\usepackage{eqnarray,amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage[vietnamese]{babel}
+
+\usetheme{Madrid}
+
+% Modern color scheme
+\definecolor{primaryblue}{RGB}{0,90,156}
+\definecolor{accentblue}{RGB}{100,143,255}
+\definecolor{textgray}{RGB}{66,66,66}
+\definecolor{lightgray}{RGB}{245,245,245}
+
+% Block colors
+\AtBeginDocument{
+  \setbeamercolor{block title}{use=structure,fg=white,bg=primaryblue}
+  \setbeamercolor{block body}{use=structure,fg=black,bg=white}
+}
+
+% Other color configurations
+\setbeamercolor{palette primary}{bg=primaryblue,fg=white}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{frametitle}{bg=white,fg=primaryblue}
+
+\hypersetup{
+    urlcolor=blue,
+    linkcolor=blue,
+    citecolor=blue,
+    colorlinks=true
+}
+
+% Optional: if you have a references.bib
+\addbibresource{../References/bib.bib}
+
+\setbeamertemplate{caption}[numbered]
+\useoutertheme{infolines}
+\setbeamertemplate{page number in head/foot}[framenumber]
+\setbeamertemplate{navigation symbols}{}
+\usefonttheme{professionalfonts}
+
+%====================================================
+%========== TITLE INFORMATION =======================
+%====================================================
+\title[DLA Research]{\textbf{A Research on Document Layout Analysis}}
+\author[Võ Phạm Tuấn Dũng]{Võ Phạm Tuấn Dũng - 2570015}
+\institute[HCMUT]{
+    \vspace{-0.5cm}
+    \begin{center}
+        \includegraphics[height=1.25cm]{Beamer/hcmut.png}
+    \end{center}
+    \vspace{0.1cm}
+    {\Large\textbf{\color{primaryblue}BÁO CÁO LẦN 1}}\\
+    \vspace{0.3cm}
+    \textbf{Giảng viên hướng dẫn: TS. Trần Tuấn Anh}
+}
+\date{01/03/2026}
+
+\begin{document}
+
+%====================================================
+%========== TITLE FRAME =============================
+%====================================================
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+%====================================================
+%========== TIẾN ĐỘ / NHIỆM VỤ FRAME ===============
+%====================================================
+\begin{frame}{Công việc đã thực hiện}
+
+
+\end{frame}
+
+\section{Giới thiệu (Introduction)}
+
+% --- Slide 1.1: Định nghĩa & Mô hình hóa toán học (truyền thống) ---
+\begin{frame}{1.1 \; Định nghĩa \& Mô hình hóa Toán học}
+    \begin{block}{Định nghĩa}
+        Document Layout Analysis (DLA) là bài toán phát hiện và phân loại tự động các thành phần cấu trúc trong một trang tài liệu: \textit{tiêu đề (Title), đoạn văn (Text), bảng biểu (Table), hình ảnh (Figure), công thức (Formula),...}
+    \end{block}
+
+    \vspace{0.3em}
+    \textbf{Formulate truyền thống — Multiple-Object Detection / Segmentation:}
+
+    Học hàm $\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y}$ ánh xạ từ ảnh tài liệu $\mathcal{I}$ sang tập các thực thể bố cục:
+    $$\mathcal{Y} = \bigl\{ (b_i,\; c_i,\; m_i) \bigr\}_{i=1}^{N}$$
+    \begin{itemize}
+        \item $b_i = [x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ — Tọa độ \textbf{Bounding Box}.
+        \item $c_i \in \{\textit{Title, Text, Table, Figure, Formula...}\}$ — \textbf{Nhãn phân loại}.
+        \item $m_i \in \{0,1\}^{H \times W}$ — \textbf{Mặt nạ phân đoạn} (Instance Segmentation) cho bố cục phức tạp.
+    \end{itemize}
+
+    \vspace{0.3em}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \textit{Ưu điểm:} Đơn giản, tốc độ nhanh, dễ tích hợp.
+        \column{0.48\textwidth}
+        \textit{Hạn chế:} Không nắm bắt được quan hệ giữa các vùng (thứ tự đọc, phân cấp cấu trúc).
+    \end{columns}
+\end{frame}
+
+% --- Slide 1.2: Mở rộng Formulation hiện đại ---
+\begin{frame}{1.2 \; Mở rộng Formulation — Xu hướng 2024-2025}
+    \textbf{Hai hướng mở rộng bổ sung hiện đang được cộng đồng nghiên cứu tích cực:}
+
+    \vspace{0.5em}
+    \begin{block}{(A) Graph-based Formulation — Phân tích Cấu trúc \& Quan hệ}
+        Không chỉ tìm thực thể (Nodes), mà phải học mối quan hệ (Edges) giữa chúng:
+        $$\mathcal{Y} = (\mathcal{V},\; \mathcal{E})$$
+        Trong đó: $\mathcal{V}$ = tập các vùng layout; $\mathcal{E}$ = ma trận quan hệ $r_{ij}$ biểu diễn
+        \textit{thứ tự đọc (Reading Order)}, \textit{phân cấp cấu trúc (Hierarchical Tree)}.\\
+        \textit{Mô hình tiêu biểu: Doc-GCN \cite{dla_2022_coling_2022_doc_gcn_heterogeneous_graph_convolutional_networks_for_document}, VGT (Vision Grid Transformer) \cite{dla_2023_iccv_2023_vision_grid_transformer_for_document_layout_analysis_pdf}.}
+    \end{block}
+
+    \vspace{0.4em}
+    \begin{block}{(B) Seq2Seq Formulation — LLM / MLLM Paradigm (OCR-Free)}
+        Coi DLA như bài toán \textbf{sinh ngôn ngữ có điều kiện} từ ảnh:
+        $$P(Y \mid \mathcal{I}) = \prod_{t=1}^{T} P\!\left(y_t \mid y_{<t},\; \mathcal{I}\right)$$
+        Chuỗi đầu ra $Y$ chứa cả nội dung \textit{và} tọa độ, ví dụ:\\
+        {\small\texttt{[Title][loc\_10\_20\_100\_50] Báo cáo tài chính [End\_Title] ...}}\\
+        \textit{Mô hình tiêu biểu: Donut \cite{kim2022donut}, Nougat \cite{nougat_2023}, mPLUG-DocOwl \cite{ye2023mplugdocowl}, Qwen-VL \cite{qwen2vl_2023}.}
+    \end{block}
+\end{frame}
+
+% --- Slide 1.3: Kiến trúc mô hình qua các thời kỳ ---
+\begin{frame}{1.3 \; Kiến trúc Mô hình — Sự tiến hóa qua các thời kỳ}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{5cm}p{5.5cm}}
+        \toprule
+        \textbf{Thế hệ} & \textbf{Đặc điểm kiến trúc} & \textbf{Mô hình tiêu biểu} \\
+        \midrule
+        \textbf{CNN-based Detectors} &
+            Backbone CNN + Detection Head. Suy luận nhanh, nhẹ, dễ triển khai. &
+            Faster/Mask R-CNN \cite{he2017mask}, Cascade R-CNN \cite{cai2018cascade}, \textbf{YOLO} series (v8, v10), \textbf{DocLayout-YOLO} \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn} \\
+        \midrule
+        \textbf{Vision Transformers} &
+            Self-Attention toàn cục giúp nắm bắt ngữ cảnh dài hạn trong toàn trang. &
+            DiT \cite{li2022dit}, Swin Transformer \cite{liu2021swin}, \textbf{RT-DETR} \cite{zhao2023detrs} \\
+        \midrule
+        \textbf{Multimodal Pre-trained} &
+            Kết hợp 3 luồng: Vision + Text (OCR) + Layout (tọa độ). Cross-Attention giữa ảnh và văn bản. &
+            \textbf{LayoutLMv2/v3} \cite{huang2022layoutlmv3}, DocFormer \cite{appalaraju2021docformer}, \textbf{VGT} \cite{dla_2023_iccv_2023_vision_grid_transformer_for_document_layout_analysis_pdf} \\
+        \midrule
+        \textbf{Large MLLMs} \newline\textit{(xu hướng chủ đạo)} &
+            End-to-end, OCR-Free. Sinh trực tiếp Markdown/JSON từ ảnh tài liệu. &
+            \textbf{Qwen-VL} \cite{qwen2vl_2023}, InternVL \cite{chen2024internvl}, mPLUG-DocOwl \cite{ye2023mplugdocowl}, \textbf{MinerU 2.5} \cite{wang2024mineru} \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+    \vspace{0.4em}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{Xu hướng thực tiễn:} YOLO/RT-DETR được ưu tiên khi cần \textit{tốc độ cao}.
+        \column{0.5\textwidth}
+        \textbf{Xu hướng nghiên cứu:} MLLM được ưu tiên khi cần \textit{hiểu sâu ngữ nghĩa}.
+    \end{columns}
+\end{frame}
+
+% --- Slide 1.4: Dataset và Độ đo ---
+\begin{frame}{1.4 \; Dữ liệu \& Độ đo đánh giá tiêu chuẩn}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \textbf{Bộ dữ liệu phổ biến:}
+        \begin{itemize}
+            \item \textit{Auto-annotated:} \textbf{PubLayNet} \cite{zhong2019publaynet} (360K ảnh, 5 nhãn), \textbf{DocBank} \cite{li2020docbank} (500K trang).
+            \item \textit{Human-annotated:} \textbf{DocLayNet} \cite{dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen} (80K trang, 11 nhãn), \textbf{M6Doc} \cite{dla_benchmark_2023_cvpr_2023_m6doc_a_large_scale_multi_format_multi_type_multi_layou} (đa ngôn ngữ).
+        \end{itemize}
+
+        \column{0.48\textwidth}
+        \textbf{Độ đo đánh giá:}
+        \begin{itemize}
+            \item \textit{Physical:} \textbf{mAP} (mean Average Precision), \textbf{IoU}.
+            % \item \textit{Logical/Structural:} \textbf{ANLS} (cho VQA), \textbf{LED} \cite{dla_2025_arxiv_led_benchmark_diagnosing_structural_layout_errors_for_document_layout} (Layout Error Gen) — đo lỗi gộp sai/chia cắt sai.
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+% --- Slide 1.5: Động lực nghiên cứu & Ứng dụng ---
+\begin{frame}{1.5 \; Động lực Nghiên cứu \& Ứng dụng Thực tiễn}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \textbf{1. Động lực Nghiên cứu (Research Motivations):}
+        \begin{itemize}
+            \item \textit{Tiền đề cho Document Understanding:} DLA là khung toán học thiết lập ngữ nghĩa không gian trước khi qua OCR \cite{vsr2021}.
+            % \item \textit{Giải quyết sự hỗn loạn (Noise):} Khả năng tổng quát hóa trên tài liệu thực tế bị nghiêng, mờ, và cấu trúc phi tiêu chuẩn \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}.
+            \item \textit{Nền tảng RAG \& Agentic AI:} Cung cấp layout sạch (Markdown/JSON), tránh gây ảo giác (hallucination) cho LLMs \cite{dla_2025_arxiv_scan_semantic_document_layout_analysis_for_textual_and_visual_retriev}.
+        \end{itemize}
+
+        \column{0.48\textwidth}
+        \textbf{2. Tính Ứng dụng \& Thực tiễn (Applications):}
+        \begin{itemize}
+            \item \textit{Tự động hóa Luồng công việc (RPA):} Không còn nhập liệu thủ công; bóc tách tự động hợp đồng, hóa đơn, nhận diện bảng hàng hóa.
+            \item \textit{Khai phá Dữ liệu Khoa học:} Tự động trích xuất các công thức toán học và biểu đồ từ hàng triệu PDF \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}.
+            \item \textit{Trợ năng (Accessibility):} Kết hợp Text-to-Speech (TTS) đọc văn bản logic tuần tự hỗ trợ người khiếm thị.
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+% --- Slide 1.6: Yếu tố Đặc thù ---
+% \begin{frame}{1.6 \; Yếu tố Đặc thù: Miền Dữ liệu (Domain) \& Tiếng Việt}
+%     \begin{columns}[T]
+%         \column{0.48\textwidth}
+%         \textbf{1. Đặc thù theo Miền dữ liệu (Domain-specific):}
+%         \begin{itemize}
+%             \item \textit{Dữ liệu nhạy cảm (Private Data):} Bệnh án, tài liệu nội bộ. Việc không thể đem ra ngoài huấn luyện dẫn tới nhu cầu \textbf{Source-Free DLA (SFDLA)}: tự thích nghi domain mới không cần dữ liệu gốc \cite{dla_2025_arxiv_sfdla_source_free_document_layout_analysis_pdf}.
+%             \item \textit{Kỹ thuật \& Ký hiệu học:} Tài liệu sơ đồ mạch điện đòi hỏi phân tách ký hiệu linh kiện thành cấu trúc đồ thị \cite{doceda2024}.
+%         \end{itemize}
+
+%         \column{0.48\textwidth}
+%         \textbf{2. Đặc thù Ngôn ngữ \& Môi trường Tiếng Việt:}
+%         \begin{itemize}
+%             \item \textit{Tiếng Việt \& Dấu phụ (Diacritics):} Dễ sinh nhiễu ở nét mờ, bảng biểu. Cần khả năng bóc tách lớp (\textbf{decoupling}) nhiễu do \textit{con dấu đỏ \& chữ ký chồng chéo} trên văn bản hành chính VN.
+%             \item \textit{Hướng đi Đa ngôn ngữ:} Các Multilingual MLLMs ưu việt (như \textbf{Qwen2-VL} \cite{qwen2vl2024}, \textbf{PaddleOCR-VL}) xử lý tốt đồng thời không gian \& ngữ nghĩa nhiều ngôn ngữ chung một kiến trúc.
+%         \end{itemize}
+%     \end{columns}
+% \end{frame}
+
+% --- Slide 1.7: Mục tiêu nghiên cứu (thuộc Section 1) ---
+\begin{frame}{1.7 \; Mục tiêu Nghiên cứu}
+    \begin{block}{Mục tiêu tổng quát}
+        Nghiên cứu và triển khai một phương pháp học sâu nhằm trích xuất tự động và phân tích chính xác bố cục của tài liệu (ảnh quét hoặc PDF).
+    \end{block}
+
+    \vspace{0.2cm}
+    \textbf{Mục tiêu cụ thể:}
+    \begin{enumerate}
+        \item Khảo sát các mô hình State-of-the-Art cho bài toán DLA (như Vision-based, Multimodal, Vision-Language Models).
+        \item Huấn luyện và đánh giá trên các tập dữ liệu tiêu chuẩn như \textit{PubLayNet}, \textit{DocBank},...,  hoặc dữ liệu thực tế tự thu thập.
+        \item Đề xuất giải pháp cải thiện độ chính xác đối với các đối tượng phức tạp như bảng biểu (Table) hoặc công thức toán học lồng nhau.
+    \end{enumerate}
+\end{frame}
+
+\section{Literature Review}
+\begin{frame}{2.1 \; Các phương pháp tiếp cận hiện nay}
+    \begin{itemize}
+        \item \textbf{Phương pháp dựa trên thị giác máy tính (CV-based):}
+        \begin{itemize}
+            \item Coi tài liệu như một hình ảnh thông thường.
+            \item Sử dụng các mô hình Object Detection như Mask R-CNN \cite{he2017mask}, YOLO, DETR \cite{carion2020end} \cite{dla_2023_arxiv_document_ai_a_comparative_study_of_transformer_based_graph_based_mode}.
+            \item \textit{Ưu điểm}: Tốc độ nhận diện nhanh. \textit{Hạn chế}: Dễ bị nhầm lẫn nếu không có thông tin ngữ nghĩa (text).
+        \end{itemize}
+        \vspace{0.2cm}
+        \item \textbf{Phương pháp đa phương thức (Multimodal):}
+        \begin{itemize}
+            \item Kết hợp thông tin từ Hình ảnh (Image), Văn bản (OCR) và Tọa độ không gian (Bounding box/Layout).
+            \item Các mô hình tiêu biểu: Dòng họ LayoutLM (v1, v2, v3) \cite{huang2022layoutlmv3}, DocTr \cite{liao2023doctr}.
+        \end{itemize}
+        \vspace{0.2cm}
+        \item \textbf{Vision-Language Models (VLM) / Generative AI:}
+        \begin{itemize}
+            \item Tiếp cận End-to-end: Đưa ảnh tài liệu vào và sử dụng LLM để sinh ra trực tiếp mã đánh dấu (Markdown/HTML).
+            \item Các mô hình tiên phong: Nougat \cite{nougat_2023}, Donut \cite{kim2022donut}, Qwen-VL \cite{qwen2vl_2023}, GPT-4o.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{2.2 \; Xu hướng mới: Kết hợp MLLM và DLA}
+    Sự dịch chuyển từ việc chỉ phát hiện vật lý các vùng văn bản (Physical Layout) sang việc hiểu biết cấu trúc ngữ nghĩa phức tạp dưới sự hỗ trợ của LLM/MLLM được chia thành 4 trường phái chính:
+
+    \vspace{0.2cm}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{5cm}p{5.5cm}}
+        \toprule
+        \textbf{Trường phái} & \textbf{Cách tiếp cận} & \textbf{Mô hình tiêu biểu} \\
+        \midrule
+        \textbf{1. Layout-as-Tokens} & Ánh xạ Bounding Box thành Token/Embedding, ghép xen kẽ với Text trong chuỗi Prompt để đưa vào LLM. & \textbf{LayTextLLM / LayTokenLLM} \cite{lu2024bounding} (chia sẻ chung Position ID để tiết kiệm ngữ cảnh). \\
+        \midrule
+        \textbf{2. Layout-as-Modality} & Xem tọa độ như một phương thức độc lập. Sửa đổi trực tiếp kiến trúc Attention hoặc dùng Instruction Tuning. & \textbf{DocLLM} \cite{wang2024docllm} (Disentangled Spatial Attention), \textbf{LayoutLLM} \cite{luo2024layoutllm} (Layout Chain-of-Thought). \\
+        \midrule
+        \textbf{3. Decoupled \& RAG} & Tách rời DLA chuyên dụng để detect Bounding Box làm ``điểm neo'' (anchors) trước khi đưa vào LLM/RAG. & \textbf{MinerU 2.5} \cite{wang2024mineru} (DocLayout-YOLO \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn} làm tiền xử lý để tiết kiệm chi phí cho Attention của LLM). \\
+        \midrule
+        \textbf{4. MLLM End-to-End} & Nhận trực tiếp ảnh (OCR-Free), dùng sức mạnh của LLM tự sinh ra cấu trúc định dạng (Markdown/JSON) & \textbf{mPLUG-DocOwl} \cite{ye2023mplugdocowl}, \textbf{Donut} \cite{kim2022donut}, \textbf{Nougat} \cite{nougat_2023} \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+\end{frame}
+
+\begin{frame}{2.3 \; Quy trình làm Data cho DLA (Training-ready)}
+    \begin{block}{Pipeline đề xuất cho dữ liệu huấn luyện}
+                	\textbf{B1. Thu thập theo domain} (paper, invoice, legal, manual) →
+                	\textbf{B2. Chuẩn hóa annotation} (label schema + format COCO/JSON) →
+                	\textbf{B3. Chia train/val/test} theo domain và độ khó →
+                	\textbf{B4. Quality control} (sửa lỗi box, class noise, overlap) →
+                	\textbf{B5. Huấn luyện baseline + error analysis}.
+    \end{block}
+
+        \vspace{0.4em}
+        	\textbf{Nguồn dữ liệu theo 3 mức độ giám sát:}
+    \begin{itemize}
+        \item \textbf{Auto-annotated (quy mô lớn):} PubLayNet, DocBank\cite{zhong2019publaynet,li2020docbank}.
+        \item \textbf{Human-annotated (độ chính xác cao):} DocLayNet\cite{dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen}.
+        \item \textbf{Synthetic augmentation:} DocSynth-300K trong DocLayout-YOLO để tăng đa dạng bố cục\cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}.
+    \end{itemize}
+
+        \vspace{0.3em}
+        	\textit{Thông điệp chính: dữ liệu tốt (schema rõ + split chuẩn + QC) thường quan trọng không kém kiến trúc mô hình.}
+\end{frame}
+
+\begin{frame}{2.4 \; Dataset chuẩn mực cho Training \& Benchmark}
+    \scriptsize
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lccc}
+        	\toprule
+        	\textbf{Dataset} & \textbf{Quy mô} & \textbf{Split (Train / Val / Test)} & \textbf{Nhãn} \\
+        \midrule
+        PubLayNet\cite{zhong2019publaynet} & $\sim$364K & 340,391 / 11,858 / 11,983 & 5 \\
+        DocBank\cite{li2020docbank} & 500K & 400,000 / 50,000 / 50,000 & 13 \\
+        DocLayNet\cite{dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen} & $\sim$80.8K & 69,375 / 4,999 / 6,489 & 11 \\
+        D4LA (VGT)\cite{dla_2023_iccv_2023_vision_grid_transformer_for_document_layout_analysis_pdf} & 11,092 & 8,868 / -- / 2,224 & 27 \\
+        M6Doc\cite{dla_benchmark_2023_cvpr_2023_m6doc_a_large_scale_multi_format_multi_type_multi_layou} & 9,080 & 5,448 / 908 / 2,724 & 74 \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.2em}
+    \begin{itemize}
+        \item \textbf{Baseline phổ biến}: huấn luyện trên PubLayNet/DocLayNet, kiểm tra khả năng tổng quát trên M6Doc hoặc domain thực tế.
+        \item \textbf{Lưu ý}: số liệu split được lấy theo báo cáo gốc của từng bộ dữ liệu\cite{zhong2019publaynet,li2020docbank,dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen,dla_benchmark_2023_cvpr_2023_m6doc_a_large_scale_multi_format_multi_type_multi_layou,dla_2023_iccv_2023_vision_grid_transformer_for_document_layout_analysis_pdf}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{2.6 \; Comparison Matrix: Chọn dataset theo mục tiêu}
+    \scriptsize
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lcccc}
+        	\toprule
+        	\textbf{Bài toán} & \textbf{PubLayNet} & \textbf{DocLayNet} & \textbf{M6Doc} & \textbf{RoDLA / SFDLA / LED} \\
+        \midrule
+        Baseline detection nhanh & \checkmark & \checkmark &  &  \\
+        Cross-domain generalization &  & \checkmark & \checkmark & \checkmark \\
+        Robustness trước nhiễu thực tế &  &  &  & \checkmark \\
+        Structural correctness (merge/split) &  &  &  & \checkmark \\
+        Domain adaptation không data nguồn &  &  &  & \checkmark \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.3em}
+    \begin{itemize}
+        \item \textbf{Train đề xuất}: pretrain/baseline trên PubLayNet hoặc DocLayNet; fine-tune theo domain mục tiêu.
+        \item \textbf{Eval đề xuất}: thêm M6Doc và benchmark mới để tránh overfit lên test chuẩn\cite{zhong2019publaynet,dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen,dla_benchmark_2023_cvpr_2023_m6doc_a_large_scale_multi_format_multi_type_multi_layou,dla_2024_cvpr_2024_rodla_benchmarking_the_robustness_of_document_layout_analysis_mod,dla_2025_arxiv_led_benchmark_diagnosing_structural_layout_errors_for_document_layout,dla_2025_arxiv_sfdla_source_free_document_layout_analysis_pdf}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{2.5 \; Benchmark mới (2024--2025)}
+    \small
+    \begin{itemize}
+        \item \textbf{Robustness benchmark (RoDLA):} đánh giá độ bền mô hình dưới nhiều nhiễu/perturbation thay vì chỉ ảnh ``sạch''\cite{dla_2024_cvpr_2024_rodla_benchmarking_the_robustness_of_document_layout_analysis_mod}.
+        \item \textbf{Structural error benchmark (LED):} chẩn đoán lỗi cấu trúc đặc thù của layout (merge/split/hallucinated regions)\cite{dla_2025_arxiv_led_benchmark_diagnosing_structural_layout_errors_for_document_layout}.
+        \item \textbf{Source-free domain adaptation (SFDLA):} đánh giá khả năng adapt sang miền mới khi không truy cập dữ liệu nguồn ban đầu\cite{dla_2025_arxiv_sfdla_source_free_document_layout_analysis_pdf}.
+        \item \textbf{Data-centric scaling:} tăng chất lượng data qua synthetic data (DocSynth) và pipeline unified data construction\cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn,dla_2025_arxiv_pp_doclayout_a_unified_document_layout_detection_model_to_accelerate_}.
+    \end{itemize}
+
+    \vspace{0.4em}
+    \begin{block}{Kết luận review}
+        Xu hướng benchmark mới dịch chuyển từ \textit{``mAP cao trên test chuẩn''} sang \textit{``ổn định trong thực tế''}: robustness, structural correctness, domain shift và khả năng mở rộng dữ liệu.
+    \end{block}
+\end{frame}
+
+\section{Thí nghiệm nhỏ \& Demo}
+\begin{frame}{3.1 \; Thí nghiệm: Fine-tune YOLO26-Large trên DocLayNet}
+    \begin{block}{Thiết lập thí nghiệm}
+        Fine-tune mô hình \textbf{YOLO26-Large} trên bộ dữ liệu \textbf{DocLayNet v1.2} \cite{dla_benchmark_2022_sigkdd_2022_doclaynet_a_large_human_annotated_dataset_for_documen}.
+        Kết quả dưới đây lấy từ \textit{Model Card} của checkpoint \href{https://huggingface.co/tuandunghcmut/doclaynet-yolo26l}{tuandunghcmut/doclaynet-yolo26l} (self-reported).
+    \end{block}
+    \vspace{0.4em}
+    \begin{columns}[T]
+        \column{0.5\textwidth}
+        \textbf{Cấu hình huấn luyện:}
+        \begin{itemize}
+            \item Base model: \textbf{YOLO26-Large}, 24.8M params, 86.1 GFLOPs.
+            \item Dataset: \textbf{DocLayNet v1.2} (test split: 4,999 images)
+            \item Input size: 1024$\times$1024; Optimizer: AdamW; AMP: True
+            \item Epochs: 20 (best epoch 17); batch size: 80; device: NVIDIA H200 NVL
+            \item Augmentation: RandAugment + erasing
+        \end{itemize}
+        \column{0.5\textwidth}
+        \textbf{Kết quả thử nghiệm (DocLayNet test):}
+        \begin{itemize}
+            \item \textbf{mAP@50}: 0.9152; \textbf{mAP@50-95}: 0.7806
+            \item \textbf{Precision}: 0.8877; \textbf{Recall}: 0.8438; \textbf{F1(mean)}: 0.8652
+            \item AP@50 cao ở nhóm: \textit{Text, List-item, Page-footer, Formula}
+            % \item \textbf{Lưu ý class mapping}: class \textit{Title} bị skip ở checkpoint hiện tại (cần retrain pipeline đã sửa để phục hồi)
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{3.2 \; Demo trực tuyến}
+    \begin{block}{Mô hình đã triển khai (Deployed Model)}
+        YOLO26-Large fine-tuned trên DocLayNet Benchmark: truy cập thử nghiệm trực tiếp:
+    \end{block}
+    \vspace{0.3em}
+    \textit{Bổ sung theo hướng detection-based truyền thống (SOTA gần đây): \textbf{DocLayout-YOLO} \cite{dla_2024_arxiv_doclayout_yolo_enhancing_document_layout_analysis_through_diverse_syn}.}
+    \vspace{0.5em}
+    \begin{itemize}
+        \item \textbf{Model Hub (README \& Model Card):}\\
+        \href{https://huggingface.co/tuandunghcmut/doclaynet-yolo26l}{\textcolor{blue}{\url{https://huggingface.co/tuandunghcmut/doclaynet-yolo26l}}}
+        \vspace{0.4em}
+        \item \textbf{HuggingFace Space Demo:}\\
+        \href{https://huggingface.co/spaces/tuandunghcmut/doclaynet-yolo26l-demo}{\textcolor{blue}{\url{https://huggingface.co/spaces/tuandunghcmut/doclaynet-yolo26l-demo}}}
+        \vspace{0.4em}
+        \item \textbf{DocLayout-YOLO Demo (inspect a SOTA model):}\\
+        \href{https://huggingface.co/spaces/tuandunghcmut/doclayout-yolo-professional-demo}{\textcolor{blue}{\url{https://huggingface.co/spaces/tuandunghcmut/doclayout-yolo-professional-demo}}}
+        \vspace{0.4em}
+        \item \textbf{Tổng hợp bài báo (Paper Collection):}\\
+        \href{https://github.com/tuandunghcmut/document-ai-paper-collection}{\textcolor{blue}{\nolinkurl{tuandunghcmut/document-ai-paper-collection}}}
+    \end{itemize}
+\end{frame}
+
+\section{Đề xuất Kế hoạch}
+\begin{frame}{4.1 \; Expected Outcomes (Kỳ vọng đầu ra)}
+    \begin{enumerate}
+        \item \textbf{Comprehensive Report:}
+        \begin{itemize}
+            \item Hoàn thành một bản báo cáo chi tiết, survey hoàn chỉnh và literature review toàn diện cho DLA.
+            \item Bao phủ các nhóm giải pháp SOTA trong 2-3 năm gần đây: detection-based, transformer-based, multimodal, MLLM/VLM.
+        \end{itemize}
+
+        \item \textbf{Dữ liệu không cần gán nhãn thủ công (human-minimal):}
+        \begin{itemize}
+            \item Đề xuất quy trình tạo dữ liệu tự động cho nhiều domain, đa ngôn ngữ (tối thiểu Anh-Việt).
+            \item Giảm bottleneck thiếu hụt dữ liệu; xây dựng benchmark cho tài liệu tiếng Việt.
+            \item Mục tiêu mở: \textbf{release data + benchmark} cho cộng đồng nghiên cứu.
+        \end{itemize}
+
+        \item \textbf{Model Optimization for Production:}
+        \begin{itemize}
+            \item Xây dựng pipeline tối ưu mô hình: fine-tuning, knowledge distillation từ teacher SOTA, post-training optimization.
+            \item Tạo họ mô hình nhỏ gọn, cân bằng hiệu năng - tốc độ - chi phí để có thể triển khai thực tế.
+        \end{itemize}
+
+        \item \textbf{(Optional) Publication-oriented Novelty:}
+        \begin{itemize}
+            \item Tìm yếu tố mới đủ sức viết publication; mục tiêu dài hạn: \textbf{2 papers}.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{4.2 \; Kế hoạch 12 tuần (từ 01/03/2026) - 6 lần báo cáo}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{10.2cm}}
+        	\toprule
+        	\textbf{Mốc báo cáo} & \textbf{Nội dung trọng tâm} \\
+        \midrule
+		\textbf{Báo cáo 1} (Tuần 1-2) & Literature review đầy đủ và toàn diện hơn để phát hiện ngách hẹp/bottleneck nghiên cứu. Song song: thu thập tối đa dataset + benchmark, nghiên cứu quy trình tạo dữ liệu và kiểm soát chất lượng dựa trên SOTA detection-based và MLLM. \\
+        \midrule
+		\textbf{Báo cáo 2} (Tuần 3-4) & Đi sâu phân tích chi tiết paper trọng điểm; chạy thử mã nguồn, reproduce kết quả; thực nghiệm evaluate/fine-tuning để so sánh backbone, loss function, dataset; phân tích điểm mạnh/yếu từng hướng DLA. \\
+        \midrule
+        	\textbf{Báo cáo 3} (Tuần 5-6) & Lên kế hoạch improve một component hoặc integrate thành phần mới nhằm nâng performance/metrics; xây baseline cải tiến vòng 1 và ablation ban đầu. \\
+        \midrule
+        	\textbf{Báo cáo 4} (Tuần 7-8) & Tiếp tục vòng cải tiến thứ 2 theo hướng promising; mở rộng thí nghiệm trên domain/language mục tiêu; cập nhật phân tích lỗi và tính ổn định. \\
+        \midrule
+        	\textbf{Báo cáo 5} (Tuần 9-10) & Vòng cải tiến thứ 3: refine pipeline dữ liệu + tối ưu mô hình (distillation/post-training), tập trung tính ứng dụng và khả năng deploy production. \\
+        \midrule
+        	\textbf{Báo cáo 6} (Tuần 11-12) & Hoàn thiện báo cáo tổng kết, chuẩn hóa mã nguồn GitHub, đóng gói demo, tổng hợp kết quả cuối và định hướng publication. \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+\end{frame}
+
+\begin{frame}{4.3 \; Các hướng nghiên cứu đề xuất (sơ bộ)}
+    \begin{itemize}
+        \item \textbf{MLLM \textrightarrow{} Data Factory \textrightarrow{} Distillation:} Tận dụng open-source MLLM để tạo dữ liệu multi-task document (OCR + Layout + Parsing), sau đó distill xuống mô hình nhỏ hơn.
+        \item \textbf{Domain-specific + Low-resource language:} Tập trung tài liệu chuyên biệt (ví dụ giấy tờ hành chính), ngôn ngữ low-resource (Việt/thiểu số); public quy trình + training data + benchmark.
+        \item \textbf{Inject Layout into MLLM:} Khai thác bounding box/class như tín hiệu cấu trúc để tăng độ chính xác cho Document VQA, parsing, và giảm nhầm lẫn ngữ nghĩa.
+        \item \textbf{Unified Generative Document Modeling:} Dùng MLLM cho unified tasking (OCR + localization + logical layout + relation), đồng thời tối ưu token/latency bằng fine-tuning và nén mô hình.
+        \item \textbf{Vietnamese-focused Backbones:} Xây hoặc pretrain backbone đa phương thức thiên về tài liệu tiếng Việt (độ đa dạng domain cao), tương tự hướng tài nguyên ngôn ngữ kiểu PhoBERT/PhoWhisper.
+        \item \textbf{Entity Relation Analysis:} Khoét sâu phân tích quan hệ giữa các thực thể trong tài liệu theo hướng graph/GNN-based để tăng chất lượng hiểu cấu trúc logic.
+    \end{itemize}
+        \vspace{0.3em}
+        	\textit{Mục tiêu chung: vừa có đóng góp học thuật (novelty/publication), vừa đảm bảo khả năng ứng dụng thực tế (production-ready).}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Tài liệu tham khảo}
+    \printbibliography
+\end{frame}
+
+\begin{frame}[plain]
+    \centering
+    \Huge{\textbf{\textcolor{primaryblue}{Cảm ơn Thầy đã lắng nghe!}}}\\
+    \vspace{1cm}
+    \Large{\textbf{Q\&A}}
+\end{frame}
+
+\end{document}

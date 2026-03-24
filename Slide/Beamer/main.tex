@@ -1,0 +1,808 @@
+% !TEX program = xelatex
+\documentclass[aspectratio=1610,8pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{caption,subcaption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=ieee,language=english,autolang=other]{biblatex}
+\usepackage[makeroom]{cancel}
+\usepackage{threeparttable}
+\usepackage{tikzsymbols}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{pgf}
+\usepackage{color,soul}
+\usepackage[listings,theorems]{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+\usepackage{xcolor,soul}
+\usepackage{empheq}
+\usepackage{enumerate}
+\usepackage{collcell}
+\usepackage{booktabs}
+\usepackage{etoolbox}
+\usepackage{xcoffins}
+\usepackage{pgfpages}
+\usepackage{stackengine,tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+\usepackage{transparent}
+\usepackage{eqnarray,amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{algorithmic}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+
+\usetheme{Madrid}
+
+% Modern color scheme
+\definecolor{primaryblue}{RGB}{0,90,156}
+\definecolor{accentblue}{RGB}{100,143,255}
+\definecolor{textgray}{RGB}{66,66,66}
+\definecolor{lightgray}{RGB}{245,245,245}
+\definecolor{successgreen}{RGB}{46,125,50}
+\definecolor{warnorange}{RGB}{230,81,0}
+\definecolor{dangerred}{RGB}{183,28,28}
+
+% Block colors
+\AtBeginDocument{
+  \setbeamercolor{block title}{use=structure,fg=white,bg=primaryblue}
+  \setbeamercolor{block body}{use=structure,fg=black,bg=white}
+}
+
+\setbeamercolor{palette primary}{bg=primaryblue,fg=white}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{frametitle}{bg=white,fg=primaryblue}
+
+\hypersetup{
+    urlcolor=blue,
+    linkcolor=blue,
+    citecolor=blue,
+    colorlinks=true
+}
+
+\addbibresource{../References/bib.bib}
+
+\setbeamertemplate{caption}[numbered]
+\useoutertheme{infolines}
+\setbeamertemplate{page number in head/foot}[framenumber]
+\setbeamertemplate{navigation symbols}{}
+\usefonttheme{professionalfonts}
+
+%====================================================
+%========== TITLE INFORMATION =======================
+%====================================================
+\title[Cross-Page DLA]{\textbf{Cross-Page Inter-Page Relation\\Document Layout Analysis}}
+\subtitle{Multi-Phase Pipeline \& Data Engine Proposal}
+\author[Võ Phạm Tuấn Dũng]{Võ Phạm Tuấn Dũng - 2570015}
+\institute[HCMUT]{
+    \vspace{-0.5cm}
+    \begin{center}
+        % Đảm bảo bạn có file logo tương ứng tại đường dẫn này
+        \includegraphics[height=1.25cm]{Beamer/hcmut.png} 
+    \end{center}
+    \vspace{0.1cm}
+    {\Large\textbf{\color{primaryblue}BÁO CÁO TIẾN ĐỘ LẦN 2}}\\
+    \vspace{0.3cm}
+    \textbf{Giảng viên hướng dẫn: TS. Trần Tuấn Anh}
+}
+\date{Tháng 3/2026}
+
+\begin{document}
+
+%====================================================
+%========== TITLE FRAME =============================
+%====================================================
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+%====================================================
+% SLIDE: Công việc đã thực hiện
+%====================================================
+\begin{frame}{Tiến độ thực hiện (từ Báo cáo 1)}
+    \begin{columns}[T]
+        \column{0.55\textwidth}
+        \textbf{Các hạng mục đã hoàn thành:}
+        \begin{itemize}
+            \item[\color{successgreen}\checkmark] \textbf{Mô hình hóa lại bài toán:} Mở rộng DLA sang \textbf{multi-page cross-page} với các liên kết inter-page relations.
+            \item[\color{successgreen}\checkmark] Xác định \textbf{khoảng trống nghiên cứu} (research gap) về layout đa trang.
+            \item[\color{successgreen}\checkmark] Thử nghiệm các baseline hiện hành (Qwen3-VL-235B, Gemini 3.1 Pro, PaddleOCR, MinerU) $\rightarrow$ \textbf{Phát hiện nhiều giới hạn} trong xử lý ngữ cảnh dài.
+            \item[\color{successgreen}\checkmark] Đề xuất \& hiện thực \textbf{multi-phase pipeline} dựa trên MLLM (3 pha, trailing state, cross-page continuity).
+            \item[\color{successgreen}\checkmark] Thử nghiệm thành công trên tài liệu có cấu trúc phức tạp (Quality Manual, ISO).
+            \item[\color{successgreen}\checkmark] Chứng minh sự vượt trội của Pipeline đề xuất so với phương pháp End-to-End.
+            \item[\color{successgreen}\checkmark] Mã nguồn mở: \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{\small github.com/tuandung222/multipage-dla}}
+        \end{itemize}
+
+        \column{0.42\textwidth}
+        \textbf{Nội dung Báo cáo lần 2:}
+        \begin{enumerate}
+            \item Định chuẩn bài toán (Problem Formulation)
+            \item Phân tích hạn chế của phương pháp hiện tại
+            \item Pipeline đề xuất \& Đánh giá sơ bộ
+            \item Kế hoạch xây dựng Data Engine \& Distillation
+        \end{enumerate}
+    \end{columns}
+\end{frame}
+
+%====================================================
+% SECTION: Mô hình hóa bài toán
+%====================================================
+\section{Mô hình hóa bài toán}
+
+%====================================================
+% SLIDE: DLA truyền thống
+%====================================================
+\begin{frame}{1.1 \; DLA truyền thống và Hướng mở rộng đề xuất}
+    \begin{block}{DLA truyền thống — Single-Page, Closed-Set}
+        Học hàm $\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \{(b_i,\; c_i)\}_{i=1}^{N}$ với:
+        \begin{itemize}
+            \item $b_i = [x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ — bounding box
+            \item $c_i \in \mathcal{C}_{\text{fixed}}$ — tập nhãn \textbf{tĩnh} (Title, Text, Table, Figure,...)
+        \end{itemize}
+        \textit{Hạn chế:} Phân tích các trang độc lập, thiếu sự liên kết ngữ nghĩa giữa các vùng, tập nhãn đóng.
+    \end{block}
+
+    \vspace{0.3em}
+    \begin{block}{Graph-based DLA — Bổ sung quan hệ cấu trúc}
+        $\mathcal{Y} = (\mathcal{V},\; \mathcal{E})$ \quad với $\mathcal{V}$ = tập vùng layout, $\mathcal{E}$ = tập quan hệ (reading order, hierarchy).\\
+        \textit{Hạn chế:} Vẫn giới hạn trong phạm vi trang đơn (single-page), thiếu ngữ cảnh xuyên trang.
+    \end{block}
+
+    \vspace{0.3em}
+    \begin{alertblock}{Mô hình bài toán đề xuất — Cross-Page Multi-Page DLA}
+        $$\mathcal{F}\!\left(\mathcal{I}_t \;\big|\; \mathcal{I}_{t-k:t-1},\; \mathcal{S}_{t-1}\right) \;\longrightarrow\; \left(\mathcal{Y}_t,\; \mathcal{S}_t\right)$$
+        \begin{itemize}
+            \item $\mathcal{I}_{t-k:t-1}$: \textbf{Visual context} từ $k$ trang liền trước.
+            \item $\mathcal{S}_{t-1}$: \textbf{Trailing state} — trạng thái cấu trúc tích lũy từ \textit{tất cả} trang trước đó ($1 \ldots t{-}1$).
+            \item $\mathcal{Y}_t = (\mathcal{V}_t, \mathcal{E}_t)$: Layout graph chứa \textbf{inter-page relations} và tính liên tục (continuation).
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+%====================================================
+% SLIDE: Trailing state chi tiết
+%====================================================
+\begin{frame}{1.2 \; Trailing State — Hạn chế của Visual Context thuần túy}
+    \begin{block}{Trailing State $\mathcal{S}_t$ — Trạng thái cấu trúc tích lũy qua các trang}
+    \end{block}
+    \vspace{0.3em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{5.5cm}p{5.5cm}}
+        \toprule
+        \textbf{Thành phần} & \textbf{Vai trò lưu trữ} & \textbf{Lý do Visual Context không đủ đáp ứng} \\
+        \midrule
+        \texttt{last\_assigned\_node\_id} & Bộ đếm ID toàn cục & Đảm bảo tính duy nhất của ID qua toàn bộ tài liệu. \\
+        \midrule
+        \texttt{active\_parent\_stack} & Ngữ cảnh phân cấp logic\newline (VD: Section 1 $>$ 1.1 $>$ 1.1.1) & Heading cha ở trang 3 có thể bao hàm các đoạn văn ở trang 7 — vượt quá giới hạn cửa sổ $k$ trang của visual. \\
+        \midrule
+        \texttt{element\_cut\_off\_at\_bottom} & Lưu vết phần tử bị ngắt trang & Giúp ghép nối các node bị chia cắt (continuation). \\
+        \midrule
+        \texttt{suggested\_new\_categories} & Tập nhãn động (Dynamic Vocabulary) & Nhãn định nghĩa ở trang đầu cần được nhất quán áp dụng cho các trang sau. \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.4em}
+    \begin{center}
+        \textbf{Nhận xét quan trọng:} Việc trích xuất cấu trúc của một trang đòi hỏi sự kết hợp đồng thời giữa \textbf{Visual Context} (ảnh trang kề) và \textbf{Layout Context} (Trailing state logic từ tất cả các trang trước).
+    \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE: Target domain
+%====================================================
+\begin{frame}{1.3 \; Target Domain — Tài liệu có cấu trúc phi tiêu chuẩn}
+    Thay vì tập trung vào sách, báo khoa học (đã có các benchmark như PubLayNet, DocLayNet).\\
+    Nghiên cứu hướng đến các tài liệu thực tế mà các giải pháp hiện hành \textbf{vẫn còn nhiều hạn chế}:
+
+    \vspace{0.5em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{6cm}p{5cm}}
+        \toprule
+        \textbf{Loại tài liệu} & \textbf{Đặc trưng cấu trúc} & \textbf{Ví dụ} \\
+        \midrule
+        Tài liệu ISO / Quality Manual & Section lồng ghép sâu, danh sách định nghĩa kéo dài nhiều trang & \href{https://customcomponentsinc.com/wp-content/uploads/2018/03/Quality-Manual-ISO-9001-2015.pdf}{\textcolor{blue}{Quality Manual ISO 9001}} \\
+        \midrule
+        Thủ tục hành chính & Định dạng heading đa dạng, bảng lồng bảng, numbered list xen kẽ & \href{https://gqmc.gov.ph/images/gqmcprescribedstandard/Generic-Manual-on-ISO-9001-Six-Mandatory-Procedures1.pdf}{\textcolor{blue}{Generic Manual ISO 9001}} \\
+        \midrule
+        Báo cáo tài chính & Bảng biểu kéo dài đa trang, footnote, tham chiếu chéo (cross-reference) & Báo cáo thường niên doanh nghiệp \\
+        \midrule
+        Đặc tả kỹ thuật (Specification) & Sơ đồ xen kẽ văn bản, phụ lục, bảng lịch sử chỉnh sửa (revision) & Tiêu chuẩn kỹ thuật công nghiệp \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.4em}
+    \textit{Đặc điểm chung:} Sự phụ thuộc ngữ cảnh lớn — để phân loại chính xác một đối tượng ở trang hiện tại, hệ thống bắt buộc phải truy xuất thông tin phân cấp từ các trang trước đó.
+\end{frame}
+
+%====================================================
+% SECTION: Ngách nghiên cứu & khó khăn
+%====================================================
+\section{Ngách nghiên cứu \& Khó khăn}
+
+%====================================================
+% SLIDE: Ngách mới
+%====================================================
+\begin{frame}{2.1 \; Khoảng trống nghiên cứu (Research Gap)}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Hướng nghiên cứu} & \textbf{Bbox} & \textbf{Cross-page} & \textbf{Inter-page} & \textbf{Dynamic} \\
+         & \textbf{Detection} & \textbf{Context} & \textbf{Relations} & \textbf{Categories} \\
+        \midrule
+        Single-page DLA (DocLayout-YOLO, RT-DETR) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Single-page + Grounding (Qwen-VL, mPLUG-DocOwl) & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Multi-page Doc Parsing (MinerU, Nougat) & \color{dangerred}$\times$ & \color{warnorange}$\sim$ & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        Multi-page Doc VQA (InternVL, DocOwl 1.5) & \color{dangerred}$\times$ & \color{successgreen}\checkmark & \color{dangerred}$\times$ & \color{dangerred}$\times$ \\
+        \midrule
+        \textbf{Nghiên cứu đề xuất: Cross-Page Inter-Page DLA} & \color{successgreen}\checkmark & \color{successgreen}\checkmark & \color{successgreen}\checkmark & \color{successgreen}\checkmark \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.5em}
+    \begin{alertblock}{Nhận xét}
+        \textbf{Multi-page inter-page relation DLA} là một hướng tiếp cận mới. Các phương pháp trước đây chủ yếu giải quyết bài toán parsing (chỉ ra markdown/text, thiếu tọa độ bbox), VQA (thiếu layout detection), hoặc DLA truyền thống (bị giới hạn trong khuôn khổ một trang).
+    \end{alertblock}
+\end{frame}
+
+%====================================================
+% SLIDE: Khó khăn — Model
+%====================================================
+\begin{frame}{2.2 \; Hạn chế của các phương pháp SOTA hiện hành}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \begin{block}{\color{dangerred} Vision-based (YOLO, RT-DETR)}
+            \textbf{Ưu điểm:} Bbox chính xác, tốc độ cao.\\
+            \textbf{Giới hạn:}
+            \begin{itemize}
+                \item Hiệu suất suy giảm mạnh đối với tập nhãn ngoài huấn luyện (Out-of-Distribution).
+                \item Không thể xác định nhãn nếu thiếu ngữ cảnh từ các trang trước.
+                \item Thiếu khả năng suy luận logic (reasoning) đa trang.
+            \end{itemize}
+        \end{block}
+
+        \column{0.48\textwidth}
+        \begin{block}{\color{dangerred} MLLM (Gemini, Qwen3-VL,...)}
+            \textbf{Ưu điểm:} Năng lực reasoning mạnh, open-vocabulary.\\
+            \textbf{Giới hạn:}
+            \begin{itemize}
+                \item Suy giảm độ chính xác tọa độ (Grounding degradation) khi trang có mật độ thông tin dày đặc.
+                \item Chi phí xử lý token cho ngữ cảnh đa trang quá lớn.
+                \item Suy luận End-to-End thường dẫn đến hiện tượng phân mảnh quá mức (over-fragmentation) hoặc bỏ sót (under-detection).
+            \end{itemize}
+        \end{block}
+    \end{columns}
+
+    \vspace{0.4em}
+    \begin{block}{\color{dangerred} Parser Pipelines (PaddleOCR, MinerU)}
+        Hoạt động ổn định trên tài liệu cơ bản, nhưng \textbf{kém hiệu quả} trên layout phức tạp: không ghép nối được các khối văn bản xuyên trang, thiếu cấu trúc phân cấp (hierarchy) rõ ràng và không biểu diễn được quan hệ inter-page.
+    \end{block}
+\end{frame}
+
+%====================================================
+% SLIDE: Khó khăn — Data
+%====================================================
+\begin{frame}{2.3 \; Thách thức về sự thiếu hụt dữ liệu (Data Scarcity)}
+    \begin{alertblock}{Vấn đề cốt lõi}
+        Do đây là bài toán mới, cộng đồng hiện chưa có:
+        \begin{itemize}
+            \item Benchmark đánh giá DLA đa trang (cross-page) có gán nhãn phân cấp (hierarchical annotation).
+            \item Bộ dữ liệu huấn luyện (Training dataset) đủ lớn cho bài toán này.
+            \item Chi phí tạo Ground truth thủ công là cực kỳ đắt đỏ.
+        \end{itemize}
+    \end{alertblock}
+
+    \vspace{0.4em}
+    \textbf{Đánh đổi (Trade-off) khi sử dụng MLLM làm Data Engine:}
+    \begin{itemize}
+        \item MLLM dự đoán Bounding box \textbf{kém chính xác hơn} mô hình thuần Vision (như DocLayout-YOLO).
+        \item Tuy nhiên, mô hình Vision \textbf{không thể} sinh ra logic phân cấp (hierarchy), quan hệ xuyên trang.
+        \item $\Rightarrow$ \textbf{Chấp nhận đánh đổi độ chính xác tuyệt đối của bbox}, tập trung khai thác giá trị \textit{chú giải cấu trúc} (structural annotation: hierarchy, relation, cross-page).
+        \item Việc tinh chỉnh (refinement) tọa độ bbox sẽ được tối ưu bằng các mô hình hậu xử lý (post-processing) ở giai đoạn sau.
+    \end{itemize}
+
+    \vspace{0.3em}
+    \textbf{$\Rightarrow$ Giải pháp:} Xây dựng \textbf{Data Engine Pipeline} hiệu quả dựa trên MLLM SOTA nhằm tự động hóa việc tạo Benchmark và tập dữ liệu huấn luyện.
+\end{frame}
+
+%====================================================
+% SECTION: Thí nghiệm
+%====================================================
+\section{Đánh giá Thử nghiệm}
+
+%====================================================
+% SLIDE: Tổng quan thí nghiệm
+%====================================================
+\begin{frame}{3.1 \; Tổng quan các thiết lập thử nghiệm}
+    \textbf{Mô hình:} Gemini 3.1 Pro (thông qua API), Temperature = 0.\\
+    \textbf{Dữ liệu thử nghiệm:} Quality Manual ISO 9001:2015 (42 trang) — trích 3 trang đầu làm baseline.
+
+    \vspace{0.5em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{4.5cm}ccp{3.5cm}}
+        \toprule
+        \textbf{Phương pháp} & \textbf{Mô tả} & \textbf{Elements} & \textbf{Categories} & \textbf{Đánh giá} \\
+        \midrule
+        Single-page E2E & Phân tích độc lập từng trang, tự động trích xuất category + bbox + hierarchy & 161 & 10 & \color{dangerred}Phân mảnh (Over-fragment): nhận diện chi tiết đến từng ô bảng (cell/row). \\
+        \midrule
+        Multi-page E2E (3 trang) & Xử lý đồng thời 3 trang, trích xuất end-to-end & 26 & 5 & \color{dangerred}Bỏ sót (Under-detect): chỉ phân loại được 5 category chung chung. \\
+        \midrule
+        \textbf{Pipeline (Đề xuất)} & Phase 1: Trích xuất Category $\rightarrow$ Phase 2: Phân tích tăng dần (Incremental) & \textbf{21} & \textbf{13} & \color{successgreen}Độ hạt (Granularity) chuẩn xác, Category có tính ứng dụng cao. \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+
+    \vspace{0.3em}
+    \textbf{Các baseline khác đã kiểm chứng:}
+    \begin{itemize}
+        \item \textbf{Qwen3-VL-235B-Thinking} (SOTA Opensource, 235B params): Tọa độ bbox thiếu chính xác, category quá tổng quát, không duy trì được liên kết đa trang.
+        \item \textbf{PaddleOCR / MinerU}: Đầu ra giới hạn ở text/markdown — không trích xuất được tọa độ bbox cũng như đồ thị cấu trúc (layout graph).
+    \end{itemize}
+\end{frame}
+
+%====================================================
+% SLIDE: So sánh visual — Single E2E vs Pipeline
+%====================================================
+\begin{frame}{3.2 \; Phân tích trực quan — Single-Page E2E vs Pipeline (Gemini 3.1 Pro)}
+    \begin{columns}[c]
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Single-Page E2E}\\(161 elements / 3 trang)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/single_e2e_page01.jpg}\\
+            \vspace{0.2em}
+            {\small\color{dangerred} Hiện tượng Over-fragmentation: Nhận diện thừa thãi từng ô, từng dòng độc lập làm mất đi cấu trúc tổng thể.}
+        \end{center}
+
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Pipeline đề xuất}\\(21 elements / 3 trang)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page01.jpg}\\
+            \vspace{0.2em}
+            {\small\color{successgreen} Độ hạt (Granularity) tối ưu: Gom nhóm các khối logic hoàn chỉnh, phục vụ tốt cho RAG/Parsing.}
+        \end{center}
+    \end{columns}
+\end{frame}
+
+%====================================================
+% SLIDE: Qwen3-VL kết quả
+%====================================================
+\begin{frame}{3.3 \; Hạn chế của MLLM Opensource SOTA (Qwen3-VL-235B)}
+    \begin{columns}[c]
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Qwen3-VL-235B} (Page 3 — Mục lục)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/qwen3_page03.jpg}\\
+            \vspace{0.2em}
+            {\small Tọa độ Bbox sai lệch, gán nhãn thiếu tính phân cấp (\texttt{table}, \texttt{section\_header}), mất cấu trúc hierarchy.}
+        \end{center}
+
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Pipeline (Gemini 3.1 Pro)} (Page 3 — Mục lục)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page03.jpg}\\
+            \vspace{0.2em}
+            {\small\color{successgreen} Nhận diện chính xác Table of Contents, Bbox bao quát tốt, phân loại ngữ nghĩa phù hợp.}
+        \end{center}
+    \end{columns}
+
+    \vspace{0.3em}
+    \begin{center}
+        \textit{Dù sở hữu 235B parameters, Qwen3-VL vẫn bộc lộ yếu điểm trong chế độ End-to-End.}\\
+        \textbf{$\rightarrow$ Trở ngại chính nằm ở cách định chuẩn bài toán (task formulation) thay vì giới hạn năng lực mô hình.}
+    \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE: So sánh page 5
+%====================================================
+\begin{frame}{3.4 \; Đánh giá trên trang tài liệu phức tạp (Page 5)}
+    \begin{columns}[c]
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Qwen3-VL-235B} (Page 5)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/qwen3_page05.jpg}\\
+            \vspace{0.2em}
+            {\small \color{dangerred} Không trích xuất được mối quan hệ phân cấp (hierarchy) giữa các \texttt{paragraph} và \texttt{section}.}
+        \end{center}
+
+        \column{0.48\textwidth}
+        \begin{center}
+            \textbf{Pipeline đề xuất} (Page 5)\\
+            \vspace{0.3em}
+            \includegraphics[width=\linewidth]{Beamer/figures/pipeline_page05.jpg}\\
+            \vspace{0.2em}
+            {\small\color{successgreen} Phân rã rõ ràng các khối: Section, Text\_Block, Diagram. Duy trì liên kết cây cấu trúc thông qua \texttt{parent\_node\_id}.}
+        \end{center}
+    \end{columns}
+
+    \vspace{0.3em}
+    \begin{center}
+        \textit{Kho lưu trữ kết quả đầy đủ:} \href{https://github.com/tuandung222/multipage-dla/tree/master/outputs}{\textcolor{blue}{github.com/tuandung222/multipage-dla/outputs}}
+    \end{center}
+\end{frame}
+
+%====================================================
+% SECTION: Pipeline đề xuất
+%====================================================
+\section{Kiến trúc Pipeline Đề xuất}
+
+%====================================================
+% SLIDE: Tổng quan pipeline
+%====================================================
+\begin{frame}{4.1 \; Tổng quan Kiến trúc Pipeline (3 Pha)}
+    \begin{center}
+    \resizebox{0.92\textwidth}{!}{
+    \begin{tikzpicture}[
+        node distance=0.6cm,
+        box/.style={rectangle, rounded corners, draw, minimum width=3.8cm, minimum height=1.2cm, text width=3.6cm, align=center, font=\small},
+        arrow/.style={-{Stealth[length=3mm]}, thick},
+        label/.style={font=\scriptsize\itshape, text=gray}
+    ]
+        % Input
+        \node[box, fill=blue!10, draw=primaryblue, thick] (input) {\textbf{INPUT}\\ PDF $\rightarrow$ Ảnh trang\\(220 DPI)};
+
+        % Phase 1
+        \node[box, fill=orange!10, draw=warnorange, thick, right=1.2cm of input] (p1) {\textbf{Phase 1}\\ Category Discovery\\(MLLM + Sliding window)};
+
+        % Phase 2
+        \node[box, fill=green!10, draw=successgreen, thick, right=1.2cm of p1] (p2) {\textbf{Phase 2}\\ Structural Parsing\\(MLLM + Trailing state)};
+
+        % Phase 3
+        \node[box, fill=purple!10, draw=purple, thick, right=1.2cm of p2] (p3) {\textbf{Phase 3}\\ Tree Assembly\\(Rule-based)};
+
+        % Arrows
+        \draw[arrow] (input) -- node[above, label] {page images} (p1);
+        \draw[arrow] (p1) -- node[above, label] {categories.json} (p2);
+        \draw[arrow] (p2) -- node[above, label] {elements.json} (p3);
+
+        % Output
+        \node[below=0.5cm of p3, font=\small, text=purple] (out) {\textbf{Output:} JSON Tree, Outline, Mermaid Graph};
+        \draw[arrow, purple] (p3) -- (out);
+
+        % Phase 2 sub-phases
+        \node[below=0.8cm of p2, font=\scriptsize, text width=4cm, align=center] (p2sub) {
+            \textbf{2.1} Initial Analysis (Trang 1)\\
+            $\downarrow$\\
+            \textbf{2.2} Incremental Loop (Trang $2..n$)\\
+            {\tiny Truyền tải Trailing State}
+        };
+        \draw[dashed, gray] (p2) -- (p2sub);
+    \end{tikzpicture}
+    }
+    \end{center}
+
+    \vspace{0.3em}
+    \textbf{Tư tưởng cốt lõi:} Phân rã bài toán phức tạp thành các tác vụ (sub-tasks) nhỏ với Prompt chuyên biệt, giúp MLLM tối ưu hóa khả năng suy luận so với phương pháp E2E.
+\end{frame}
+
+%====================================================
+% SLIDE: Phase 1 chi tiết
+%====================================================
+\begin{frame}{4.2 \; Pha 1 — Khám phá Nhãn ngữ nghĩa (Category Discovery)}
+    \begin{columns}[T]
+        \column{0.55\textwidth}
+        \textbf{Cơ chế hoạt động:}
+        \begin{itemize}
+            \item Phân tích tài liệu theo cửa sổ trượt (sliding window) kích thước $k$ trang.
+            \item MLLM \textbf{chỉ} suy luận về Category, \textbf{không} dự đoán tọa độ (localization).
+            \item Đầu ra: Danh sách Category kèm định nghĩa chi tiết \& mục đích sử dụng (downstream purpose).
+            \item Hợp nhất (Merge) \& loại bỏ trùng lặp (Deduplicate) từ các cửa sổ.
+        \end{itemize}
+
+        \vspace{0.5em}
+        \textbf{Vai trò của thiết kế này:}
+        \begin{itemize}
+            \item Đảm bảo nhãn mang tính \textbf{thực tiễn} (Macro-level).
+            \item Duy trì tính \textbf{nhất quán} ngữ nghĩa qua toàn bộ tài liệu.
+            \item Thu hẹp không gian tìm kiếm (search space) cho Pha 2, hạn chế hiện tượng ảo giác (hallucination) tạo ra nhãn ảo.
+        \end{itemize}
+
+        \column{0.42\textwidth}
+        \begin{exampleblock}{Kết quả minh họa (Quality Manual)}
+            {\scriptsize
+            13 Category được trích xuất:
+            \begin{itemize}
+                \item \texttt{Title}, \texttt{Section\_Heading}
+                \item \texttt{Section\_Header}, \texttt{Text\_Block}
+                \item \texttt{Table\_of\_Contents}
+                \item \texttt{Table}, \texttt{List\_Block}
+                \item \texttt{Diagram}, \texttt{Image}, \texttt{Logo}
+                \item \texttt{Metadata\_Block}
+                \item \texttt{Header}, \texttt{Footer}
+            \end{itemize}
+            Mỗi category được đính kèm \texttt{downstream\_purpose} làm ngữ cảnh cho Pha 2.
+            }
+        \end{exampleblock}
+    \end{columns}
+\end{frame}
+
+%====================================================
+% SLIDE: Phase 2 chi tiết
+%====================================================
+\begin{frame}{4.3 \; Pha 2 — Phân tích Cấu trúc (Structural Parsing)}
+    \begin{columns}[T]
+        \column{0.52\textwidth}
+        \textbf{Pha 2.1 — Khởi tạo (Trang 1):}
+        \begin{itemize}
+            \item Phân tích dựa trên Visual input và tập Categories từ Pha 1.
+            \item Khởi tạo Trailing state $S_0$:
+            \begin{itemize}
+                \item \texttt{last\_assigned\_node\_id}: \texttt{node\_000}
+                \item \texttt{active\_parent\_stack}: \texttt{[]}
+                \item \texttt{element\_cut\_off...}: \texttt{null}
+            \end{itemize}
+        \end{itemize}
+
+        \vspace{0.4em}
+        \textbf{Pha 2.2 — Cập nhật tăng dần (Trang $2..n$):}
+        \begin{itemize}
+            \item Đầu vào: \textit{Ảnh trang $t-1$} + \textit{Ảnh trang $t$} + \textit{Trailing state $S_{t-1}$} + \textit{Categories}.
+            \item Đầu ra: Bbox, node\_id, category, parent\_node\_id, continuation\_flag.
+            \item Cập nhật $S_{t}$ để truyền tiếp cho trang $t+1$.
+        \end{itemize}
+
+        \column{0.45\textwidth}
+        \textbf{Xử lý liên kết xuyên trang (Cross-page):}
+        \begin{exampleblock}{\small Ví dụ 1: Ngắt trang bảng mục lục}
+            {\scriptsize
+            Trang 3: \texttt{node\_012} (Table\_of\_Contents)\\
+            $\rightarrow$ Ghi nhận cắt ngang: \texttt{node\_012}\\[0.3em]
+            Trang 4: \texttt{node\_013} (Table\_of\_Contents)\\
+            $\rightarrow$ Nhận diện tiếp nối: \texttt{node\_012}\\[0.3em]
+            \textit{Pha 3 sẽ thực hiện hợp nhất hai node này.}
+            }
+        \end{exampleblock}
+
+        \vspace{0.3em}
+        \begin{exampleblock}{\small Ví dụ 2: Cấu trúc phân cấp đa trang}
+            {\scriptsize
+            \texttt{active\_parent\_stack}:\\
+            \texttt{[Section 3: ``Terms'',}\\
+            \texttt{\ node\_025: ``3.1 Quality...'']  }\\[0.3em]
+            $\rightarrow$ Hệ thống duy trì thông tin phân cấp (hierarchy) liên tục, dù đoạn văn nằm ở cách xa nhiều trang.
+            }
+        \end{exampleblock}
+    \end{columns}
+\end{frame}
+
+%====================================================
+% SLIDE: Phase 3
+%====================================================
+\begin{frame}{4.4 \; Pha 3 — Cấu trúc hóa Đồ thị (Tree Assembly)}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \textbf{Quy trình (Rule-based):}
+        \begin{enumerate}
+            \item \textbf{Ghép nối (Merge continuation):}\\ Xử lý chuỗi \texttt{continues\_previous\_node}, nối snippet, cập nhật tham chiếu.
+            \item \textbf{Xây dựng cây (Build Tree):}\\ Khôi phục đồ trúc dựa trên \texttt{parent\_node\_id}.
+            \item \textbf{Xuất dữ liệu (Export):}\\ Định dạng JSON tree, Text outline, và Mermaid diagram.
+        \end{enumerate}
+
+        \vspace{0.3em}
+        \textbf{Lý do sử dụng Rule-based thay vì MLLM:}
+        \begin{itemize}
+            \item Dữ liệu từ Pha 2 đã đảm bảo tính toàn vẹn ngữ nghĩa.
+            \item Đảm bảo tính \textbf{tất định (deterministic)}, tối ưu chi phí tính toán, độ trễ thấp (low latency).
+        \end{itemize}
+
+        \column{0.48\textwidth}
+        \begin{exampleblock}{Kết quả — Quality Manual (11 trang)}
+            {\scriptsize
+            \begin{itemize}
+                \item Xây dựng thành công 136 nodes, 13 categories, độ sâu phân cấp tối đa 3.
+                \item Giải quyết chính xác ngắt trang Mục lục (trang 3$\rightarrow$4).
+                \item Section 3 ``Terms \& Definitions'': Quản lý 64 định nghĩa con trải dài qua 5 trang dưới cùng 1 node cha.
+            \end{itemize}
+            }
+        \end{exampleblock}
+        \vspace{0.2em}
+        \begin{exampleblock}{Kết quả — ISO Generic Manual (7 trang)}
+            {\scriptsize
+            \begin{itemize}
+                \item Xây dựng 81 nodes, 12 categories.
+                \item Giải quyết trọn vẹn List continuation xuyên trang.
+                \item Phân tích chính xác bảng lồng ghép (nested tables).
+            \end{itemize}
+            }
+        \end{exampleblock}
+    \end{columns}
+\end{frame}
+
+%====================================================
+% SLIDE: Pseudocode
+%====================================================
+\begin{frame}{4.5 \; Mã giả — Kiến trúc tổng thể Pipeline}
+    {\small
+    \begin{algorithmic}
+    \STATE \textbf{Input:} $D = \{I_1, I_2, \ldots, I_n\}$ \hfill // Tập $n$ ảnh trang tài liệu
+    \STATE \textbf{Output:} $T$ = Document Tree \hfill // Đồ thị cấu trúc tích hợp cross-page links
+    \STATE
+    \STATE \textcolor{warnorange}{\textbf{--- Pha 1: Category Discovery ---}}
+    \STATE $\mathcal{C} \leftarrow \emptyset$
+    \FOR{mỗi cửa sổ trượt $w$ gồm $k$ trang}
+        \STATE $\mathcal{C}_w \leftarrow \text{MLLM}(w, \text{CATEGORY\_PROMPT})$
+        \STATE $\mathcal{C} \leftarrow \text{MERGE}(\mathcal{C}, \mathcal{C}_w)$
+    \ENDFOR
+    \STATE
+    \STATE \textcolor{successgreen}{\textbf{--- Pha 2.1: Initial Analysis ---}}
+    \STATE $S_0 \leftarrow \text{INIT\_STATE}()$ \hfill // Thiết lập trạng thái khởi tạo
+    \STATE $(Y_1, S_1) \leftarrow \text{MLLM}(I_1, \text{null}, S_0, \mathcal{C}, \text{PARSE\_PROMPT})$
+    \STATE
+    \STATE \textcolor{successgreen}{\textbf{--- Pha 2.2: Incremental Loop ---}}
+    \FOR{$t = 2$ \textbf{to} $n$}
+        \STATE $(Y_t, S_t) \leftarrow \text{MLLM}(I_t, I_{t-1}, S_{t-1}, \mathcal{C}, \text{PARSE\_PROMPT})$
+        \hfill // Cập nhật và truyền Trailing State
+    \ENDFOR
+    \STATE
+    \STATE \textcolor{purple}{\textbf{--- Pha 3: Tree Assembly (Rule-based) ---}}
+    \STATE Merge continuation nodes $\rightarrow$ Build tree từ \texttt{parent\_node\_id} $\rightarrow$ Export Format
+    \end{algorithmic}
+    }
+\end{frame}
+
+%====================================================
+% SECTION: Hướng tiếp cận sắp tới
+%====================================================
+\section{Định hướng Nghiên cứu tiếp theo}
+
+%====================================================
+% SLIDE: Tổng quan approach
+%====================================================
+\begin{frame}{5.1 \; Phương pháp luận và Quy trình}
+    \begin{center}
+    \resizebox{0.85\textwidth}{!}{
+    \begin{tikzpicture}[
+        node distance=0.8cm,
+        box/.style={rectangle, rounded corners, draw, minimum width=4.2cm, minimum height=1.0cm, text width=4.0cm, align=center, font=\small},
+        arrow/.style={-{Stealth[length=3mm]}, thick},
+    ]
+        \node[box, fill=orange!15, draw=warnorange, thick] (collect) {\textbf{Data Collection}\\ Tài liệu phức tạp, đòi hỏi reasoning đa trang};
+        \node[box, fill=blue!10, draw=primaryblue, thick, right=1.0cm of collect] (engine) {\textbf{Data Engine}\\ Dùng MLLM SOTA tạo Ground Truth (qua Pipeline)};
+        \node[box, fill=green!10, draw=successgreen, thick, right=1.0cm of engine] (data) {\textbf{Corpus Creation}\\ $\sim$2K Benchmark\\ $\sim$20K Training};
+        \node[box, fill=purple!15, draw=purple, thick, below=1.0cm of data] (finetune) {\textbf{Fine-tuning}\\ Huấn luyện VLM/MLLM tham số nhỏ};
+        \node[box, fill=red!10, draw=dangerred, thick, left=1.0cm of finetune] (distill) {\textbf{Knowledge Distillation}\\ Nén tri thức mô hình};
+        \node[box, fill=gray!10, draw=gray, thick, left=1.0cm of distill] (prod) {\textbf{Deployment}\\ Mô hình tối ưu hóa cho môi trường Local};
+
+        \draw[arrow] (collect) -- (engine);
+        \draw[arrow] (engine) -- (data);
+        \draw[arrow] (data) -- (finetune);
+        \draw[arrow] (finetune) -- (distill);
+        \draw[arrow] (distill) -- (prod);
+    \end{tikzpicture}
+    }
+    \end{center}
+
+    \vspace{0.3em}
+    \textbf{Định hướng triển khai:}
+    \begin{enumerate}
+        \item Thu thập tập tài liệu PDF đặc thù mà các công cụ hiện hành chưa xử lý được.
+        \item Khai thác năng lực MLLM SOTA (Gemini 3.1 Pro) làm Data Engine để tổng hợp nhãn (benchmark \& training data).
+        \item Fine-tune các mô hình VLM/MLLM nhỏ hơn dựa trên tập dữ liệu tổng hợp này.
+        \item Thực hiện Knowledge Distillation nhằm tối ưu hóa chi phí tính toán cho ứng dụng thực tế.
+    \end{enumerate}
+\end{frame}
+
+%====================================================
+% SLIDE: 2 hướng fine-tune
+%====================================================
+\begin{frame}{5.2 \; Phân tích các Chiến lược Fine-tuning}
+    \begin{columns}[T]
+        \column{0.48\textwidth}
+        \begin{block}{Chiến lược 1: Pipeline đa mô hình (Multi-VLM)}
+            Huấn luyện nhiều mô hình nhỏ, chuyên biệt hóa cho từng pha:
+            \begin{itemize}
+                \item VLM\textsubscript{1}: Đảm nhận Category reasoning.
+                \item VLM\textsubscript{2}: Trích xuất cấu trúc \& Localization (Bbox).
+                \item Module Rule-based xử lý Tree assembly.
+            \end{itemize}
+            \textit{Ưu điểm:} Tính module hóa cao, dễ cô lập lỗi (debug) và thay thế thành phần.\\
+            \textit{Hạn chế:} Độ phức tạp khi triển khai toàn hệ thống cao.
+        \end{block}
+
+        \column{0.48\textwidth}
+        \begin{block}{Chiến lược 2: Mô hình End-to-End (Single-VLM)}
+            Huấn luyện một VLM duy nhất đảm nhận toàn bộ quy trình:
+            \begin{itemize}
+                \item Đầu vào: Chuỗi ảnh PDF + Instruction.
+                \item Đầu ra trực tiếp: Category, Bbox, Hierarchy và Inter-page relations.
+            \end{itemize}
+            \textit{Ưu điểm:} Kiến trúc gọn gàng, tối ưu hóa quá trình suy luận (inference).\\
+            \textit{Hạn chế:} Đòi hỏi mô hình có dung lượng tham số đủ lớn, khó kiểm soát hành vi mô hình.
+        \end{block}
+    \end{columns}
+
+    \vspace{0.5em}
+    \begin{center}
+        \textbf{Mục tiêu dài hạn:} Khai thác Knowledge Distillation từ MLLM SOTA để xây dựng mô hình VLM cục bộ (local deployment), loại bỏ sự phụ thuộc vào các API thương mại.
+    \end{center}
+\end{frame}
+
+%====================================================
+% SLIDE: Kế hoạch chi tiết
+%====================================================
+\begin{frame}{5.3 \; Kế hoạch công việc dự kiến}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{9cm}l}
+        \toprule
+        \textbf{Giai đoạn} & \textbf{Hạng mục nghiên cứu} & \textbf{Khung thời gian} \\
+        \midrule
+        \textbf{1. Data Collection \& Engine} &
+            Thu thập tài liệu PDF có layout phức tạp (ISO, Báo cáo tài chính).
+            Vận hành Pipeline để tự động hóa gán nhãn.
+            Quality control: Đánh giá, hiệu chỉnh dữ liệu mẫu. &
+            \textbf{$\sim$3 tuần} \\
+        \midrule
+        \textbf{2. Benchmark \& Corpus} &
+            Xây dựng tập Benchmark ($\sim$2K mẫu) với đánh giá thủ công.
+            Tổng hợp tập huấn luyện ($\sim$20K mẫu) thông qua Data Engine.
+            Chuẩn hóa định dạng Annotation. &
+            (Thực hiện song song) \\
+        \midrule
+        \textbf{3. Baseline \& Fine-tuning} &
+            Thiết lập Inference baseline (PaddleOCR+MLLM, E2E MLLM).
+            Thực nghiệm Fine-tune theo các chiến lược đã đề ra.
+            Tiến hành Benchmark đối sánh các phương pháp. &
+            \textbf{$\sim$1 tháng} \\
+        \midrule
+        \textbf{4. Tối ưu hóa \& Báo cáo} &
+            Áp dụng Distillation / Compression nếu kết quả khả quan.
+            Tổng hợp số liệu, hoàn thiện báo cáo và công bố khoa học (nếu đạt đủ novelty). &
+            Thời gian còn lại \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+\end{frame}
+
+%====================================================
+% SLIDE: Tài liệu tham khảo
+%====================================================
+\begin{frame}[allowframebreaks]{Tài liệu tham khảo}
+    \textbf{Mã nguồn đề xuất:} \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{github.com/tuandung222/multipage-dla}}
+
+    \vspace{0.5em}
+    \nocite{*}
+    \printbibliography
+\end{frame}
+
+%====================================================
+% SLIDE: Q&A
+%====================================================
+\begin{frame}[plain]
+    \centering
+    \Huge{\textbf{\textcolor{primaryblue}{Trân trọng cảm ơn Thầy đã lắng nghe!}}}\\
+    \vspace{1cm}
+    \Large{\textbf{Q\&A}}\\
+    \vspace{0.5cm}
+    \normalsize
+    Mã nguồn: \href{https://github.com/tuandung222/multipage-dla}{\textcolor{blue}{github.com/tuandung222/multipage-dla}}
+\end{frame}
+
+\end{document}
