@@ -1,0 +1,863 @@
+{
+  "stats": {
+    "total_nodes": 135,
+    "root_nodes": 34,
+    "leaf_nodes": 122,
+    "max_depth": 2,
+    "category_counts": {
+      "Logo": 1,
+      "Title": 3,
+      "Metadata_Block": 2,
+      "Footer": 11,
+      "Header": 10,
+      "Section_Header": 10,
+      "Text_Block": 86,
+      "Table": 3,
+      "Table_of_Contents": 1,
+      "Section_Heading": 3,
+      "Diagram": 1,
+      "List_Block": 4
+    }
+  },
+  "tree": [
+    {
+      "node_id": "node_001",
+      "category": "Logo",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_002",
+      "category": "Title",
+      "snippet": "Custom Components & Assemblies, Inc.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_003",
+      "category": "Title",
+      "snippet": "ISO 9001:2015 Quality Manual",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_004",
+      "category": "Title",
+      "snippet": "Quality Management System Manual",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_005",
+      "category": "Metadata_Block",
+      "snippet": "Issued By: Quality Manager Revision: B Issued Date: 9-01-17 Approved by: President",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_006",
+      "category": "Footer",
+      "snippet": "Page 1 of 42 If this document is printed and not signed by the approved personnel, then it is an un",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_007",
+      "category": "Header",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_008",
+      "category": "Section_Header",
+      "snippet": "Approval",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_009",
+          "category": "Text_Block",
+          "snippet": "The signatures below certify that this management system manual has been reviewed and accepted. Demo",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_010",
+          "category": "Table",
+          "snippet": "Description Name Signature Position Date Prepared By Cory Norris Cory Norris Quality Manager 9-01-17",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_011",
+      "category": "Section_Header",
+      "snippet": "Amendment Record",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_012",
+          "category": "Text_Block",
+          "snippet": "This quality manual is reviewed to ensure its continuing relevance to the systems and process that i",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_013",
+          "category": "Table",
+          "snippet": "Page No. Reason Revision Date ALL PAGES Revised to the ISO 9001:2015 Standard B 09-01-17",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_014",
+      "category": "Section_Header",
+      "snippet": "Company Proprietary Information",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_015",
+          "category": "Text_Block",
+          "snippet": "The Electronic Version of this document is the latest revision. It is the responsibility of the indi",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_016",
+          "category": "Metadata_Block",
+          "snippet": "Document Reference: QMS1 Revision: B Uncontrolled Copy 0 Controlled Copy 1",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_017",
+      "category": "Footer",
+      "snippet": "Page 2 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_018",
+      "category": "Header",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_019",
+      "category": "Section_Header",
+      "snippet": "Table of Contents Page",
+      "page_number": 3,
+      "children": [
+        {
+          "node_id": "node_020",
+          "category": "Table_of_Contents",
+          "snippet": "1. Scope................................................................................................ 8.5.1 Control o",
+          "page_number": 3,
+          "merged_from": [
+            "node_023"
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "node_021",
+      "category": "Footer",
+      "snippet": "Page 3 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_022",
+      "category": "Header",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_024",
+      "category": "Footer",
+      "snippet": "Page 4 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_025",
+      "category": "Header",
+      "snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_026",
+      "category": "Section_Heading",
+      "snippet": "1. Scope",
+      "page_number": 5,
+      "children": [
+        {
+          "node_id": "node_027",
+          "category": "Section_Header",
+          "snippet": "1.1 Introduction",
+          "page_number": 5,
+          "children": [
+            {
+              "node_id": "node_028",
+              "category": "Text_Block",
+              "snippet": "1.1.1 It is our policy at Custom Components & Assemblies, Inc. hereinafter called CCA, to procure, m",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_029",
+              "category": "Text_Block",
+              "snippet": "1.1.2 CCA has developed and implemented a quality management system to demonstrate its ability to co",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_030",
+              "category": "Text_Block",
+              "snippet": "1.1.3 The quality system complies with the International Standard ISO 9001:2015.",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_031",
+              "category": "Text_Block",
+              "snippet": "1.1.4 This manual is divided into sections modeled on the sectional organization of the ISO 9001:201",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_032",
+              "category": "Text_Block",
+              "snippet": "1.1.5 The purpose of this manual is to define and describe the quality system, to define authorities",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_033",
+              "category": "Text_Block",
+              "snippet": "1.1.6 Another purpose of this manual is to present the quality system to customers, suppliers, regul",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_034",
+              "category": "Text_Block",
+              "snippet": "1.1.7 The figure below illustrates our methodology for the development of our QMS, Using the plan, d",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_035",
+              "category": "Diagram",
+              "snippet": "Figure 1: ISO 9001:2015 QMS & PDCA Interaction diagram showing Context of the Organization, Scope, P",
+              "page_number": 5
+            },
+            {
+              "node_id": "node_038",
+              "category": "Text_Block",
+              "snippet": "1.1.8 The Scope of CCA Quality Management System is “CCA provides, manufactures, and assembles a wid",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_039",
+              "category": "List_Block",
+              "snippet": "Valve Industry Foam Injection Molds/Fixtures\nWater Sprinkler Systems Exercise Equipment\nFlow Regulat",
+              "page_number": 6
+            }
+          ]
+        },
+        {
+          "node_id": "node_040",
+          "category": "Section_Header",
+          "snippet": "1.2 Application",
+          "page_number": 6,
+          "children": [
+            {
+              "node_id": "node_041",
+              "category": "Text_Block",
+              "snippet": "1.2.1 The quality management system defined in this manual applies to the manufacture and distributi",
+              "page_number": 6
+            }
+          ]
+        },
+        {
+          "node_id": "node_042",
+          "category": "Section_Header",
+          "snippet": "1.3 Exclusions",
+          "page_number": 6,
+          "children": [
+            {
+              "node_id": "node_043",
+              "category": "Text_Block",
+              "snippet": "1.3.1 The quality management system shall be relevant to the nature of CCA.",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_044",
+              "category": "Text_Block",
+              "snippet": "1.3.2 CCA is excluded from clause 8.3 Design and Development of ISO 9001:2015.",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_045",
+              "category": "Table",
+              "snippet": "Clause Justification for Exclusion\nClause 8.3 Design and Development We exclude design and developme",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_046",
+              "category": "Text_Block",
+              "snippet": "1.3.3 ISO 9001:2015 requirements may be excluded only when the following three conditions are met:",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_047",
+              "category": "List_Block",
+              "snippet": "- The requirement must be within ISO 9001:2015 Clause 8, Operation.\n- The exclusion may not affect o",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_048",
+              "category": "Text_Block",
+              "snippet": "1.3.4 Processes which are applicable, but which are performed by outside contractors, do not qualify",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_049",
+              "category": "Text_Block",
+              "snippet": "1.3.5 The Operations Manager, or Quality Manager are responsible for identifying those requirements ",
+              "page_number": 6
+            },
+            {
+              "node_id": "node_052",
+              "category": "Text_Block",
+              "snippet": "1.3.6 Top management evaluates the proposed exclusions and determines whether they are appropriate. Th",
+              "page_number": 7
+            },
+            {
+              "node_id": "node_053",
+              "category": "Text_Block",
+              "snippet": "1.3.7 Any exclusion taken is documented in this section of the quality manual. The excluded requirem",
+              "page_number": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "node_036",
+      "category": "Footer",
+      "snippet": "Page 5 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_037",
+      "category": "Header",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_050",
+      "category": "Footer",
+      "snippet": "Page 6 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_051",
+      "category": "Header",
+      "snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_054",
+      "category": "Section_Heading",
+      "snippet": "2. References",
+      "page_number": 7,
+      "children": [
+        {
+          "node_id": "node_055",
+          "category": "Section_Header",
+          "snippet": "2.1 Reference Documents used for the Quality Management system, testing, production, and inspection.",
+          "page_number": 7,
+          "children": [
+            {
+              "node_id": "node_056",
+              "category": "List_Block",
+              "snippet": "- ISO 9001:2015",
+              "page_number": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "node_057",
+      "category": "Section_Header",
+      "snippet": "3.1 TERMS AND DEFINITIONS",
+      "page_number": 7,
+      "children": [
+        {
+          "node_id": "node_058",
+          "category": "Text_Block",
+          "snippet": "3.1.1 ACCEPTANCE CRITERIA – The Specified limits placed on the characteristic of an item or process ",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_059",
+          "category": "Text_Block",
+          "snippet": "3.1.2 APPROVAL – The act of endorsement and/or the addition of positive authorization by signature (",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_060",
+          "category": "Text_Block",
+          "snippet": "3.1.3 AUDIT – Systematic, independent and documented process for obtaining audit evidence and evalua",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_061",
+          "category": "Text_Block",
+          "snippet": "3.1.4 AUDIT CRITERIA – Set of policies, procedures or requirements used as a reference.",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_062",
+          "category": "Text_Block",
+          "snippet": "3.1.5 AUDIT CONCLUSION – Outcome of an audit provided by the audit team after consideration of the a",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_063",
+          "category": "Text_Block",
+          "snippet": "3.1.6 AUDIT EVIDENCE RECORDS – Statements of fact or other information which are relevant to the aud",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_064",
+          "category": "Text_Block",
+          "snippet": "3.1.7 AUDIT FINDING – Results of the evaluation of the collected audit evidence against audit criter",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_065",
+          "category": "Text_Block",
+          "snippet": "3.1.8 AUDIT PROGRAM –Set of one or more audits planned for a specific time frame and directed toward",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_066",
+          "category": "Text_Block",
+          "snippet": "3.1.9 AUDIT TEAM – One or more auditors conducting an audit.",
+          "page_number": 7
+        },
+        {
+          "node_id": "node_069",
+          "category": "Text_Block",
+          "snippet": "3.1.10 AUDITEE – Organization being audited.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_070",
+          "category": "Text_Block",
+          "snippet": "3.1.11 AUDITOR – Person with the competence to conduct an audit.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_071",
+          "category": "Text_Block",
+          "snippet": "3.1.12 Job Boss – Software program for the CCA operating system. It is a Progression Series that all",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_072",
+          "category": "Text_Block",
+          "snippet": "3.1.13 CALIBRATION – Comparison of a measurement standard or instrument of known accuracy over its w",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_073",
+          "category": "Text_Block",
+          "snippet": "3.1.14 CAPABILITY - Ability of an organization, system, or process to realize a product that will fu",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_074",
+          "category": "Text_Block",
+          "snippet": "3.1.15 CHARACTERISTIC – Any property or attribute of an item, process or service that is distinct, d",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_075",
+          "category": "Text_Block",
+          "snippet": "3.1.16 CERTIFIED MATERIAL TEST REPORT – A document approved by an authorized company representative ",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_076",
+          "category": "Text_Block",
+          "snippet": "3.1.17 COMPETENCE – Demonstrated ability to apply knowledge and skills.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_077",
+          "category": "Text_Block",
+          "snippet": "3.1.18 CONCESSION – Permission to use or release a product that does not conform to specified requir",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_078",
+          "category": "Text_Block",
+          "snippet": "3.1.19 CONFORMITY – Fulfillment of a requirement.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_079",
+          "category": "Text_Block",
+          "snippet": "3.1.20 CONTINUAL IMPROVEMENT – A recurring activity to increase the ability to fulfill requirements.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_080",
+          "category": "Text_Block",
+          "snippet": "3.1.21 CORRECTION – Action taken to eliminate a detected nonconformity.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_081",
+          "category": "Text_Block",
+          "snippet": "3.1.22 CORRECTIVE ACTION - Action to eliminate the cause of a detected nonconformity or other undesi",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_082",
+          "category": "Text_Block",
+          "snippet": "3.1.23 CUSTOMER – The immediate purchaser of a product, which may be the final user or a resale part",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_083",
+          "category": "Text_Block",
+          "snippet": "3.1.24 CUSTOMER SATISFACTION – Customer’s perception of the degree to which the customer’s requireme",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_084",
+          "category": "Text_Block",
+          "snippet": "3.1.25 DEFECT - Non-fulfillment of a requirement related to an intended or specified use (NOTE: The ",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_085",
+          "category": "Text_Block",
+          "snippet": "3.1.26 DESIGN – A detailed plan for an item.",
+          "page_number": 8
+        },
+        {
+          "node_id": "node_088",
+          "category": "Text_Block",
+          "snippet": "3.1.27 DESIGN ACCEPTANCE CRITERIA – Defined limits placed on characteristics of materials or products",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_089",
+          "category": "Text_Block",
+          "snippet": "3.1.28 DESIGN AND DEVELOPMENT – Set of processes that transform requirements into specified",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_090",
+          "category": "Text_Block",
+          "snippet": "3.1.29 DESIGN REQUIREMENTS – Constraints imposed on the design by an Engineering Specification.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_091",
+          "category": "Text_Block",
+          "snippet": "3.1.30 DEVIATION PERMIT - Permission to depart from the originally specified requirements of a product",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_092",
+          "category": "Text_Block",
+          "snippet": "3.1.31 DOCUMENT – Information and its supporting medium.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_093",
+          "category": "Text_Block",
+          "snippet": "3.1.32 DOCUMENTATION – The written and/or pictorial information describing, defining, specifying, repo",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_094",
+          "category": "Text_Block",
+          "snippet": "3.1.33 EFFECTIVENESS - Extent to which planned activities are realized and planned results are achieve",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_095",
+          "category": "Text_Block",
+          "snippet": "3.1.34 FOLLOW-UP AUDIT - A special audit performed to verify that corrective action has been implement",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_096",
+          "category": "Text_Block",
+          "snippet": "3.1.35 INDEPENDENCE - Freedom from bias and external influence; provides for objectivity and impartial",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_097",
+          "category": "Text_Block",
+          "snippet": "3.1.36 INFORMATION - Meaningful data.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_098",
+          "category": "Text_Block",
+          "snippet": "3.1.37 INFRASTRUCTURE - System of facilities, equipment and services needed for the operation of an",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_099",
+          "category": "Text_Block",
+          "snippet": "3.1.38 INSPECTION – Conformity evaluation by observation and judgment accompanied, as appropriate, by",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_100",
+          "category": "Text_Block",
+          "snippet": "3.1.39 INSPECTION RECORD - Document stating results (data) concerning inspection activities.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_101",
+          "category": "Text_Block",
+          "snippet": "3.1.40 LEAD AUDITOR - The individual who manages the audit team during an audit.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_102",
+          "category": "Text_Block",
+          "snippet": "3.1.41 MANAGEMENT SYSTEM – A system to establish policy and objectives and to achieve those objectives",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_103",
+          "category": "Text_Block",
+          "snippet": "3.1.42 MEASUREMENT CONTROL SYSTEM – Set of interrelated or interacting elements necessary to achieve",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_104",
+          "category": "Text_Block",
+          "snippet": "3.1.43 MEASURING AND TEST EQUIPMENT – Devices used to measure, gage, test, inspect or otherwise",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_105",
+          "category": "Text_Block",
+          "snippet": "3.1.44 MEASUREMENT PROCESS – Set of operations to determine the value of a quantity.",
+          "page_number": 9
+        },
+        {
+          "node_id": "node_108",
+          "category": "Text_Block",
+          "snippet": "3.1.45 METROLOGICAL CONFIRMATION – Set of operations required to ensure that measuring equipment con",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_109",
+          "category": "Text_Block",
+          "snippet": "3.1.46 MEASURING EQUIPMENT – Measuring instrument, software, measurement standard, reference materia",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_110",
+          "category": "Text_Block",
+          "snippet": "3.1.47 METROLOGICAL CHARACTERISTIC – Distinguishing feature, which can influence the results of meas",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_111",
+          "category": "Text_Block",
+          "snippet": "3.1.48 METROLOGICAL FUNCTION - Function with organizational responsibility for defining and implemen",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_112",
+          "category": "Text_Block",
+          "snippet": "3.1.49 NONCONFORMITY – Non-fulfillment of a specified requirement.",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_113",
+          "category": "Text_Block",
+          "snippet": "3.1.50 OBJECTIVE EVIDENCE – Data supporting the existence or verity of something.",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_114",
+          "category": "Text_Block",
+          "snippet": "3.1.51 OBSERVATION – A concern or weakness detected in an element in the management system, but is n",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_115",
+          "category": "Text_Block",
+          "snippet": "3.1.52 OPENING MEETING - The introductory meeting between the auditor(s) and the auditee’s represent",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_116",
+          "category": "Text_Block",
+          "snippet": "3.1.53 ORGANIZATION – Group of people and facilities with an arrangement of responsibilities, author",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_117",
+          "category": "Text_Block",
+          "snippet": "3.1.54 ORGANIZATIONAL STRUCTURE – Arrangement of responsibilities, authorities and relationships bet",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_118",
+          "category": "Text_Block",
+          "snippet": "3.1.55 PRE-AWARD SURVEY - An activity conducted prior to a contract award and used to evaluate the o",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_119",
+          "category": "Text_Block",
+          "snippet": "3.1.56 PREVENTIVE ACTION – Action to eliminate the cause of a potential nonconformity or other undes",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_120",
+          "category": "Text_Block",
+          "snippet": "3.1.57 PROCEDURE - Specified way to carry out an activity or process.",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_121",
+          "category": "Text_Block",
+          "snippet": "3.1.58 PROCESS – Set of interrelated or interacting activities, which transforms inputs into outputs",
+          "page_number": 10
+        },
+        {
+          "node_id": "node_124",
+          "category": "Text_Block",
+          "snippet": "3.1.59 PRODUCT – Result of a process. For the purposes of its ISO 9001 Certification, CCA products c",
+          "page_number": 11
+        },
+        {
+          "node_id": "node_125",
+          "category": "Text_Block",
+          "snippet": "3.1.60 PROJECT – Unique process, consisting of a set of coordinated and controlled activities with s",
+          "page_number": 11
+        },
+        {
+          "node_id": "node_126",
+          "category": "Text_Block",
+          "snippet": "3.1.61 QUALITY – Degree to which a set of inherent characteristics fulfils requirements.",
+          "page_number": 11
+        },
+        {
+          "node_id": "node_127",
+          "category": "Text_Block",
+          "snippet": "3.1.62 QUALITY ASSURANCE – Part of quality management focused on providing confidence that quality r",
+          "page_number": 11
+        },
+        {
+          "node_id": "node_128",
+          "category": "Text_Block",
+          "snippet": "3.1.63 QUALITY CONTROL – Part of quality management focused on fulfilling quality requirements.",
+          "page_number": 11
+        },
+        {
+          "node_id": "node_129",
+          "category": "Text_Block",
+          "snippet": "3.1.64 QUALITY IMPROVEMENT – Part of quality management focused on increasing the ability to fulfill",
+          "page_number": 11
+        }
+      ]
+    },
+    {
+      "node_id": "node_067",
+      "category": "Footer",
+      "snippet": "Page 7 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_068",
+      "category": "Header",
+      "snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_086",
+      "category": "Footer",
+      "snippet": "Page 8 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_087",
+      "category": "Header",
+      "snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_106",
+      "category": "Footer",
+      "snippet": "Page 9 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_107",
+      "category": "Header",
+      "snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_122",
+      "category": "Footer",
+      "snippet": "Page 10 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_123",
+      "category": "Header",
+      "snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_130",
+      "category": "Section_Heading",
+      "snippet": "4. About Our Organization",
+      "page_number": 11,
+      "children": [
+        {
+          "node_id": "node_131",
+          "category": "Section_Header",
+          "snippet": "4.1 Organizational Context",
+          "page_number": 11,
+          "children": [
+            {
+              "node_id": "node_132",
+              "category": "Text_Block",
+              "snippet": "4.1.1 Custom Components & Assemblies, Inc. hereinafter called CCA, is committed to defining our posi",
+              "page_number": 11
+            },
+            {
+              "node_id": "node_133",
+              "category": "Text_Block",
+              "snippet": "4.1.2 CCA identifies, analyzes, monitors and reviews factors that may affect our ability to satisfy ",
+              "page_number": 11
+            },
+            {
+              "node_id": "node_134",
+              "category": "Text_Block",
+              "snippet": "4.1.3 To ensure that our QMS is aligned with our strategy, whilst taking account of relevant interna",
+              "page_number": 11
+            },
+            {
+              "node_id": "node_135",
+              "category": "List_Block",
+              "snippet": "1. Internal Issues- conditions related to our organizational activities, products, services, strateg",
+              "page_number": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "node_136",
+      "category": "Footer",
+      "snippet": "Page 11 of 42 If this document is printed and not signed by the approved personnel, then it is an un",
+      "page_number": 11
+    }
+  ]
+}
