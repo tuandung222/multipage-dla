@@ -1,0 +1,2192 @@
+{
+  "document_summary": {
+    "total_pages_analyzed": 11,
+    "total_nodes_detected": 136,
+    "cross_page_continuations": [
+      {
+        "node_id": "node_023",
+        "continues": "node_020",
+        "page": 3
+      }
+    ],
+    "suggested_new_categories": []
+  },
+  "detected_elements": [
+    {
+      "node_id": "node_001",
+      "image_index": 1,
+      "category": "Logo",
+      "box_2d": [
+        35,
+        242,
+        210,
+        757
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC.",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Large standalone company logo at the top of the cover page.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_002",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        286,
+        177,
+        358,
+        822
+      ],
+      "content_snippet": "Custom Components & Assemblies, Inc.",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Large, centered text serving as the primary company identifier on the cover page.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_003",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        488,
+        233,
+        520,
+        765
+      ],
+      "content_snippet": "ISO 9001:2015 Quality Manual",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Large, centered text indicating the specific standard and document type.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_004",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        568,
+        174,
+        600,
+        825
+      ],
+      "content_snippet": "Quality Management System Manual",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Large, centered text serving as the main descriptive title of the document.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_005",
+      "image_index": 1,
+      "category": "Metadata_Block",
+      "box_2d": [
+        710,
+        295,
+        758,
+        700
+      ],
+      "content_snippet": "Issued By: Quality Manager Revision: B Issued Date: 9-01-17 Approved by: President",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "A self-contained block presenting key-value document metadata such as issuer, date, and revision.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_006",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        848,
+        108,
+        898,
+        891
+      ],
+      "content_snippet": "Page 1 of 42 If this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Block at the bottom of the page containing page numbering and a disclaimer notice.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_007",
+      "image_index": 1,
+      "category": "Header",
+      "box_2d": [
+        31,
+        40,
+        126,
+        959
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "This is the standard header block at the top of the page containing the logo, title, and revision info.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_008",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        211,
+        120,
+        226,
+        186
+      ],
+      "content_snippet": "Approval",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "This is a heading introducing the 'Approval' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_009",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        245,
+        176,
+        289,
+        872
+      ],
+      "content_snippet": "The signatures below certify that this management system manual has been reviewed and accepted. Demo",
+      "parent_node_id": "node_008",
+      "continues_previous_node": null,
+      "reasoning": "This is a paragraph of text following the 'Approval' header.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_010",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        308,
+        166,
+        404,
+        891
+      ],
+      "content_snippet": "Description Name Signature Position Date Prepared By Cory Norris Cory Norris Quality Manager 9-01-17",
+      "parent_node_id": "node_008",
+      "continues_previous_node": null,
+      "reasoning": "This is a structured table containing approval signatures and details.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_011",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        438,
+        117,
+        453,
+        258
+      ],
+      "content_snippet": "Amendment Record",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "This is a heading introducing the 'Amendment Record' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_012",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        472,
+        176,
+        501,
+        829
+      ],
+      "content_snippet": "This quality manual is reviewed to ensure its continuing relevance to the systems and process that i",
+      "parent_node_id": "node_011",
+      "continues_previous_node": null,
+      "reasoning": "This is a paragraph of text following the 'Amendment Record' header.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_013",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        520,
+        166,
+        676,
+        891
+      ],
+      "content_snippet": "Page No. Reason Revision Date ALL PAGES Revised to the ISO 9001:2015 Standard B 09-01-17",
+      "parent_node_id": "node_011",
+      "continues_previous_node": null,
+      "reasoning": "This is a structured table containing the amendment record.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_014",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        701,
+        117,
+        716,
+        352
+      ],
+      "content_snippet": "Company Proprietary Information",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "This is a heading introducing the 'Company Proprietary Information' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_015",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        735,
+        117,
+        779,
+        861
+      ],
+      "content_snippet": "The Electronic Version of this document is the latest revision. It is the responsibility of the indi",
+      "parent_node_id": "node_014",
+      "continues_previous_node": null,
+      "reasoning": "This is a paragraph of text following the 'Company Proprietary Information' header.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_016",
+      "image_index": 1,
+      "category": "Metadata_Block",
+      "box_2d": [
+        798,
+        117,
+        843,
+        753
+      ],
+      "content_snippet": "Document Reference: QMS1 Revision: B Uncontrolled Copy 0 Controlled Copy 1",
+      "parent_node_id": "node_014",
+      "continues_previous_node": null,
+      "reasoning": "This is a block containing key-value pairs for document metadata.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_017",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        912,
+        40,
+        959,
+        959
+      ],
+      "content_snippet": "Page 2 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "This is the standard footer block at the bottom of the page containing page numbering and a disclaimer.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_018",
+      "image_index": 2,
+      "category": "Header",
+      "box_2d": [
+        32,
+        40,
+        130,
+        958
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_019",
+      "image_index": 2,
+      "category": "Section_Header",
+      "box_2d": [
+        160,
+        130,
+        178,
+        882
+      ],
+      "content_snippet": "Table of Contents Page",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Heading introducing the Table of Contents section.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_020",
+      "image_index": 2,
+      "category": "Table_of_Contents",
+      "box_2d": [
+        195,
+        145,
+        888,
+        882
+      ],
+      "content_snippet": "1. Scope................................................................................................",
+      "parent_node_id": "node_019",
+      "continues_previous_node": null,
+      "reasoning": "Structured list mapping section titles to page numbers with dot leaders.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_021",
+      "image_index": 2,
+      "category": "Footer",
+      "box_2d": [
+        912,
+        108,
+        960,
+        892
+      ],
+      "content_snippet": "Page 3 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_022",
+      "image_index": 3,
+      "category": "Header",
+      "box_2d": [
+        33,
+        39,
+        130,
+        960
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata, consistent with previous pages.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_023",
+      "image_index": 3,
+      "category": "Table_of_Contents",
+      "box_2d": [
+        163,
+        178,
+        583,
+        882
+      ],
+      "content_snippet": "8.5.1 Control of Production & Service Provision.......................................................",
+      "parent_node_id": "node_019",
+      "continues_previous_node": "node_020",
+      "reasoning": "Continuation of the Table of Contents from the previous page, listing sections and page numbers.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_024",
+      "image_index": 3,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        107,
+        966,
+        891
+      ],
+      "content_snippet": "Page 4 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and uncontrolled document disclaimer.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_025",
+      "image_index": 4,
+      "category": "Header",
+      "box_2d": [
+        33,
+        40,
+        128,
+        959
+      ],
+      "content_snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_026",
+      "image_index": 4,
+      "category": "Section_Heading",
+      "box_2d": [
+        163,
+        146,
+        177,
+        221
+      ],
+      "content_snippet": "1. Scope",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Top-level section heading identified by a single integer.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_027",
+      "image_index": 4,
+      "category": "Section_Header",
+      "box_2d": [
+        180,
+        176,
+        193,
+        288
+      ],
+      "content_snippet": "1.1 Introduction",
+      "parent_node_id": "node_026",
+      "continues_previous_node": null,
+      "reasoning": "Subsection heading introducing a new topic within the main scope.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_028",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        213,
+        176,
+        274,
+        868
+      ],
+      "content_snippet": "1.1.1 It is our policy at Custom Components & Assemblies, Inc. hereinafter called CCA, to procure, m",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_029",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        291,
+        176,
+        352,
+        867
+      ],
+      "content_snippet": "1.1.2 CCA has developed and implemented a quality management system to demonstrate its ability to co",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_030",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        372,
+        176,
+        386,
+        731
+      ],
+      "content_snippet": "1.1.3 The quality system complies with the International Standard ISO 9001:2015.",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_031",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        404,
+        176,
+        481,
+        868
+      ],
+      "content_snippet": "1.1.4 This manual is divided into sections modeled on the sectional organization of the ISO 9001:201",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_032",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        500,
+        176,
+        546,
+        865
+      ],
+      "content_snippet": "1.1.5 The purpose of this manual is to define and describe the quality system, to define authorities",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_033",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        565,
+        176,
+        611,
+        875
+      ],
+      "content_snippet": "1.1.6 Another purpose of this manual is to present the quality system to customers, suppliers, regul",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_034",
+      "image_index": 4,
+      "category": "Text_Block",
+      "box_2d": [
+        629,
+        176,
+        675,
+        869
+      ],
+      "content_snippet": "1.1.7 The figure below illustrates our methodology for the development of our QMS, Using the plan, d",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph containing prose text introducing a diagram.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_035",
+      "image_index": 4,
+      "category": "Diagram",
+      "box_2d": [
+        681,
+        245,
+        890,
+        803
+      ],
+      "content_snippet": "Figure 1: ISO 9001:2015 QMS & PDCA Interaction diagram showing Context of the Organization, Scope, P",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "A visual flowchart diagram illustrating a process, including its caption.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_036",
+      "image_index": 4,
+      "category": "Footer",
+      "box_2d": [
+        919,
+        108,
+        965,
+        891
+      ],
+      "content_snippet": "Page 5 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_037",
+      "image_index": 5,
+      "category": "Header",
+      "box_2d": [
+        32,
+        39,
+        130,
+        960
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_038",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        196,
+        176,
+        289,
+        878
+      ],
+      "content_snippet": "1.1.8 The Scope of CCA Quality Management System is “CCA provides, manufactures, and assembles a wid",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph continuing the 1.1 Introduction section from the previous page.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_039",
+      "image_index": 5,
+      "category": "List_Block",
+      "box_2d": [
+        308,
+        293,
+        370,
+        726
+      ],
+      "content_snippet": "Valve Industry Foam Injection Molds/Fixtures\nWater Sprinkler Systems Exercise Equipment\nFlow Regulat",
+      "parent_node_id": "node_027",
+      "continues_previous_node": null,
+      "reasoning": "A two-column list of industries related to the preceding paragraph.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_040",
+      "image_index": 5,
+      "category": "Section_Header",
+      "box_2d": [
+        389,
+        176,
+        402,
+        283
+      ],
+      "content_snippet": "1.2 Application",
+      "parent_node_id": "node_026",
+      "continues_previous_node": null,
+      "reasoning": "Subsection header introducing a new topic under the main '1. Scope' section.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_041",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        421,
+        176,
+        450,
+        878
+      ],
+      "content_snippet": "1.2.1 The quality management system defined in this manual applies to the manufacture and distributi",
+      "parent_node_id": "node_040",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph providing the content for section 1.2.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_042",
+      "image_index": 5,
+      "category": "Section_Header",
+      "box_2d": [
+        469,
+        176,
+        482,
+        283
+      ],
+      "content_snippet": "1.3 Exclusions",
+      "parent_node_id": "node_026",
+      "continues_previous_node": null,
+      "reasoning": "Subsection header introducing a new topic under the main '1. Scope' section.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_043",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        501,
+        176,
+        514,
+        702
+      ],
+      "content_snippet": "1.3.1 The quality management system shall be relevant to the nature of CCA.",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph providing content for section 1.3.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_044",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        533,
+        176,
+        546,
+        742
+      ],
+      "content_snippet": "1.3.2 CCA is excluded from clause 8.3 Design and Development of ISO 9001:2015.",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph providing content for section 1.3.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_045",
+      "image_index": 5,
+      "category": "Table",
+      "box_2d": [
+        548,
+        167,
+        628,
+        891
+      ],
+      "content_snippet": "Clause Justification for Exclusion\nClause 8.3 Design and Development We exclude design and developme",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "A structured table detailing the exclusion clause and its justification.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_046",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        660,
+        176,
+        673,
+        863
+      ],
+      "content_snippet": "1.3.3 ISO 9001:2015 requirements may be excluded only when the following three conditions are met:",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph introducing a list of conditions.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_047",
+      "image_index": 5,
+      "category": "List_Block",
+      "box_2d": [
+        675,
+        234,
+        736,
+        877
+      ],
+      "content_snippet": "- The requirement must be within ISO 9001:2015 Clause 8, Operation.\n- The exclusion may not affect o",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "A bulleted list of conditions following paragraph 1.3.3.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_048",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        755,
+        176,
+        800,
+        874
+      ],
+      "content_snippet": "1.3.4 Processes which are applicable, but which are performed by outside contractors, do not qualify",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph providing content for section 1.3.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_049",
+      "image_index": 5,
+      "category": "Text_Block",
+      "box_2d": [
+        819,
+        176,
+        864,
+        876
+      ],
+      "content_snippet": "1.3.5 The Operations Manager, or Quality Manager are responsible for identifying those requirements ",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph providing content for section 1.3.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_050",
+      "image_index": 5,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        107,
+        965,
+        891
+      ],
+      "content_snippet": "Page 6 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and uncontrolled document warning.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_051",
+      "image_index": 6,
+      "category": "Header",
+      "box_2d": [
+        30,
+        40,
+        130,
+        960
+      ],
+      "content_snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_052",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        162,
+        175,
+        225,
+        875
+      ],
+      "content_snippet": "1.3.6 Top management evaluates the proposed exclusions and determines whether they are appropriate. Th",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph continuing the '1.3 Exclusions' section from the previous page.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_053",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        242,
+        175,
+        305,
+        875
+      ],
+      "content_snippet": "1.3.7 Any exclusion taken is documented in this section of the quality manual. The excluded requirem",
+      "parent_node_id": "node_042",
+      "continues_previous_node": null,
+      "reasoning": "Numbered paragraph continuing the '1.3 Exclusions' section.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_054",
+      "image_index": 6,
+      "category": "Section_Heading",
+      "box_2d": [
+        342,
+        145,
+        355,
+        250
+      ],
+      "content_snippet": "2. References",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Top-level section heading introducing a new major section.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_055",
+      "image_index": 6,
+      "category": "Section_Header",
+      "box_2d": [
+        358,
+        175,
+        385,
+        830
+      ],
+      "content_snippet": "2.1 Reference Documents used for the Quality Management system, testing, production, and inspection.",
+      "parent_node_id": "node_054",
+      "continues_previous_node": null,
+      "reasoning": "Subsection header under '2. References'.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_056",
+      "image_index": 6,
+      "category": "List_Block",
+      "box_2d": [
+        405,
+        205,
+        420,
+        315
+      ],
+      "content_snippet": "- ISO 9001:2015",
+      "parent_node_id": "node_055",
+      "continues_previous_node": null,
+      "reasoning": "Indented list item providing a reference document.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_057",
+      "image_index": 6,
+      "category": "Section_Header",
+      "box_2d": [
+        450,
+        115,
+        465,
+        340
+      ],
+      "content_snippet": "3.1 TERMS AND DEFINITIONS",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Header introducing a new section. Acts as the top-level heading here as there is no '3.' heading.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_058",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        485,
+        115,
+        515,
+        845
+      ],
+      "content_snippet": "3.1.1 ACCEPTANCE CRITERIA – The Specified limits placed on the characteristic of an item or process ",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph under '3.1 TERMS AND DEFINITIONS'.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_059",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        535,
+        115,
+        565,
+        860
+      ],
+      "content_snippet": "3.1.2 APPROVAL – The act of endorsement and/or the addition of positive authorization by signature (",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_060",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        585,
+        115,
+        615,
+        865
+      ],
+      "content_snippet": "3.1.3 AUDIT – Systematic, independent and documented process for obtaining audit evidence and evalua",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_061",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        630,
+        115,
+        645,
+        730
+      ],
+      "content_snippet": "3.1.4 AUDIT CRITERIA – Set of policies, procedures or requirements used as a reference.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_062",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        660,
+        115,
+        690,
+        860
+      ],
+      "content_snippet": "3.1.5 AUDIT CONCLUSION – Outcome of an audit provided by the audit team after consideration of the a",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_063",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        710,
+        115,
+        740,
+        850
+      ],
+      "content_snippet": "3.1.6 AUDIT EVIDENCE RECORDS – Statements of fact or other information which are relevant to the aud",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_064",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        760,
+        115,
+        805,
+        865
+      ],
+      "content_snippet": "3.1.7 AUDIT FINDING – Results of the evaluation of the collected audit evidence against audit criter",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_065",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        825,
+        115,
+        855,
+        855
+      ],
+      "content_snippet": "3.1.8 AUDIT PROGRAM –Set of one or more audits planned for a specific time frame and directed toward",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_066",
+      "image_index": 6,
+      "category": "Text_Block",
+      "box_2d": [
+        875,
+        115,
+        890,
+        560
+      ],
+      "content_snippet": "3.1.9 AUDIT TEAM – One or more auditors conducting an audit.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_067",
+      "image_index": 6,
+      "category": "Footer",
+      "box_2d": [
+        920,
+        105,
+        965,
+        895
+      ],
+      "content_snippet": "Page 7 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 7
+    },
+    {
+      "node_id": "node_068",
+      "image_index": 7,
+      "category": "Header",
+      "box_2d": [
+        32,
+        40,
+        130,
+        960
+      ],
+      "content_snippet": "Quality System Manual QMS1 Issued by: Quality Manager Revision Date: 9-01-17 Revision: B",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing logo, title, and revision metadata.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_069",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        164,
+        117,
+        178,
+        442
+      ],
+      "content_snippet": "3.1.10 AUDITEE – Organization being audited.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item, continuing the list of terms from the previous page.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_070",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        197,
+        117,
+        211,
+        579
+      ],
+      "content_snippet": "3.1.11 AUDITOR – Person with the competence to conduct an audit.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_071",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        230,
+        117,
+        261,
+        838
+      ],
+      "content_snippet": "3.1.12 Job Boss – Software program for the CCA operating system. It is a Progression Series that all",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_072",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        280,
+        117,
+        327,
+        881
+      ],
+      "content_snippet": "3.1.13 CALIBRATION – Comparison of a measurement standard or instrument of known accuracy over its w",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_073",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        346,
+        117,
+        377,
+        811
+      ],
+      "content_snippet": "3.1.14 CAPABILITY - Ability of an organization, system, or process to realize a product that will fu",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_074",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        396,
+        117,
+        427,
+        856
+      ],
+      "content_snippet": "3.1.15 CHARACTERISTIC – Any property or attribute of an item, process or service that is distinct, d",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_075",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        446,
+        117,
+        509,
+        878
+      ],
+      "content_snippet": "3.1.16 CERTIFIED MATERIAL TEST REPORT – A document approved by an authorized company representative ",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_076",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        526,
+        117,
+        540,
+        630
+      ],
+      "content_snippet": "3.1.17 COMPETENCE – Demonstrated ability to apply knowledge and skills.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_077",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        559,
+        117,
+        573,
+        864
+      ],
+      "content_snippet": "3.1.18 CONCESSION – Permission to use or release a product that does not conform to specified requir",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_078",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        592,
+        117,
+        606,
+        474
+      ],
+      "content_snippet": "3.1.19 CONFORMITY – Fulfillment of a requirement.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_079",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        625,
+        117,
+        639,
+        801
+      ],
+      "content_snippet": "3.1.20 CONTINUAL IMPROVEMENT – A recurring activity to increase the ability to fulfill requirements.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_080",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        658,
+        117,
+        672,
+        626
+      ],
+      "content_snippet": "3.1.21 CORRECTION – Action taken to eliminate a detected nonconformity.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_081",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        691,
+        117,
+        722,
+        856
+      ],
+      "content_snippet": "3.1.22 CORRECTIVE ACTION - Action to eliminate the cause of a detected nonconformity or other undesi",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_082",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        741,
+        117,
+        755,
+        826
+      ],
+      "content_snippet": "3.1.23 CUSTOMER – The immediate purchaser of a product, which may be the final user or a resale part",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_083",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        774,
+        117,
+        805,
+        877
+      ],
+      "content_snippet": "3.1.24 CUSTOMER SATISFACTION – Customer’s perception of the degree to which the customer’s requireme",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_084",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        824,
+        117,
+        871,
+        861
+      ],
+      "content_snippet": "3.1.25 DEFECT - Non-fulfillment of a requirement related to an intended or specified use (NOTE: The ",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_085",
+      "image_index": 7,
+      "category": "Text_Block",
+      "box_2d": [
+        890,
+        117,
+        904,
+        425
+      ],
+      "content_snippet": "3.1.26 DESIGN – A detailed plan for an item.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition item.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_086",
+      "image_index": 7,
+      "category": "Footer",
+      "box_2d": [
+        920,
+        108,
+        968,
+        891
+      ],
+      "content_snippet": "Page 8 of 42 If this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 8
+    },
+    {
+      "node_id": "node_087",
+      "image_index": 8,
+      "category": "Header",
+      "box_2d": [
+        31,
+        39,
+        130,
+        960
+      ],
+      "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing title, logo, and revision metadata.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_088",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        180,
+        117,
+        211,
+        842
+      ],
+      "content_snippet": "3.1.27 DESIGN ACCEPTANCE CRITERIA – Defined limits placed on characteristics of materials or products",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_089",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        228,
+        117,
+        259,
+        786
+      ],
+      "content_snippet": "3.1.28 DESIGN AND DEVELOPMENT – Set of processes that transform requirements into specified",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_090",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        276,
+        117,
+        291,
+        814
+      ],
+      "content_snippet": "3.1.29 DESIGN REQUIREMENTS – Constraints imposed on the design by an Engineering Specification.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_091",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        310,
+        117,
+        341,
+        869
+      ],
+      "content_snippet": "3.1.30 DEVIATION PERMIT - Permission to depart from the originally specified requirements of a product",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_092",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        358,
+        117,
+        373,
+        533
+      ],
+      "content_snippet": "3.1.31 DOCUMENT – Information and its supporting medium.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_093",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        392,
+        117,
+        423,
+        863
+      ],
+      "content_snippet": "3.1.32 DOCUMENTATION – The written and/or pictorial information describing, defining, specifying, repo",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_094",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        440,
+        117,
+        455,
+        835
+      ],
+      "content_snippet": "3.1.33 EFFECTIVENESS - Extent to which planned activities are realized and planned results are achieve",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_095",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        474,
+        117,
+        505,
+        872
+      ],
+      "content_snippet": "3.1.34 FOLLOW-UP AUDIT - A special audit performed to verify that corrective action has been implement",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_096",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        522,
+        117,
+        537,
+        840
+      ],
+      "content_snippet": "3.1.35 INDEPENDENCE - Freedom from bias and external influence; provides for objectivity and impartial",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_097",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        556,
+        117,
+        571,
+        403
+      ],
+      "content_snippet": "3.1.36 INFORMATION - Meaningful data.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_098",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        590,
+        117,
+        621,
+        812
+      ],
+      "content_snippet": "3.1.37 INFRASTRUCTURE - System of facilities, equipment and services needed for the operation of an",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_099",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        638,
+        117,
+        669,
+        837
+      ],
+      "content_snippet": "3.1.38 INSPECTION – Conformity evaluation by observation and judgment accompanied, as appropriate, by",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_100",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        686,
+        117,
+        701,
+        764
+      ],
+      "content_snippet": "3.1.39 INSPECTION RECORD - Document stating results (data) concerning inspection activities.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_101",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        720,
+        117,
+        735,
+        690
+      ],
+      "content_snippet": "3.1.40 LEAD AUDITOR - The individual who manages the audit team during an audit.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_102",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        754,
+        117,
+        769,
+        862
+      ],
+      "content_snippet": "3.1.41 MANAGEMENT SYSTEM – A system to establish policy and objectives and to achieve those objectives",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_103",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        788,
+        117,
+        819,
+        861
+      ],
+      "content_snippet": "3.1.42 MEASUREMENT CONTROL SYSTEM – Set of interrelated or interacting elements necessary to achieve",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_104",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        836,
+        117,
+        867,
+        831
+      ],
+      "content_snippet": "3.1.43 MEASURING AND TEST EQUIPMENT – Devices used to measure, gage, test, inspect or otherwise",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_105",
+      "image_index": 8,
+      "category": "Text_Block",
+      "box_2d": [
+        884,
+        117,
+        899,
+        734
+      ],
+      "content_snippet": "3.1.44 MEASUREMENT PROCESS – Set of operations to determine the value of a quantity.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition item in the ongoing terms and definitions section.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_106",
+      "image_index": 8,
+      "category": "Footer",
+      "box_2d": [
+        916,
+        107,
+        965,
+        891
+      ],
+      "content_snippet": "Page 9 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 9
+    },
+    {
+      "node_id": "node_107",
+      "image_index": 10,
+      "category": "Header",
+      "box_2d": [
+        32,
+        40,
+        130,
+        960
+      ],
+      "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header containing title, logo, and revision information.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_108",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        180,
+        117,
+        242,
+        880
+      ],
+      "content_snippet": "3.1.45 METROLOGICAL CONFIRMATION – Set of operations required to ensure that measuring equipment con",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph continuing the terms section.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_109",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        262,
+        117,
+        292,
+        872
+      ],
+      "content_snippet": "3.1.46 MEASURING EQUIPMENT – Measuring instrument, software, measurement standard, reference materia",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_110",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        312,
+        117,
+        342,
+        815
+      ],
+      "content_snippet": "3.1.47 METROLOGICAL CHARACTERISTIC – Distinguishing feature, which can influence the results of meas",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_111",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        362,
+        117,
+        392,
+        860
+      ],
+      "content_snippet": "3.1.48 METROLOGICAL FUNCTION - Function with organizational responsibility for defining and implemen",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_112",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        412,
+        117,
+        425,
+        597
+      ],
+      "content_snippet": "3.1.49 NONCONFORMITY – Non-fulfillment of a specified requirement.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_113",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        444,
+        117,
+        457,
+        700
+      ],
+      "content_snippet": "3.1.50 OBJECTIVE EVIDENCE – Data supporting the existence or verity of something.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_114",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        476,
+        117,
+        520,
+        869
+      ],
+      "content_snippet": "3.1.51 OBSERVATION – A concern or weakness detected in an element in the management system, but is n",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_115",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        542,
+        117,
+        570,
+        878
+      ],
+      "content_snippet": "3.1.52 OPENING MEETING - The introductory meeting between the auditor(s) and the auditee’s represent",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_116",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        592,
+        117,
+        620,
+        859
+      ],
+      "content_snippet": "3.1.53 ORGANIZATION – Group of people and facilities with an arrangement of responsibilities, author",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_117",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        642,
+        117,
+        670,
+        875
+      ],
+      "content_snippet": "3.1.54 ORGANIZATIONAL STRUCTURE – Arrangement of responsibilities, authorities and relationships bet",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_118",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        692,
+        117,
+        720,
+        862
+      ],
+      "content_snippet": "3.1.55 PRE-AWARD SURVEY - An activity conducted prior to a contract award and used to evaluate the o",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_119",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        736,
+        117,
+        765,
+        856
+      ],
+      "content_snippet": "3.1.56 PREVENTIVE ACTION – Action to eliminate the cause of a potential nonconformity or other undes",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_120",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        786,
+        117,
+        800,
+        600
+      ],
+      "content_snippet": "3.1.57 PROCEDURE - Specified way to carry out an activity or process.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_121",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        818,
+        117,
+        880,
+        880
+      ],
+      "content_snippet": "3.1.58 PROCESS – Set of interrelated or interacting activities, which transforms inputs into outputs",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Numbered definition paragraph.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_122",
+      "image_index": 10,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        965,
+        892
+      ],
+      "content_snippet": "Page 10 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard page footer with page number and disclaimer.",
+      "page_number": 10
+    },
+    {
+      "node_id": "node_123",
+      "image_index": 10,
+      "category": "Header",
+      "box_2d": [
+        31,
+        39,
+        130,
+        955
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC. Quality System Manual QMS1 Issued by: Quality Manager Revision ",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document header block containing logo, title, and revision info.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_124",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        165,
+        117,
+        195,
+        862
+      ],
+      "content_snippet": "3.1.59 PRODUCT – Result of a process. For the purposes of its ISO 9001 Certification, CCA products c",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms from the previous page.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_125",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        214,
+        117,
+        259,
+        876
+      ],
+      "content_snippet": "3.1.60 PROJECT – Unique process, consisting of a set of coordinated and controlled activities with s",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_126",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        278,
+        117,
+        293,
+        704
+      ],
+      "content_snippet": "3.1.61 QUALITY – Degree to which a set of inherent characteristics fulfils requirements.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_127",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        312,
+        117,
+        342,
+        826
+      ],
+      "content_snippet": "3.1.62 QUALITY ASSURANCE – Part of quality management focused on providing confidence that quality r",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_128",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        361,
+        117,
+        376,
+        785
+      ],
+      "content_snippet": "3.1.63 QUALITY CONTROL – Part of quality management focused on fulfilling quality requirements.",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_129",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        395,
+        117,
+        425,
+        862
+      ],
+      "content_snippet": "3.1.64 QUALITY IMPROVEMENT – Part of quality management focused on increasing the ability to fulfill",
+      "parent_node_id": "node_057",
+      "continues_previous_node": null,
+      "reasoning": "Definition entry continuing the list of terms.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_130",
+      "image_index": 10,
+      "category": "Section_Heading",
+      "box_2d": [
+        456,
+        146,
+        471,
+        343
+      ],
+      "content_snippet": "4. About Our Organization",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Primary top-level heading for a new major section.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_131",
+      "image_index": 10,
+      "category": "Section_Header",
+      "box_2d": [
+        474,
+        175,
+        489,
+        367
+      ],
+      "content_snippet": "4.1 Organizational Context",
+      "parent_node_id": "node_130",
+      "continues_previous_node": null,
+      "reasoning": "Subsection heading under section 4.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_132",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        505,
+        205,
+        566,
+        879
+      ],
+      "content_snippet": "4.1.1 Custom Components & Assemblies, Inc. hereinafter called CCA, is committed to defining our posi",
+      "parent_node_id": "node_131",
+      "continues_previous_node": null,
+      "reasoning": "Paragraph text under subsection 4.1.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_133",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        585,
+        205,
+        631,
+        879
+      ],
+      "content_snippet": "4.1.2 CCA identifies, analyzes, monitors and reviews factors that may affect our ability to satisfy ",
+      "parent_node_id": "node_131",
+      "continues_previous_node": null,
+      "reasoning": "Paragraph text under subsection 4.1.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_134",
+      "image_index": 10,
+      "category": "Text_Block",
+      "box_2d": [
+        665,
+        205,
+        741,
+        879
+      ],
+      "content_snippet": "4.1.3 To ensure that our QMS is aligned with our strategy, whilst taking account of relevant interna",
+      "parent_node_id": "node_131",
+      "continues_previous_node": null,
+      "reasoning": "Paragraph text under subsection 4.1.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_135",
+      "image_index": 10,
+      "category": "List_Block",
+      "box_2d": [
+        773,
+        264,
+        896,
+        877
+      ],
+      "content_snippet": "1. Internal Issues- conditions related to our organizational activities, products, services, strateg",
+      "parent_node_id": "node_131",
+      "continues_previous_node": null,
+      "reasoning": "Numbered list detailing internal and external issues, continuing from the previous paragraph.",
+      "page_number": 11
+    },
+    {
+      "node_id": "node_136",
+      "image_index": 10,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        107,
+        965,
+        891
+      ],
+      "content_snippet": "Page 11 of 42 If this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "continues_previous_node": null,
+      "reasoning": "Standard document footer containing page number and disclaimer.",
+      "page_number": 11
+    }
+  ]
+}

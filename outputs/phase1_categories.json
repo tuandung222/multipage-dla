@@ -1,0 +1,207 @@
+{
+  "total_windows_analyzed": 3,
+  "merged_category_count": 13,
+  "categories": [
+    {
+      "class_name": "Header",
+      "description": "The block at the top of the page containing the company logo, document title, and revision information. This element is consistent on pages 2 and 3.",
+      "downstream_purpose": "Provides consistent context for each page but can often be excluded from main content analysis to reduce redundancy."
+    },
+    {
+      "class_name": "Footer",
+      "description": "The block at the bottom of the page containing page numbering and a disclaimer notice.",
+      "downstream_purpose": "Used for document assembly and page ordering. The text content is typically discarded as boilerplate."
+    },
+    {
+      "class_name": "Title",
+      "description": "Large, centered text on the cover page that serves as the primary title for the document or a major section.",
+      "downstream_purpose": "Identifies the primary subject of the document. Crucial for document identification and high-level summarization."
+    },
+    {
+      "class_name": "Logo",
+      "description": "A standalone company logo or branding mark, such as the large one on the cover page.",
+      "downstream_purpose": "Identifies the document's origin. Often discarded during text extraction but can be used for source verification."
+    },
+    {
+      "class_name": "Section_Header",
+      "description": "A heading that introduces a new section or topic within the document body, such as 'Approval' or 'Table of Contents'.",
+      "downstream_purpose": "Acts as a semantic boundary for chunking text and understanding the document's structure. Key for navigation and retrieval."
+    },
+    {
+      "class_name": "Text_Block",
+      "description": "A paragraph or a block of continuous prose text, typically following a header or introducing a table.",
+      "downstream_purpose": "Contains the main informational content of the document. This is the primary input for language model processing and analysis."
+    },
+    {
+      "class_name": "Table",
+      "description": "Data organized in a structured grid of rows and columns. This includes formal tables (like the approval record) and the Table of Contents, which has a clear multi-column structure.",
+      "downstream_purpose": "Data requires specialized table structure recognition for accurate extraction. Preserves relationships between cells, rows, and columns."
+    },
+    {
+      "class_name": "Metadata_Block",
+      "description": "A small, self-contained block, often with a form-like structure, presenting key-value document metadata like 'Issued By', 'Revision', or 'Document Reference'.",
+      "downstream_purpose": "Contains critical, high-value document attributes. This category flags the region for targeted key-value pair extraction."
+    },
+    {
+      "class_name": "Table_of_Contents",
+      "description": "A structured list, often spanning multiple pages, that maps section numbers and titles to page numbers, typically using dot leaders.",
+      "downstream_purpose": "Requires specialized parsing to extract the document's structure and navigation links. It is not standard prose or a simple list."
+    },
+    {
+      "class_name": "Section_Heading",
+      "description": "A primary, top-level heading for a major section of the document, typically identified by a single integer (e.g., '1. Scope').",
+      "downstream_purpose": "Acts as a primary semantic boundary for chunking the document. Useful for creating a high-level outline of the document's content."
+    },
+    {
+      "class_name": "Diagram",
+      "description": "A visual representation of a process or system, such as a flowchart or organizational chart, including its caption.",
+      "downstream_purpose": "Identifies non-textual content that needs to be passed to a specialized Vision-Language Model (VLM) for interpretation or to be described by its caption."
+    },
+    {
+      "class_name": "List_Block",
+      "description": "A collection of related items presented as an indented list, such as the list of industries under section 1.1.8. This category generalizes over bulleted, numbered, or simply indented lists.",
+      "downstream_purpose": "Allows for the structured extraction of a set of related items, which often require different handling than a free-form paragraph."
+    },
+    {
+      "class_name": "Image",
+      "description": "A non-textual, graphical element, such as the flowchart diagram on page 5 illustrating the Plan-Do-Check-Act cycle.",
+      "downstream_purpose": "To be extracted as a visual asset or passed to a Vision-Language Model (VLM) for interpretation, as standard text extraction is not applicable."
+    }
+  ],
+  "per_window_details": [
+    {
+      "reasoning_process": "The document is a structured quality manual with a clear hierarchy. I identified recurring elements like headers and footers across multiple pages, which should be categorized separately. The main content is logically divided by section headers, followed by either text paragraphs or tables. The Table of Contents, while visually a list, is structured in a two-column format (item and page number) making 'Table' the most pragmatic category for structured extraction.",
+      "categories": [
+        {
+          "class_name": "Header",
+          "description": "The block at the top of the page containing the company logo, document title, and revision information. This element is consistent on pages 2 and 3.",
+          "downstream_purpose": "Provides consistent context for each page but can often be excluded from main content analysis to reduce redundancy."
+        },
+        {
+          "class_name": "Footer",
+          "description": "The block at the bottom of the page containing page numbering and a disclaimer notice.",
+          "downstream_purpose": "Used for document assembly and page ordering. The text content is typically discarded as boilerplate."
+        },
+        {
+          "class_name": "Title",
+          "description": "Large, centered text on the cover page that serves as the primary title for the document or a major section.",
+          "downstream_purpose": "Identifies the primary subject of the document. Crucial for document identification and high-level summarization."
+        },
+        {
+          "class_name": "Logo",
+          "description": "A standalone company logo or branding mark, such as the large one on the cover page.",
+          "downstream_purpose": "Identifies the document's origin. Often discarded during text extraction but can be used for source verification."
+        },
+        {
+          "class_name": "Section_Header",
+          "description": "A heading that introduces a new section or topic within the document body, such as 'Approval' or 'Table of Contents'.",
+          "downstream_purpose": "Acts as a semantic boundary for chunking text and understanding the document's structure. Key for navigation and retrieval."
+        },
+        {
+          "class_name": "Text_Block",
+          "description": "A paragraph or a block of continuous prose text, typically following a header or introducing a table.",
+          "downstream_purpose": "Contains the main informational content of the document. This is the primary input for language model processing and analysis."
+        },
+        {
+          "class_name": "Table",
+          "description": "Data organized in a structured grid of rows and columns. This includes formal tables (like the approval record) and the Table of Contents, which has a clear multi-column structure.",
+          "downstream_purpose": "Data requires specialized table structure recognition for accurate extraction. Preserves relationships between cells, rows, and columns."
+        },
+        {
+          "class_name": "Metadata_Block",
+          "description": "A small, self-contained block, often with a form-like structure, presenting key-value document metadata like 'Issued By', 'Revision', or 'Document Reference'.",
+          "downstream_purpose": "Contains critical, high-value document attributes. This category flags the region for targeted key-value pair extraction."
+        }
+      ],
+      "_window_pages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reasoning_process": "I analyzed all three pages to identify recurring structural elements. The document clearly separates metadata (Header/Footer) from content. The first two content pages are a highly structured Table of Contents, which requires its own category for specialized parsing. The third page introduces the main body, which is logically structured with major headings, sub-sections (heading + paragraph), and a diagram, leading to the creation of distinct categories for each to facilitate hierarchical chunking and appropriate downstream processing.",
+      "categories": [
+        {
+          "class_name": "Header",
+          "description": "A block at the top of each page containing the company logo, document title, document ID, issuer, and revision information.",
+          "downstream_purpose": "Isolate for metadata extraction (e.g., document title, revision date) or discard to reduce noise in the main content processing."
+        },
+        {
+          "class_name": "Footer",
+          "description": "A block at the bottom of each page containing a disclaimer and the page number (e.g., 'Page 3 of 42').",
+          "downstream_purpose": "Isolate for metadata extraction (page number) or discard to reduce noise. The disclaimer text is typically boilerplate and can be ignored."
+        },
+        {
+          "class_name": "Table_of_Contents",
+          "description": "A structured list, often spanning multiple pages, that maps section numbers and titles to page numbers, typically using dot leaders.",
+          "downstream_purpose": "Requires specialized parsing to extract the document's structure and navigation links. It is not standard prose or a simple list."
+        },
+        {
+          "class_name": "Section_Heading",
+          "description": "A primary, top-level heading for a major section of the document, typically identified by a single integer (e.g., '1. Scope').",
+          "downstream_purpose": "Acts as a primary semantic boundary for chunking the document. Useful for creating a high-level outline of the document's content."
+        },
+        {
+          "class_name": "Text_Block",
+          "description": "A block of text containing one or more paragraphs, often introduced by a numbered sub-heading (e.g., '1.1.1'). This category groups sub-headings with their corresponding body text.",
+          "downstream_purpose": "Represents the core textual content for information extraction, question-answering, and summarization. Grouping sub-headings with paragraphs maintains local context."
+        },
+        {
+          "class_name": "Diagram",
+          "description": "A visual representation of a process or system, such as a flowchart or organizational chart, including its caption.",
+          "downstream_purpose": "Identifies non-textual content that needs to be passed to a specialized Vision-Language Model (VLM) for interpretation or to be described by its caption."
+        }
+      ],
+      "_window_pages": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "reasoning_process": "The document is a standard technical manual with a consistent header, footer, and a hierarchical content structure. The categories are defined to separate the recurring, non-content elements (Header, Footer) from the main body, and to differentiate the body's components based on their distinct structural formats and downstream processing needs (e.g., text vs. table vs. image). This approach creates a clean separation for tasks like semantic chunking, table extraction, and image analysis.",
+      "categories": [
+        {
+          "class_name": "Header",
+          "description": "The block at the top of each page containing the company logo, document title ('Quality System Manual'), and a table-like block with document control information (Issued by, Revision Date, Revision).",
+          "downstream_purpose": "Can be processed for metadata (e.g., document title, revision) or discarded to reduce noise in the main content extraction."
+        },
+        {
+          "class_name": "Footer",
+          "description": "The block at the bottom of each page containing the page number and a disclaimer about uncontrolled copies.",
+          "downstream_purpose": "Can be processed for pagination metadata or discarded to reduce noise."
+        },
+        {
+          "class_name": "Section_Header",
+          "description": "Numbered and titled headings that introduce a new section or subsection (e.g., '1. Scope', '1.1.1', '1.3 Exclusions'). These act as logical dividers for the content.",
+          "downstream_purpose": "Crucial for creating a semantic hierarchy and for logical chunking of the document. Provides context for the text blocks that follow."
+        },
+        {
+          "class_name": "Text_Block",
+          "description": "Standard paragraphs of text that form the main body of the document, typically following a Section_Header.",
+          "downstream_purpose": "Represents the core textual content to be extracted for reading, searching, or analysis by a language model."
+        },
+        {
+          "class_name": "List_Block",
+          "description": "A collection of related items presented as an indented list, such as the list of industries under section 1.1.8. This category generalizes over bulleted, numbered, or simply indented lists.",
+          "downstream_purpose": "Allows for the structured extraction of a set of related items, which often require different handling than a free-form paragraph."
+        },
+        {
+          "class_name": "Table",
+          "description": "A structured grid of data with clear rows and columns, such as the 'Justification for Exclusion' table on page 6. This includes the table headers and all data cells.",
+          "downstream_purpose": "Must be isolated and passed to a specialized table structure recognition model to accurately extract the relationships between cells, rows, and columns."
+        },
+        {
+          "class_name": "Image",
+          "description": "A non-textual, graphical element, such as the flowchart diagram on page 5 illustrating the Plan-Do-Check-Act cycle.",
+          "downstream_purpose": "To be extracted as a visual asset or passed to a Vision-Language Model (VLM) for interpretation, as standard text extraction is not applicable."
+        }
+      ],
+      "_window_pages": [
+        5,
+        6
+      ]
+    }
+  ]
+}

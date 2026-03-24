@@ -1,0 +1,612 @@
+{
+  "document_summary": {
+    "total_pages_analyzed": 6,
+    "total_nodes_detected": 40,
+    "page_range": [
+      1,
+      6
+    ]
+  },
+  "detected_elements": [
+    {
+      "node_id": "node_001",
+      "image_index": 0,
+      "category": "Logo",
+      "box_2d": [
+        36,
+        242,
+        210,
+        757
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC.",
+      "parent_node_id": null,
+      "reasoning": "Large company logo at the top of the cover page.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_002",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        285,
+        176,
+        359,
+        822
+      ],
+      "content_snippet": "Custom Components & Assemblies, Inc.",
+      "parent_node_id": null,
+      "reasoning": "Primary title of the document, centered and in large font.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_003",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        488,
+        233,
+        520,
+        765
+      ],
+      "content_snippet": "ISO 9001:2015 Quality Manual",
+      "parent_node_id": null,
+      "reasoning": "Secondary title or subtitle, centered and in large font.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_004",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        568,
+        174,
+        600,
+        824
+      ],
+      "content_snippet": "Quality Management System Manual",
+      "parent_node_id": null,
+      "reasoning": "Tertiary title or subtitle, centered and in large font.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_005",
+      "image_index": 0,
+      "category": "Metadata_Block",
+      "box_2d": [
+        710,
+        295,
+        758,
+        700
+      ],
+      "content_snippet": "Issued By: Quality Manager\nIssued Date: 9-01-17\nRevision: B\nApproved by: President",
+      "parent_node_id": null,
+      "reasoning": "Block containing document metadata such as issuer, date, revision, and approver.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_006",
+      "image_index": 0,
+      "category": "Footer",
+      "box_2d": [
+        849,
+        108,
+        898,
+        891
+      ],
+      "content_snippet": "Page 1 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "reasoning": "Footer containing page number and a disclaimer.",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_007",
+      "image_index": 1,
+      "category": "Header",
+      "box_2d": [
+        36,
+        47,
+        128,
+        952
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC.\nQuality System Manual\nQMS1\nIssued by: Quality Manager\nRevision",
+      "parent_node_id": null,
+      "reasoning": "Header block containing logo, document title, and revision info.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_008",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        212,
+        121,
+        226,
+        185
+      ],
+      "content_snippet": "Approval",
+      "parent_node_id": null,
+      "reasoning": "Heading introducing the 'Approval' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_009",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        245,
+        176,
+        288,
+        871
+      ],
+      "content_snippet": "The signatures below certify that this management system manual has been reviewed and accepted.\nDemo",
+      "parent_node_id": "node_027",
+      "reasoning": "Paragraph explaining the purpose of the approval signatures.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_010",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        308,
+        167,
+        404,
+        891
+      ],
+      "content_snippet": "Table with 5 columns and 4 rows containing approval signatures.",
+      "parent_node_id": "node_027",
+      "reasoning": "Structured grid containing approval details.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_011",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        440,
+        117,
+        454,
+        258
+      ],
+      "content_snippet": "Amendment Record",
+      "parent_node_id": null,
+      "reasoning": "Heading introducing the 'Amendment Record' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_012",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        473,
+        176,
+        501,
+        828
+      ],
+      "content_snippet": "This quality manual is reviewed to ensure its continuing relevance to the systems and process that i",
+      "parent_node_id": "node_030",
+      "reasoning": "Paragraph explaining the purpose of the amendment record.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_013",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        521,
+        167,
+        681,
+        891
+      ],
+      "content_snippet": "Table with 4 columns and 8 rows containing amendment records.",
+      "parent_node_id": "node_030",
+      "reasoning": "Structured grid containing amendment details.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_014",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        704,
+        117,
+        718,
+        352
+      ],
+      "content_snippet": "Company Proprietary Information",
+      "parent_node_id": null,
+      "reasoning": "Heading introducing the 'Company Proprietary Information' section.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_015",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        737,
+        117,
+        780,
+        861
+      ],
+      "content_snippet": "The Electronic Version of this document is the latest revision. It is the responsibility of the indi",
+      "parent_node_id": "node_032",
+      "reasoning": "Paragraph explaining the proprietary nature of the document.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_016",
+      "image_index": 1,
+      "category": "Metadata_Block",
+      "box_2d": [
+        796,
+        117,
+        844,
+        753
+      ],
+      "content_snippet": "Document Reference: QMS1 Revision: B\nUncontrolled Copy 0 Controlled Copy 1",
+      "parent_node_id": "node_032",
+      "reasoning": "Block containing document reference and copy control information.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_017",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        961,
+        891
+      ],
+      "content_snippet": "Page 2 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "reasoning": "Footer containing page number and a disclaimer.",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_018",
+      "image_index": 2,
+      "category": "Header",
+      "box_2d": [
+        36,
+        47,
+        128,
+        952
+      ],
+      "content_snippet": "CUSTOM COMPONENTS & ASSEMBLIES, INC.\nQuality System Manual\nQMS1\nIssued by: Quality Manager\nRevision",
+      "parent_node_id": null,
+      "reasoning": "Header block containing logo, document title, and revision info.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_019",
+      "image_index": 2,
+      "category": "Section_Header",
+      "box_2d": [
+        162,
+        132,
+        176,
+        257
+      ],
+      "content_snippet": "Table of Contents",
+      "parent_node_id": null,
+      "reasoning": "Heading introducing the 'Table of Contents' section.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_020",
+      "image_index": 2,
+      "category": "Table_of_Contents",
+      "box_2d": [
+        162,
+        846,
+        176,
+        882
+      ],
+      "content_snippet": "Page",
+      "parent_node_id": "node_037",
+      "reasoning": "Column header for the page numbers in the Table of Contents.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_021",
+      "image_index": 2,
+      "category": "Table_of_Contents",
+      "box_2d": [
+        195,
+        148,
+        891,
+        882
+      ],
+      "content_snippet": "1. Scope............................................................................................",
+      "parent_node_id": "node_037",
+      "reasoning": "Structured list mapping section titles to page numbers.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_022",
+      "image_index": 2,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        961,
+        891
+      ],
+      "content_snippet": "Page 3 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unc",
+      "parent_node_id": null,
+      "reasoning": "Footer containing page number and a disclaimer.",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_023",
+      "image_index": 1,
+      "category": "Header",
+      "box_2d": [
+        31,
+        40,
+        131,
+        959
+      ],
+      "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "parent_node_id": null,
+      "reasoning": "Standard header block containing company logo, document title, and revision information.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_024",
+      "image_index": 1,
+      "category": "Table_of_Contents",
+      "box_2d": [
+        163,
+        149,
+        582,
+        882
+      ],
+      "content_snippet": "8.5.1 Control of Production & Service Provision......................................................",
+      "parent_node_id": null,
+      "reasoning": "Continuation of the structured list mapping section numbers and titles to page numbers.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_025",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        968,
+        891
+      ],
+      "content_snippet": "Page 4 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "reasoning": "Standard footer block containing page numbering and a disclaimer notice.",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_026",
+      "image_index": 2,
+      "category": "Header",
+      "box_2d": [
+        31,
+        40,
+        131,
+        959
+      ],
+      "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "parent_node_id": null,
+      "reasoning": "Standard header block containing company logo, document title, and revision information.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_027",
+      "image_index": 2,
+      "category": "Section_Heading",
+      "box_2d": [
+        166,
+        147,
+        193,
+        292
+      ],
+      "content_snippet": "1. Scope\n1.1 Introduction",
+      "parent_node_id": null,
+      "reasoning": "Primary, top-level heading for a major section of the document.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_028",
+      "image_index": 2,
+      "category": "Text_Block",
+      "box_2d": [
+        213,
+        177,
+        673,
+        876
+      ],
+      "content_snippet": "1.1.1 It is our policy at Custom Components & Assemblies, Inc. hereinafter called CCA, to procure,\nma",
+      "parent_node_id": "node_027",
+      "reasoning": "Continuous prose text following the section heading, containing the main informational content.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_029",
+      "image_index": 2,
+      "category": "Diagram",
+      "box_2d": [
+        681,
+        245,
+        891,
+        803
+      ],
+      "content_snippet": "Figure 1: ISO 9001:2015 QMS & PDCA Interaction\nInternal & External Issues\nNeeds & Expectations of In",
+      "parent_node_id": "node_027",
+      "reasoning": "Visual representation of a process or system, including its caption.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_030",
+      "image_index": 2,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        968,
+        891
+      ],
+      "content_snippet": "Page 5 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "reasoning": "Standard footer block containing page numbering and a disclaimer notice.",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_031",
+      "image_index": 1,
+      "category": "Header",
+      "box_2d": [
+        32,
+        40,
+        130,
+        959
+      ],
+      "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+      "parent_node_id": null,
+      "reasoning": "Standard header block containing document title, logo, and revision info at the top of the page.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_032",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        197,
+        176,
+        290,
+        877
+      ],
+      "content_snippet": "1.1.8 The Scope of CCA Quality Management System is “CCA provides, manufactures, and assembles\na wid",
+      "parent_node_id": "node_003",
+      "reasoning": "Continuation of paragraph text under subsection 1.1 from the previous page.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_033",
+      "image_index": 1,
+      "category": "List_Block",
+      "box_2d": [
+        307,
+        294,
+        370,
+        725
+      ],
+      "content_snippet": "Valve Industry\nWater Sprinkler Systems\nFlow Regulation Systems\nPower & Gas Sectors\nFoam Injection M",
+      "parent_node_id": "node_032",
+      "reasoning": "Indented list of industries related to the preceding text block.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_034",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        389,
+        176,
+        403,
+        283
+      ],
+      "content_snippet": "1.2 Application",
+      "parent_node_id": "node_002",
+      "reasoning": "Subsection header under '1. Scope'.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_035",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        420,
+        176,
+        451,
+        877
+      ],
+      "content_snippet": "1.2.1 The quality management system defined in this manual applies to the manufacture and distributi",
+      "parent_node_id": "node_034",
+      "reasoning": "Paragraph text under subsection 1.2.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_036",
+      "image_index": 1,
+      "category": "Section_Header",
+      "box_2d": [
+        470,
+        176,
+        484,
+        283
+      ],
+      "content_snippet": "1.3 Exclusions",
+      "parent_node_id": "node_002",
+      "reasoning": "Subsection header under '1. Scope'.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_037",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        501,
+        176,
+        548,
+        742
+      ],
+      "content_snippet": "1.3.1 The quality management system shall be relevant to the nature of CCA.\n1.3.2 CCA is excluded fr",
+      "parent_node_id": "node_036",
+      "reasoning": "Paragraph text under subsection 1.3 introducing a table.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_038",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        549,
+        166,
+        629,
+        891
+      ],
+      "content_snippet": "Table with 2 columns detailing Clause and Justification for Exclusion",
+      "parent_node_id": "node_037",
+      "reasoning": "Table detailing exclusions, referenced by the preceding text block.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_039",
+      "image_index": 1,
+      "category": "Text_Block",
+      "box_2d": [
+        660,
+        176,
+        865,
+        877
+      ],
+      "content_snippet": "1.3.3 ISO 9001:2015 requirements may be excluded only when the following three conditions are met:\n-",
+      "parent_node_id": "node_036",
+      "reasoning": "Paragraph text under subsection 1.3 following the table.",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_040",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        918,
+        108,
+        966,
+        891
+      ],
+      "content_snippet": "Page 6 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+      "parent_node_id": null,
+      "reasoning": "Standard footer block containing page number and disclaimer.",
+      "page_number": 6
+    }
+  ]
+}

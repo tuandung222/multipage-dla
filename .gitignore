@@ -11,9 +11,6 @@ build/
 .venv/
 venv/
 
-# Outputs
-outputs/
-
 # IDE
 .vscode/
 .idea/
