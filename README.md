@@ -4,6 +4,22 @@ A **multi-phase, MLLM-powered pipeline** for **cross-page document layout analys
 
 ---
 
+## Table of Contents
+
+- [1. Problem Formulation](#1-problem-formulation)
+- [2. Motivation & Research Gap](#2-motivation--research-gap)
+- [3. Pipeline Architecture](#3-pipeline-architecture)
+- [4. Algorithm (Pseudocode)](#4-algorithm-pseudocode)
+- [5. MLLM Prompts](#5-mllm-prompts)
+- [6. Baseline Experiment: E2E vs Multi-Phase](#6-baseline-experiment-e2e-vs-multi-phase)
+- [7. Example Documents](#7-example-documents)
+- [8. Research Roadmap](#8-research-roadmap)
+- [9. Key Design Decisions](#9-key-design-decisions)
+- [10. Project Structure](#10-project-structure)
+- [11. Quick Start](#11-quick-start)
+
+---
+
 ## 1. Problem Formulation
 
 ### 1.1 Traditional DLA (Single-Page)
