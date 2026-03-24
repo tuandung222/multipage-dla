@@ -1,6 +1,6 @@
-# Multi-Page Document Layout Analysis Pipeline
+# Cross-Page Document Layout Analysis: Multi-Phase Pipeline & Data Engine
 
-A **multi-phase, MLLM-powered pipeline** for analyzing complex multi-page documents (ISO standards, quality manuals, government procedures). The system decomposes the hard problem of document layout analysis into focused phases, each with a specialized prompt — producing significantly better results than end-to-end single-prompt approaches.
+A **multi-phase, MLLM-powered pipeline** for **cross-page document layout analysis** — a novel research direction that extends traditional single-page DLA to multi-page documents with inter-page structural dependencies. This project serves dual purposes: (1) a working analysis pipeline that produces high-quality layout annotations, and (2) a **data engine** for generating benchmark and training data to enable knowledge distillation into smaller, efficient VLMs.
 
 ---
 
@@ -28,27 +28,30 @@ where $\mathcal{V}$ is the set of layout regions (nodes) and $\mathcal{E}$ is th
 
 ### 1.3 Our Extension: Cross-Page Multi-Page DLA
 
-We extend the problem further to **multi-page documents** where analyzing a single page requires context from adjacent pages:
+We extend the problem to **multi-page documents** where analyzing a single page requires **visual context from $k$ preceding pages** and **accumulated layout information** from all previously analyzed pages:
 
-$$\mathcal{F}(\mathcal{I}_t \mid \mathcal{I}_{t-1}, \mathcal{S}_{t-1}) \rightarrow (\mathcal{Y}_t, \mathcal{S}_t)$$
+$$\mathcal{F}(\mathcal{I}_t \mid \mathcal{I}_{t-k:t-1}, \mathcal{S}_{t-1}) \rightarrow (\mathcal{Y}_t, \mathcal{S}_t)$$
 
 where:
-- $\mathcal{I}_t$ — Current page image
-- $\mathcal{I}_{t-1}$ — Previous page image (adjacent context)
-- $\mathcal{S}_{t-1}$ — **Trailing state** from all previously analyzed pages (accumulated context)
-- $\mathcal{Y}_t = (\mathcal{V}_t,\; \mathcal{E}_t)$ — Detected layout graph for page $t$, including:
-  - $\mathcal{V}_t = \lbrace (b_i, c_i, \text{id}_i, \text{parent}_i) \rbrace$ — Nodes with bounding boxes, categories, unique IDs, and parent links
+- $\mathcal{I}_t$ — Current page image (target of analysis)
+- $\mathcal{I}_{t-k:t-1}$ — **Visual context**: images of the $k$ preceding pages (in our implementation, $k=1$, i.e., the immediately previous page is sent as visual context alongside the current page)
+- $\mathcal{S}_{t-1}$ — **Trailing state**: accumulated layout information from **all** previously analyzed pages $1, 2, \ldots, t-1$ (not just visual — this is structured metadata)
+- $\mathcal{Y}_t = (\mathcal{V}_t, \mathcal{E}_t)$ — Detected layout graph for page $t$:
+  - $\mathcal{V}_t = \lbrace (b_i, c_i, \text{id}_i, \text{parent}_i) \rbrace$ — Nodes with bounding boxes, categories, globally unique IDs, and parent links (possibly referencing nodes on earlier pages)
   - $\mathcal{E}_t$ — Edges encoding hierarchy, reading order, and **cross-page continuations**
 - $\mathcal{S}_t$ — Updated trailing state passed to page $t+1$
 
-The trailing state $\mathcal{S}_t$ encodes:
-- `last_assigned_node_id` — Global ID counter for continuity
-- `active_parent_stack` — Hierarchical context (e.g., Section 1 > 1.1 > 1.1.1)
-- `element_cut_off_at_bottom` — Detects text/tables split at page boundaries
-- `suggested_new_categories` — Evolving category vocabulary
+The trailing state $\mathcal{S}_t$ accumulates two types of cross-page information:
 
-**Key distinction from traditional DLA:**
-- A single page **cannot** be fully analyzed in isolation — category assignment and hierarchy depend on context from preceding pages
+| Component | What it captures | Why visual context alone is insufficient |
+|---|---|---|
+| `last_assigned_node_id` | Global ID counter | Ensures unique IDs across all pages without post-hoc renumbering |
+| `active_parent_stack` | Hierarchical context (e.g., Section 1 > 1.1 > 1.1.1) | A heading on page 3 may parent elements on page 7 — visual context of $k$ pages cannot carry this |
+| `element_cut_off_at_bottom` | Text/tables split at page boundaries | Enables merging continuation nodes across pages |
+| `suggested_new_categories` | Evolving category vocabulary | Categories discovered on page 2 inform analysis of page 20 |
+
+**Key distinctions from traditional DLA:**
+- A single page **cannot** be fully analyzed in isolation — category assignment and hierarchy depend on both **visual context** (adjacent page images) and **layout context** (trailing state from all preceding pages)
 - The output is not a flat set of boxes but a **hierarchical document tree** with cross-page links
 - The category vocabulary is **document-specific** and discovered dynamically, not fixed a priori
 
@@ -67,22 +70,38 @@ Existing benchmarks (PubLayNet, DocLayNet, DocBank) focus primarily on scientifi
 
 ## 2. Motivation & Research Gap
 
-### 2.1 Why Cross-Page Context Matters
+### 2.1 A Novel, Untouched Research Niche
+
+**Multi-page cross-page document layout analysis with inter-page relations** is a research direction that has **not been addressed** by the community. Existing work covers adjacent but distinct problems:
+
+| Existing Research Direction | What it does | What it does NOT do |
+|---|---|---|
+| **Single-page DLA** (DocLayout-YOLO, RT-DETR, LayoutLMv3) | Detect layout elements on one page | No cross-page context, no inter-page relations |
+| **Single-page DLA + grounding extension** (Qwen-VL, mPLUG-DocOwl) | Single-page parsing with MLLM-based coordinate grounding | Still page-independent — no trailing state or hierarchy across pages |
+| **Multi-page document parsing** (MinerU, Nougat, marker) | Convert multi-page PDFs to Markdown/text | Outputs flat text — no bounding boxes, no layout graph, no inter-page structural relations |
+| **Multi-page document VQA** (mPLUG-DocOwl 1.5, InternVL) | Answer questions about multi-page documents | No layout detection — focuses on QA, not structural analysis |
+
+**We are the first to propose** the task of multi-page PDF document layout analysis where:
+- Analyzing page $t$ requires visual + layout context from preceding pages
+- Output includes bounding boxes, categories, hierarchical parent-child relations, AND cross-page continuation links
+- The category vocabulary is document-specific and dynamically discovered
+
+### 2.2 Why Cross-Page Context Matters
 
 Real-world industrial documents have:
 
-- **Cross-page structures**: A section heading on page 5 governs paragraphs on pages 5-8.
-- **Page-boundary artifacts**: Text cut mid-sentence, tables split across pages, lists that span multiple pages.
-- **Context-dependent categories**: Whether a block is a "definition list" or a "numbered procedure" often depends on the section header 3 pages earlier.
+- **Cross-page structures**: A section heading on page 5 governs paragraphs on pages 5-8
+- **Page-boundary artifacts**: Text cut mid-sentence, tables split across pages, lists that span multiple pages
+- **Context-dependent categories**: Whether a block is a "definition list" or a "numbered procedure" often depends on the section header 3 pages earlier
 
-### 2.2 Challenges with Existing Approaches
+### 2.3 Challenges with Existing Approaches
 
 **Vision-based detection models** (YOLO, RT-DETR, DocLayout-YOLO):
 - High bounding box accuracy and fast inference on trained categories
 - **Cannot** handle categories outside their training set
 - **Cannot** reason about cross-page context or dynamic category assignment
 
-**SOTA MLLM in end-to-end mode** (including 235B-parameter reasoning models):
+**SOTA MLLMs in end-to-end mode** (including 235B-parameter reasoning models):
 - Strong semantic reasoning capability
 - **Grounding accuracy degrades** as the number of elements increases — the more objects requested, the more coordinates drift
 - When asked to do everything in one prompt (discover categories + localize + build hierarchy), they either **over-fragment** or **under-detect**
@@ -91,13 +110,17 @@ Real-world industrial documents have:
 - Work well for simple, single-page documents
 - **Fail** on complex multi-page layouts with nested hierarchies and cross-page continuations
 
-### 2.3 Benchmark & Training Data Gap
+### 2.4 Benchmark & Training Data Crisis
 
-- No existing benchmark covers multi-page, cross-page DLA with hierarchical annotations
-- Creating ground truth requires **expensive human annotation**
-- This pipeline serves as an **automated labeling tool** to generate high-quality annotations
+Because this is a **new research niche**, there is a fundamental data problem:
 
-### 2.4 What We Tried Before This Pipeline
+- **No existing benchmark** covers multi-page, cross-page DLA with hierarchical annotations and inter-page relations
+- **No training dataset** exists for fine-tuning models on this task
+- Creating ground truth manually requires **expensive human annotation** — impractical at scale
+
+This is why we need an efficient **data engine pipeline**: use SOTA MLLMs to generate high-quality annotations automatically, producing both benchmark data (for evaluation) and training data (for knowledge distillation into smaller models).
+
+### 2.5 What We Tried Before This Pipeline
 
 We extensively experimented with existing approaches:
 
@@ -463,29 +486,56 @@ Visual comparison available in `outputs/baseline_experiment/`.
 
 ## 8. Research Roadmap
 
-This pipeline is the first step toward a larger research agenda:
+This pipeline is the **data engine** — the first step toward a larger research agenda whose ultimate goal is **knowledge distillation** from large SOTA MLLMs into smaller, efficient VLMs that can perform cross-page DLA autonomously.
 
-### 8.1 Proposed Labeling Pipeline
+### 8.1 The Data Engine: From Pipeline to Dataset
 
-Combine **vision-based detectors** (SOTA bounding box detection) with **SOTA MLLMs** (category assignment + relation reasoning):
-- Detectors provide accurate bounding boxes (what they do best)
-- MLLMs rewrite categories and resolve hierarchical relations (what they do best)
-- Result: high-quality benchmark + training dataset without expensive human annotation
+Because no benchmark or training data exists for cross-page DLA, we must build it ourselves. Our data engine combines strengths of different model families:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    DATA ENGINE PIPELINE                      │
+│                                                             │
+│  SOTA Vision Detectors ──→ Accurate Bounding Boxes          │
+│         (YOLO, RT-DETR)        (what they do best)          │
+│              │                                              │
+│              ▼                                              │
+│  SOTA MLLMs ──────────→ Category Assignment                 │
+│  (via this pipeline)    + Relation Reasoning                │
+│                         + Cross-Page Links                  │
+│                         (what they do best)                 │
+│              │                                              │
+│              ▼                                              │
+│  OUTPUT: High-quality annotations                           │
+│    • Benchmark: 2K samples with ground truth                │
+│    • Training:  20K samples for fine-tuning                 │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ### 8.2 Planned Experiments
 
-1. **Inference-based approaches**: Test SOTA parsing pipelines (PaddleOCR, MinerU) combined with MLLM reasoning for category/relation assignment
+1. **Inference baselines**: Test SOTA parsing pipelines (PaddleOCR, MinerU) combined with MLLM reasoning for category/relation assignment
 2. **Prompt-based end-to-end MLLM**: Send page image sequences + instructions, output layout analysis directly
 3. **Fine-tuning approaches**:
-   - *Direction A*: Fine-tune a small VLM to correct categories and resolve relations from detector outputs
+   - *Direction A*: Fine-tune a small VLM to correct categories and resolve relations from detector outputs (detector + VLM refiner)
    - *Direction B*: Fine-tune an end-to-end VLM that takes PDF image sequences and outputs full layout analysis
-4. **Model optimization**: If fine-tuning succeeds, apply compression/distillation for production deployment
+4. **Evaluate and compare** all approaches against our benchmark
 
-### 8.3 Data Goals
+### 8.3 Ultimate Goal: Knowledge Distillation
 
-- Collect PDFs with complex layouts requiring cross-page context for analysis
-- Build automated labeling pipeline using this system
-- Target: **2K benchmark samples** (with ground truth) + **20K training samples**
+The long-term objective is to **distill** the cross-page DLA capability from large SOTA MLLMs (which are expensive, slow, and API-dependent) into smaller, efficient VLMs that can:
+
+- Run locally without API costs
+- Process documents at production speed
+- Maintain cross-page awareness and hierarchical reasoning
+
+The path: **Large MLLM (data engine) -> Training data -> Fine-tuned small VLM -> Compression/Distillation -> Production model**
+
+### 8.4 Data Goals
+
+- Collect PDFs with complex layouts requiring cross-page context (ISO standards, financial reports, government procedures, technical manuals)
+- Build automated labeling pipeline using this system as the data engine
+- Target: **2K benchmark samples** (with human-verified ground truth) + **20K training samples** (MLLM-generated)
 
 ---
 
