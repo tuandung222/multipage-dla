@@ -696,9 +696,9 @@
     \begin{columns}[T]
         \column{0.48\textwidth}
         \begin{block}{Pha 2.1 — Khởi tạo (Trang 1)}
-            \textbf{Đầu vào:} Ảnh trang 1 + Tập categories $\mathcal{C}$ từ Pha 1.\[0.3em]
-            \textbf{Đầu ra:} Layout $ + Trailing state $ ban đầu.\[0.3em]
-            \textbf{Khởi tạo $:}
+            \textbf{Đầu vào:} Ảnh trang 1 + Tập categories $\mathcal{C}$ từ Pha 1.\\[0.3em]
+            \textbf{Đầu ra:} Layout $Y_1$ + Trailing state $S_1$ ban đầu.\\[0.3em]
+            \textbf{Khởi tạo $S_0$:}
             \begin{itemize}
                 \item \texttt{last\_node\_id}: \texttt{node\_000}
                 \item \texttt{active\_parent\_stack}: \texttt{[]}
@@ -707,17 +707,17 @@
         \end{block}
 
         \column{0.48\textwidth}
-        \begin{block}{Pha 2.2 — Vòng lặp tăng dần (Trang  \ldots n$)}
-            \textbf{Đầu vào mỗi bước $:}
+        \begin{block}{Pha 2.2 — Vòng lặp tăng dần (Trang $2 \ldots n$)}
+            \textbf{Đầu vào mỗi bước $t$:}
             \begin{enumerate}
-                \item Ảnh trang hiện tại $ + ảnh trang trước {t-1}$
-                \item Trailing state {t-1}$ từ bước trước
+                \item Ảnh trang hiện tại $I_t$ + ảnh trang trước $I_{t-1}$
+                \item Trailing state $S_{t-1}$ từ bước trước
                 \item Tập categories $\mathcal{C}$ (cố định từ Pha 1)
             \end{enumerate}
             \textbf{Đầu ra:}
             \begin{itemize}
-                \item $: bbox, category, node\_id, parent\_id, continuation
-                \item $: trailing state cập nhật $\rightarrow$ truyền cho {+}1$
+                \item $Y_t$: bbox, category, node\_id, parent\_id, continuation
+                \item $S_t$: trailing state cập nhật $\rightarrow$ truyền cho $t{+}1$
             \end{itemize}
         \end{block}
     \end{columns}
@@ -731,20 +731,20 @@
         arrow/.style={-{Stealth[length=2mm]}, thick},
         state/.style={font=\scriptsize\itshape, text=successgreen}
     ]
-        \node[box, fill=blue!10, draw=primaryblue] (i1) {$ + $\mathcal{C}$};
-        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i1] (y1) {$};
-        \node[box, fill=blue!10, draw=primaryblue, right=1.6cm of y1] (i2) {, I_1$ + $ + $\mathcal{C}$};
-        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i2] (y2) {$};
+        \node[box, fill=blue!10, draw=primaryblue] (i1) {$I_1$ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i1] (y1) {$Y_1$};
+        \node[box, fill=blue!10, draw=primaryblue, right=1.6cm of y1] (i2) {$I_2, I_1$ + $S_1$ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of i2] (y2) {$Y_2$};
         \node[right=0.8cm of y2, font=\small] (dots) {$\cdots$};
-        \node[box, fill=blue!10, draw=primaryblue, right=0.8cm of dots] (in) {, I_{n-1}$ + {n-1}$ + $\mathcal{C}$};
-        \node[box, fill=green!10, draw=successgreen, right=0.8cm of in] (yn) {$};
+        \node[box, fill=blue!10, draw=primaryblue, right=0.8cm of dots] (in) {$I_n, I_{n-1}$ + $S_{n-1}$ + $\mathcal{C}$};
+        \node[box, fill=green!10, draw=successgreen, right=0.8cm of in] (yn) {$Y_n$};
 
         \draw[arrow] (i1) -- (y1);
         \draw[arrow] (i2) -- (y2);
         \draw[arrow] (in) -- (yn);
-        \draw[arrow, successgreen, dashed] (y1) -- node[above, state] {$} (i2);
-        \draw[arrow, successgreen, dashed] (y2) -- node[above, state] {$} (dots);
-        \draw[arrow, successgreen, dashed] (dots) -- node[above, state] {{n-1}$} (in);
+        \draw[arrow, successgreen, dashed] (y1) -- node[above, state] {$S_1$} (i2);
+        \draw[arrow, successgreen, dashed] (y2) -- node[above, state] {$S_2$} (dots);
+        \draw[arrow, successgreen, dashed] (dots) -- node[above, state] {$S_{n-1}$} (in);
     \end{tikzpicture}
     }
     \end{center}
@@ -758,11 +758,11 @@
         \column{0.48\textwidth}
         \begin{exampleblock}{Tình huống 1: Nội dung bị cắt ngang trang}
             {\small
-            \textbf{Trang 3:} Mục lục (ToC) hiển thị đến mục 8.5...\
-            $\rightarrow$ MLLM ghi nhận: \texttt{element\_cut\_off = node\_012}\[0.4em]
-            \textbf{Trang 4:} ToC tiếp tục từ mục 8.5.\
-            $\rightarrow$ MLLM đọc $, tạo \texttt{node\_013} với\
-            \quad \texttt{continues\_previous\_node = node\_012}\[0.4em]
+            \textbf{Trang 3:} Mục lục (ToC) hiển thị đến mục 8.5...\\
+            $\rightarrow$ MLLM ghi nhận: \texttt{element\_cut\_off = node\_012}\\[0.4em]
+            \textbf{Trang 4:} ToC tiếp tục từ mục 8.5.\\
+            $\rightarrow$ MLLM đọc $S_3$, tạo \texttt{node\_013} với\\
+            \quad \texttt{continues\_previous\_node = node\_012}\\[0.4em]
             \textbf{Pha 3:} Tự động merge thành 1 ToC duy nhất.
             }
         \end{exampleblock}
@@ -770,10 +770,10 @@
         \column{0.48\textwidth}
         \begin{exampleblock}{Tình huống 2: Phân cấp kéo dài qua nhiều trang}
             {\small
-            \textbf{Trang 7:} Heading Section 3: Terms and Definitions''.\
-            $\rightarrow$ Push vào \texttt{active\_parent\_stack}\[0.4em]
-            \textbf{Trang 8--11:} Các mục 3.1.1 $\sim$ 3.1.26 xuất hiện.\
-            $\rightarrow$ MLLM đọc stack, gán \texttt{parent = Section 3}\[0.4em]
+            \textbf{Trang 7:} Heading ``Section 3: Terms and Definitions''.\\
+            $\rightarrow$ Push vào \texttt{active\_parent\_stack}\\[0.4em]
+            \textbf{Trang 8--11:} Các mục 3.1.1 $\sim$ 3.1.26 xuất hiện.\\
+            $\rightarrow$ MLLM đọc stack, gán \texttt{parent = Section 3}\\[0.4em]
             \textbf{Kết quả:} 64 mục định nghĩa trải dài 5 trang đều thuộc đúng 1 node cha.
             }
         \end{exampleblock}
@@ -781,7 +781,7 @@
 
     \vspace{0.5em}
     \begin{center}
-        \textbf{Điểm mấu chốt:} Trailing state $ cho phép MLLM nhớ'' cấu trúc từ \textit{tất cả} trang trước — vượt qua giới hạn visual context $ trang.
+        \textbf{Điểm mấu chốt:} Trailing state $S_t$ cho phép MLLM ``nhớ'' cấu trúc từ \textit{tất cả} trang trước — vượt qua giới hạn visual context $k$ trang.
     \end{center}
 \end{frame}
 
