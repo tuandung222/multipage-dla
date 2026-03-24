@@ -943,9 +943,92 @@
 \end{frame}
 
 %====================================================
+% SLIDE: Thách thức mã hóa đa trang & các giải pháp
+%====================================================
+\begin{frame}{5.3 \; Thách thức mã hóa đa trang khi Fine-tune}
+    \begin{alertblock}{Vấn đề cốt lõi: Bùng nổ token khi nạp nhiều trang ảnh}
+        Vision Encoder (ViT) biến mỗi trang ảnh thành hàng \textbf{nghìn token} (ví dụ: ảnh 1024$\times$1024 $\rightarrow$ $\sim$1024 tokens).\\
+        Nạp 10 trang $=$ 10.000+ visual tokens $\rightarrow$ \textbf{vượt context window} của LLM, cạn kiệt VRAM.
+    \end{alertblock}
+
+    \vspace{0.3em}
+    Cộng đồng 2024--2025 đã đề xuất nhiều cơ chế nén hiệu quả, chia thành 4 nhóm chính:
+
+    \vspace{0.2em}
+    \begin{table}[]
+        \centering
+        \resizebox{\textwidth}{!}{
+        \begin{tabular}{lp{5cm}p{2.5cm}p{3cm}}
+        \toprule
+        \textbf{Nhóm cơ chế} & \textbf{Ý tưởng (giải thích đơn giản)} & \textbf{Tỷ lệ nén} & \textbf{Đại diện} \\
+        \midrule
+        \textbf{(A) Cross-Attention} Resampler &
+            Dùng một tập \textit{query vectors} học được để ``hỏi'' Vision Encoder: \textit{``thông tin quan trọng nhất của trang này là gì?''} $\rightarrow$ nén mỗi trang về số token \textbf{cố định}. &
+            324 tokens/trang \newline (giảm $\sim$3$\times$) &
+            mPLUG-DocOwl2 \cite{hu2024mplugdocowl2}, MiniCPM-V \cite{yao2024minicpmv} \\
+        \midrule
+        \textbf{(B) ReSampling} + sắp xếp lại &
+            Chọn các token \textit{giàu thông tin nhất} rồi xếp lại theo đúng thứ tự đọc (trái$\rightarrow$phải, trên$\rightarrow$dưới) — giữ nguyên logic tài liệu. &
+            Giảm \textbf{16$\times$} &
+            TextHawk2 \cite{yu2024texthawk2} \\
+        \midrule
+        \textbf{(C) Lọc nội dung} (Content Filtering) &
+            Nhận diện vùng nền trắng / lề trang (chiếm $\sim$50\% diện tích PDF) và \textbf{loại bỏ} trực tiếp các token tương ứng. &
+            Giảm 30--50\% &
+            HRVDA \cite{liu2024hrvda}, NVILA \cite{liu2024nvila} \\
+        \midrule
+        \textbf{(D) Query-based} Encoding &
+            Nén toàn bộ text + bbox của 1 trang PDF thành \textbf{64 learnable queries} thay vì giữ ngàn token thô. &
+            \textbf{64 tokens}/trang &
+            DocVLM \cite{ma2024docvlm} \\
+        \bottomrule
+        \end{tabular}
+        }
+    \end{table}
+\end{frame}
+
+%====================================================
+% SLIDE: Kiến trúc ứng viên cho fine-tune
+%====================================================
+\begin{frame}{5.4 \; Kiến trúc ứng viên cho Fine-tuning Cross-Page DLA}
+    \begin{columns}[T]
+        \column{0.55\textwidth}
+        \textbf{Yêu cầu đặc thù của bài toán chúng ta:}
+        \begin{enumerate}
+            \item Input là \textbf{chuỗi đan xen} (interleaved): ảnh trang $t{-}1$ + ảnh trang $t$ + trailing state (text) + categories (text).
+            \item Cần bảo toàn \textbf{thứ tự không gian} (spatial order) của layout.
+            \item Output chứa \textbf{tọa độ bbox} $\rightarrow$ cần Vision Encoder giữ thông tin vị trí.
+        \end{enumerate}
+
+        \vspace{0.4em}
+        \textbf{Chiến lược đề xuất (3 bước):}
+        \begin{enumerate}
+            \item \textbf{Freeze} Vision Encoder (ViT/SigLip).
+            \item Gắn thêm \textbf{Resampler} (1--2 lớp cross-attention) nén mỗi trang $\rightarrow$ $\sim$256 tokens.
+            \item \textbf{Fine-tune} LLM Decoder trên dataset cross-page DLA.
+        \end{enumerate}
+
+        \column{0.42\textwidth}
+        \begin{exampleblock}{Ứng viên ưu tiên}
+            {\small
+            \textbf{1. mPLUG-DocOwl2} \cite{hu2024mplugdocowl2}:\\
+            Thiết kế sẵn cho multi-page PDF. Nén 324 tokens/trang, hỗ trợ interleaved input.\\[0.3em]
+            \textbf{2. MiniCPM-V 2.6} \cite{yao2024minicpmv}:\\
+            Mô hình nhỏ (8B), adaptive slicing + resampler, đã hỗ trợ multi-image.\\[0.3em]
+            \textbf{3. TextHawk2} \cite{yu2024texthawk2}:\\
+            Nén 16$\times$ nhưng giữ spatial order — phù hợp cho output bbox.
+            }
+        \end{exampleblock}
+
+        \vspace{0.2em}
+        {\scriptsize \textit{Sparse sampling} \cite{feng2024pdfwukong} có thể bổ sung nếu tài liệu $>$20 trang.}
+    \end{columns}
+\end{frame}
+
+%====================================================
 % SLIDE: Kế hoạch chi tiết
 %====================================================
-\begin{frame}{5.3 \; Kế hoạch công việc dự kiến}
+\begin{frame}{5.5 \; Kế hoạch công việc dự kiến}
     \begin{table}[]
         \centering
         \resizebox{\textwidth}{!}{
