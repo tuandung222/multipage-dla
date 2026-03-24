@@ -488,54 +488,61 @@ Visual comparison available in `outputs/baseline_experiment/`.
 
 This pipeline is the **data engine** — the first step toward a larger research agenda whose ultimate goal is **knowledge distillation** from large SOTA MLLMs into smaller, efficient VLMs that can perform cross-page DLA autonomously.
 
-### 8.1 The Data Engine: From Pipeline to Dataset
+### 8.1 The Data Engine: MLLM-Powered Annotation
 
-Because no benchmark or training data exists for cross-page DLA, we must build it ourselves. Our data engine combines strengths of different model families:
+Because no benchmark or training data exists for cross-page DLA, we must build it ourselves. Vision-based detectors (YOLO, RT-DETR) are **not suitable** as the core of our data engine — they are limited to a fixed, closed set of categories and cannot reason about cross-page context or dynamic category assignment. Instead, we rely entirely on **SOTA MLLMs** for the full annotation pipeline:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    DATA ENGINE PIPELINE                      │
-│                                                             │
-│  SOTA Vision Detectors ──→ Accurate Bounding Boxes          │
-│         (YOLO, RT-DETR)        (what they do best)          │
-│              │                                              │
-│              ▼                                              │
-│  SOTA MLLMs ──────────→ Category Assignment                 │
-│  (via this pipeline)    + Relation Reasoning                │
-│                         + Cross-Page Links                  │
-│                         (what they do best)                 │
-│              │                                              │
-│              ▼                                              │
-│  OUTPUT: High-quality annotations                           │
-│    • Benchmark: 2K samples with ground truth                │
-│    • Training:  20K samples for fine-tuning                 │
+│                  MLLM-POWERED DATA ENGINE                    │
+│                                                              │
+│  SOTA MLLM (e.g., Gemini 3.1 Pro)                           │
+│    Phase 1: Discover document-specific categories            │
+│    Phase 2: Locate elements + bounding boxes + hierarchy     │
+│             + cross-page relations (via trailing state)      │
+│    Phase 3: Assemble document tree (rule-based)              │
+│              │                                               │
+│              ▼                                               │
+│  OUTPUT: Full layout annotations                             │
+│    • Bounding boxes (acceptable accuracy, not pixel-perfect) │
+│    • Categories (dynamic, document-specific)                 │
+│    • Inter-page relations + hierarchy                        │
+│    • Benchmark: 2K samples with ground truth                 │
+│    • Training:  20K samples for fine-tuning                  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
+**Trade-off acknowledged**: MLLM-generated bounding boxes are less tight than vision-based detectors. We accept this trade-off because:
+- Vision-based detectors **cannot** produce the category + relation + cross-page information we need
+- Bounding box accuracy can be improved later (e.g., refinement models, post-processing, or hybrid approaches)
+- The primary value is in the **structural annotations** (hierarchy, relations, cross-page links) — not pixel-perfect boxes
+
 ### 8.2 Planned Experiments
 
-1. **Inference baselines**: Test SOTA parsing pipelines (PaddleOCR, MinerU) combined with MLLM reasoning for category/relation assignment
-2. **Prompt-based end-to-end MLLM**: Send page image sequences + instructions, output layout analysis directly
+1. **Inference baselines**: Test SOTA parsing pipelines (PaddleOCR, MinerU) combined with MLLM reasoning — evaluate where they fail
+2. **Prompt-based MLLM pipeline** (this project): Multi-phase decomposition with trailing state — our current working approach
 3. **Fine-tuning approaches**:
-   - *Direction A*: Fine-tune a small VLM to correct categories and resolve relations from detector outputs (detector + VLM refiner)
-   - *Direction B*: Fine-tune an end-to-end VLM that takes PDF image sequences and outputs full layout analysis
+   - *Direction A*: Fine-tune multiple small VLMs, each handling one phase of the pipeline (category discovery, structural parsing, etc.)
+   - *Direction B*: Fine-tune a single end-to-end VLM that takes multi-page PDF image sequences and outputs full layout analysis
 4. **Evaluate and compare** all approaches against our benchmark
 
 ### 8.3 Ultimate Goal: Knowledge Distillation
 
-The long-term objective is to **distill** the cross-page DLA capability from large SOTA MLLMs (which are expensive, slow, and API-dependent) into smaller, efficient VLMs that can:
+The long-term objective is to **distill** the cross-page DLA capability from large SOTA MLLMs (which are expensive, slow, and API-dependent) into smaller, efficient VLMs/MLLMs that can:
 
 - Run locally without API costs
 - Process documents at production speed
 - Maintain cross-page awareness and hierarchical reasoning
 
-The path: **Large MLLM (data engine) -> Training data -> Fine-tuned small VLM -> Compression/Distillation -> Production model**
+The path: **Large MLLM (data engine) -> Benchmark + Training data -> Fine-tuned small VLM -> Compression/Distillation -> Production model**
 
 ### 8.4 Data Goals
 
-- Collect PDFs with complex layouts requiring cross-page context (ISO standards, financial reports, government procedures, technical manuals)
-- Build automated labeling pipeline using this system as the data engine
+- Collect PDFs with complex layouts requiring cross-page context — documents that existing solutions (PaddleOCR, MinerU) cannot handle, truly requiring multi-page MLLM reasoning
+- Use SOTA MLLMs to generate high-quality benchmark with accurate ground truth
+- Use SOTA MLLMs to generate synthetic training dataset at scale
 - Target: **2K benchmark samples** (with human-verified ground truth) + **20K training samples** (MLLM-generated)
+- Select efficient MLLM/VLM architectures suited for encoding multi-page PDF information -> fine-tune
 
 ---
 
