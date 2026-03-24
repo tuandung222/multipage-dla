@@ -1,0 +1,201 @@
+{
+  "total_windows_analyzed": 4,
+  "merged_category_count": 12,
+  "categories": [
+    {
+      "class_name": "Title",
+      "description": "The primary, large-font text on the cover page indicating the name of the document.",
+      "downstream_purpose": "Extracted for top-level document metadata and indexing."
+    },
+    {
+      "class_name": "Heading",
+      "description": "Standalone text blocks that denote major sections or structural divisions within the document (e.g., 'Table of Contents', 'Introduction', 'Appendices').",
+      "downstream_purpose": "Acts as a semantic boundary for text chunking and hierarchical structuring."
+    },
+    {
+      "class_name": "TOC_Entry",
+      "description": "Structured lines within the Table of Contents containing a section name, optional dotted leaders, and a corresponding page number.",
+      "downstream_purpose": "Parsed using specialized regex or key-value extraction to build a clickable document outline or navigation map."
+    },
+    {
+      "class_name": "Image",
+      "description": "Graphical elements, specifically the organizational logos found on the cover page.",
+      "downstream_purpose": "Can be discarded to save processing time, or passed to a specialized Vision model for entity/organization identification."
+    },
+    {
+      "class_name": "Header_Footer",
+      "description": "Repeating elements at the top or bottom margins of the pages, such as page numbers ('i', 'ii') and decorative bars.",
+      "downstream_purpose": "Discarded to reduce context noise and prevent fragmentation in the main text flow."
+    },
+    {
+      "class_name": "Text_Block",
+      "description": "Standard paragraphs of text, including bulleted lists, numbered lists, and italicized quotes or guidelines. These form the core content of the document.",
+      "downstream_purpose": "Extracted as the primary textual content for NLP processing, search, or summarization."
+    },
+    {
+      "class_name": "Table_of_Contents_Entry",
+      "description": "Lines containing a section title, dotted leader, and page number, found on the first page.",
+      "downstream_purpose": "Can be parsed to reconstruct the document's intended navigation structure or discarded if the actual content is processed directly."
+    },
+    {
+      "class_name": "Page_Number",
+      "description": "Standalone numbers or roman numerals located at the bottom corners of the pages.",
+      "downstream_purpose": "Typically discarded to prevent noise in the extracted text flow, though useful for document assembly verification."
+    },
+    {
+      "class_name": "List_Block",
+      "description": "Groups of items marked by letters (a, b, c), numbers, or bullet points, often indented.",
+      "downstream_purpose": "Preserves the sequential or itemized relationship of the text, preventing it from being merged into a single unstructured paragraph."
+    },
+    {
+      "class_name": "Table",
+      "description": "Information organized in rows and columns with visible borders, used for definitions or responsibilities.",
+      "downstream_purpose": "Requires specialized Table Structure Recognition (TSR) to extract key-value pairs or relational data accurately."
+    },
+    {
+      "class_name": "Section_Heading",
+      "description": "Prominent text, often bolded and colored (e.g., 'Responsibilities'), indicating the start of a new logical section.",
+      "downstream_purpose": "Acts as a semantic boundary for chunking and organizing the extracted text."
+    },
+    {
+      "class_name": "Footer",
+      "description": "Repetitive text at the bottom of the page, containing document control information and page numbers.",
+      "downstream_purpose": "Typically discarded to reduce noise, unless page numbering or document metadata is specifically required."
+    }
+  ],
+  "per_window_details": [
+    {
+      "reasoning_process": "The provided pages consist of a graphical cover page and a structured Table of Contents. The visual hierarchy clearly separates the main document title, organizational logos, section headings, structured index lines (TOC entries), and pagination footers. Grouping these into macro-categories allows a pipeline to extract document metadata, build a navigational map, and safely discard repetitive noise like footers and decorative images.",
+      "categories": [
+        {
+          "class_name": "Title",
+          "description": "The primary, large-font text on the cover page indicating the name of the document.",
+          "downstream_purpose": "Extracted for top-level document metadata and indexing."
+        },
+        {
+          "class_name": "Heading",
+          "description": "Standalone text blocks that denote major sections or structural divisions within the document (e.g., 'Table of Contents', 'Introduction', 'Appendices').",
+          "downstream_purpose": "Acts as a semantic boundary for text chunking and hierarchical structuring."
+        },
+        {
+          "class_name": "TOC_Entry",
+          "description": "Structured lines within the Table of Contents containing a section name, optional dotted leaders, and a corresponding page number.",
+          "downstream_purpose": "Parsed using specialized regex or key-value extraction to build a clickable document outline or navigation map."
+        },
+        {
+          "class_name": "Image",
+          "description": "Graphical elements, specifically the organizational logos found on the cover page.",
+          "downstream_purpose": "Can be discarded to save processing time, or passed to a specialized Vision model for entity/organization identification."
+        },
+        {
+          "class_name": "Header_Footer",
+          "description": "Repeating elements at the top or bottom margins of the pages, such as page numbers ('i', 'ii') and decorative bars.",
+          "downstream_purpose": "Discarded to reduce context noise and prevent fragmentation in the main text flow."
+        }
+      ],
+      "_window_pages": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "reasoning_process": "The document consists of a table of contents, an introduction page, and a section content page. The layout is relatively simple, featuring prominent section titles, standard text paragraphs, bulleted/numbered lists, and page numbers. To ensure a robust extraction pipeline, I will group standard text and lists into a general 'Text_Block' category, isolate 'Titles' for semantic chunking, and separate 'Page_Numbers' as they are typically discarded.",
+      "categories": [
+        {
+          "class_name": "Title",
+          "description": "Prominent headings, often in larger, bold, or colored font, indicating the start of a new section or subsection (e.g., '6. Preventive Action', 'Introduction', '1. CONTROL OF DOCUMENTS').",
+          "downstream_purpose": "Used as semantic boundaries to chunk text and establish the document's hierarchical structure."
+        },
+        {
+          "class_name": "Text_Block",
+          "description": "Standard paragraphs of text, including bulleted lists, numbered lists, and italicized quotes or guidelines. These form the core content of the document.",
+          "downstream_purpose": "Extracted as the primary textual content for NLP processing, search, or summarization."
+        },
+        {
+          "class_name": "Table_of_Contents_Entry",
+          "description": "Lines containing a section title, dotted leader, and page number, found on the first page.",
+          "downstream_purpose": "Can be parsed to reconstruct the document's intended navigation structure or discarded if the actual content is processed directly."
+        },
+        {
+          "class_name": "Image",
+          "description": "Graphical elements or illustrations, such as the stack of books on the second page.",
+          "downstream_purpose": "Passed to an image captioning or OCR model if relevant, or discarded if purely decorative."
+        },
+        {
+          "class_name": "Page_Number",
+          "description": "Standalone numbers or roman numerals located at the bottom corners of the pages.",
+          "downstream_purpose": "Typically discarded to prevent noise in the extracted text flow, though useful for document assembly verification."
+        }
+      ],
+      "_window_pages": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "reasoning_process": "The document is a structured manual or guideline with clear hierarchical elements. It contains main section titles, sub-section headings, standard text paragraphs, bulleted/numbered lists, and structured tabular data. There are also consistent page numbers acting as footers. The categories are chosen to capture this hierarchy and separate structured data (tables/lists) from standard narrative text for appropriate downstream processing.",
+      "categories": [
+        {
+          "class_name": "Title",
+          "description": "Large, prominent text indicating the main topic or chapter of the document (e.g., '1. CONTROL OF DOCUMENTS').",
+          "downstream_purpose": "Used to establish the highest level of document hierarchy and semantic context for subsequent content."
+        },
+        {
+          "class_name": "Heading",
+          "description": "Sub-section titles, often bolded or colored, that divide the content into logical parts (e.g., '1.1 QMS Requirements', 'ISO 9001:2008 Clause...').",
+          "downstream_purpose": "Acts as semantic boundaries for chunking text and establishing a table of contents or document outline."
+        },
+        {
+          "class_name": "Text_Block",
+          "description": "Standard paragraphs of narrative text explaining concepts, procedures, or guidelines.",
+          "downstream_purpose": "Primary content for natural language processing, search indexing, and summarization."
+        },
+        {
+          "class_name": "List_Block",
+          "description": "Groups of items marked by letters (a, b, c), numbers, or bullet points, often indented.",
+          "downstream_purpose": "Preserves the sequential or itemized relationship of the text, preventing it from being merged into a single unstructured paragraph."
+        },
+        {
+          "class_name": "Table",
+          "description": "Information organized in rows and columns with visible borders, used for definitions or responsibilities.",
+          "downstream_purpose": "Requires specialized Table Structure Recognition (TSR) to extract key-value pairs or relational data accurately."
+        },
+        {
+          "class_name": "Header_Footer",
+          "description": "Recurring elements at the bottom of the page, such as page numbers and document titles (e.g., 'CONTROL OF DOCUMENTS 1').",
+          "downstream_purpose": "Typically discarded to reduce noise in the main text flow, though page numbers may be retained for metadata."
+        }
+      ],
+      "_window_pages": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "reasoning_process": "The document contains structured information primarily presented in tables, along with section headings and page footers. The layout is consistent, with clear boundaries for tabular data, hierarchical headings, and repetitive footer elements.",
+      "categories": [
+        {
+          "class_name": "Table",
+          "description": "Grid-like structures containing rows and columns of text, used to present definitions, responsibilities, and other structured data.",
+          "downstream_purpose": "Requires specialized table extraction to maintain row/column relationships and cell content."
+        },
+        {
+          "class_name": "Section_Heading",
+          "description": "Prominent text, often bolded and colored (e.g., 'Responsibilities'), indicating the start of a new logical section.",
+          "downstream_purpose": "Acts as a semantic boundary for chunking and organizing the extracted text."
+        },
+        {
+          "class_name": "Footer",
+          "description": "Repetitive text at the bottom of the page, containing document control information and page numbers.",
+          "downstream_purpose": "Typically discarded to reduce noise, unless page numbering or document metadata is specifically required."
+        }
+      ],
+      "_window_pages": [
+        7
+      ]
+    }
+  ]
+}

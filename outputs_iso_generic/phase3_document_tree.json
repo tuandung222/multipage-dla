@@ -1,0 +1,540 @@
+{
+  "stats": {
+    "total_nodes": 80,
+    "root_nodes": 24,
+    "leaf_nodes": 63,
+    "max_depth": 3,
+    "category_counts": {
+      "Image": 7,
+      "Title": 1,
+      "Heading": 6,
+      "TOC_Entry": 35,
+      "Page_Number": 2,
+      "Text_Block": 11,
+      "List_Block": 3,
+      "Header_Footer": 1,
+      "Section_Heading": 8,
+      "Table": 3,
+      "Footer": 3
+    }
+  },
+  "tree": [
+    {
+      "node_id": "node_001",
+      "category": "Image",
+      "snippet": "Government Quality Management Program - Citizen-focused logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_002",
+      "category": "Title",
+      "snippet": "Generic Manual on ISO 9001 Six Mandatory Procedures",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_003",
+      "category": "Image",
+      "snippet": "Department of Budget and Management logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_004",
+      "category": "Image",
+      "snippet": "Department of Trade and Industry logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_005",
+      "category": "Image",
+      "snippet": "Department of the Interior and Local Government logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_006",
+      "category": "Image",
+      "snippet": "Development Academy of the Philippines logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_007",
+      "category": "Image",
+      "snippet": "Office of the President logo",
+      "page_number": 1
+    },
+    {
+      "node_id": "node_008",
+      "category": "Heading",
+      "snippet": "Table of Contents",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_009",
+      "category": "Heading",
+      "snippet": "Introduction",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_010",
+      "category": "TOC_Entry",
+      "snippet": "1. Control of Documents",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_011",
+          "category": "TOC_Entry",
+          "snippet": "1.1. QMS Requirements...................................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_012",
+          "category": "TOC_Entry",
+          "snippet": "1.2. Control of Documents Procedure ....................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_013",
+          "category": "TOC_Entry",
+          "snippet": "1.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_014",
+          "category": "TOC_Entry",
+          "snippet": "1.4. Tips on Development and Implementation.............................................................",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_015",
+      "category": "TOC_Entry",
+      "snippet": "2. Control of Records",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_016",
+          "category": "TOC_Entry",
+          "snippet": "2.1. QMS Requirements...................................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_017",
+          "category": "TOC_Entry",
+          "snippet": "2.2. Control of Records Procedure ......................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_018",
+          "category": "TOC_Entry",
+          "snippet": "2.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_019",
+          "category": "TOC_Entry",
+          "snippet": "2.4. Tips on Development and Implementation.............................................................",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_020",
+      "category": "TOC_Entry",
+      "snippet": "3. Internal Quality Audit",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_021",
+          "category": "TOC_Entry",
+          "snippet": "3.1. QMS Requirements...................................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_022",
+          "category": "TOC_Entry",
+          "snippet": "3.2. Internal Quality Audit Procedure...................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_023",
+          "category": "TOC_Entry",
+          "snippet": "3.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_024",
+          "category": "TOC_Entry",
+          "snippet": "3.4. Tips on Development and Implementation.............................................................",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_025",
+      "category": "TOC_Entry",
+      "snippet": "4. Control of Non-conforming Products/Services",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_026",
+          "category": "TOC_Entry",
+          "snippet": "4.1. QMS Requirements...................................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_027",
+          "category": "TOC_Entry",
+          "snippet": "4.2. Control of Non-conforming Products/Services Procedure..........................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_028",
+          "category": "TOC_Entry",
+          "snippet": "4.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_029",
+          "category": "TOC_Entry",
+          "snippet": "4.4. Tips on Development and Implementation.............................................................",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_030",
+      "category": "TOC_Entry",
+      "snippet": "5. Corrective Action",
+      "page_number": 2,
+      "children": [
+        {
+          "node_id": "node_031",
+          "category": "TOC_Entry",
+          "snippet": "5.1. QMS Requirements...................................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_032",
+          "category": "TOC_Entry",
+          "snippet": "5.2. Corrective Action Procedure........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_033",
+          "category": "TOC_Entry",
+          "snippet": "5.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 2
+        },
+        {
+          "node_id": "node_034",
+          "category": "TOC_Entry",
+          "snippet": "5.4. Tips on Development and Implementation.............................................................",
+          "page_number": 2
+        }
+      ]
+    },
+    {
+      "node_id": "node_035",
+      "category": "Page_Number",
+      "snippet": "i",
+      "page_number": 2
+    },
+    {
+      "node_id": "node_036",
+      "category": "Heading",
+      "snippet": "6. Preventive Action",
+      "page_number": 3,
+      "children": [
+        {
+          "node_id": "node_037",
+          "category": "TOC_Entry",
+          "snippet": "6.1. QMS Requirements...................................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_038",
+          "category": "TOC_Entry",
+          "snippet": "6.2. Preventive Action Procedure .......................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_039",
+          "category": "TOC_Entry",
+          "snippet": "6.3. Sample Forms and Formats ..........................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_040",
+          "category": "TOC_Entry",
+          "snippet": "6.4. Tips on Development and Implementation.....................................................",
+          "page_number": 3
+        }
+      ]
+    },
+    {
+      "node_id": "node_041",
+      "category": "Heading",
+      "snippet": "Appendices",
+      "page_number": 3,
+      "children": [
+        {
+          "node_id": "node_042",
+          "category": "TOC_Entry",
+          "snippet": "A. The Government Quality Management Program .................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_043",
+          "category": "TOC_Entry",
+          "snippet": "B. ISO 9001 and GQMSS Overview .......................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_044",
+          "category": "TOC_Entry",
+          "snippet": "C. Business Process Perspective ..........................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_045",
+          "category": "TOC_Entry",
+          "snippet": "D. QMS Documentation Structure .........................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_046",
+          "category": "TOC_Entry",
+          "snippet": "E. ISO Core Team ...............................................................................................",
+          "page_number": 3
+        },
+        {
+          "node_id": "node_047",
+          "category": "TOC_Entry",
+          "snippet": "F. Frequently Asked Questions ............................................................................",
+          "page_number": 3
+        }
+      ]
+    },
+    {
+      "node_id": "node_048",
+      "category": "Page_Number",
+      "snippet": "ii",
+      "page_number": 3
+    },
+    {
+      "node_id": "node_049",
+      "category": "Heading",
+      "snippet": "Introduction",
+      "page_number": 4,
+      "children": [
+        {
+          "node_id": "node_050",
+          "category": "Text_Block",
+          "snippet": "Government agencies seeking to implement a quality management system (QMS) certifiable to ISO 9001 n",
+          "page_number": 4
+        },
+        {
+          "node_id": "node_051",
+          "category": "List_Block",
+          "snippet": "• Control of Documents\n• Control of Records\n• Internal Audit\n• Control of Non-conforming Products/S",
+          "page_number": 4
+        },
+        {
+          "node_id": "node_052",
+          "category": "Text_Block",
+          "snippet": "This Manual aims to provide a step-by-step reference material for the development and implementation",
+          "page_number": 4
+        },
+        {
+          "node_id": "node_053",
+          "category": "Image",
+          "snippet": "Illustration of a stack of books.",
+          "page_number": 4
+        },
+        {
+          "node_id": "node_054",
+          "category": "Text_Block",
+          "snippet": "The procedures documented in this Manual may be adapted as-is, or modified to suit particular needs.",
+          "page_number": 4
+        },
+        {
+          "node_id": "node_055",
+          "category": "Text_Block",
+          "snippet": "Agencies with little or no background on ISO 9001 and/or GQMSS may find the supplemental information",
+          "page_number": 4
+        }
+      ]
+    },
+    {
+      "node_id": "node_056",
+      "category": "Header_Footer",
+      "snippet": "iii",
+      "page_number": 4
+    },
+    {
+      "node_id": "node_057",
+      "category": "Heading",
+      "snippet": "1. CONTROL OF DOCUMENTS",
+      "page_number": 5,
+      "children": [
+        {
+          "node_id": "node_058",
+          "category": "Section_Heading",
+          "snippet": "1.1 QMS Requirements",
+          "page_number": 5,
+          "children": [
+            {
+              "node_id": "node_059",
+              "category": "Section_Heading",
+              "snippet": "ISO 9001:2008 Clause 4.2.3 Control of documents",
+              "page_number": 5,
+              "children": [
+                {
+                  "node_id": "node_060",
+                  "category": "Text_Block",
+                  "snippet": "Documents required by the quality management system shall be controlled. Records are a special type o",
+                  "page_number": 5
+                },
+                {
+                  "node_id": "node_061",
+                  "category": "Text_Block",
+                  "snippet": "A documented procedure shall be established to define the controls needed",
+                  "page_number": 5
+                },
+                {
+                  "node_id": "node_062",
+                  "category": "List_Block",
+                  "snippet": "a) to approve documents for adequacy prior to issue,\nb) to review and update as necessary and re-app",
+                  "page_number": 5
+                }
+              ]
+            },
+            {
+              "node_id": "node_063",
+              "category": "Section_Heading",
+              "snippet": "GQMSS Guideline 4.2.3 Control of documents in public sector organizations",
+              "page_number": 5,
+              "children": [
+                {
+                  "node_id": "node_064",
+                  "category": "Text_Block",
+                  "snippet": "The purpose of documentation control is to ensure that all documents needed for the quality managemen",
+                  "page_number": 5
+                },
+                {
+                  "node_id": "node_065",
+                  "category": "List_Block",
+                  "snippet": "a) mechanisms to issue, revise and approve internal documents, including their identification and rev c) mechanism that ",
+                  "page_number": 5,
+                  "merged_from": [
+                    "node_067"
+                  ]
+                },
+                {
+                  "node_id": "node_068",
+                  "category": "Text_Block",
+                  "snippet": "Note: Most documents issued by public sector organizations are public documents, which increases the ",
+                  "page_number": 6
+                },
+                {
+                  "node_id": "node_069",
+                  "category": "Text_Block",
+                  "snippet": "The documents used to define, manage and control the provision of the public sector organization good",
+                  "page_number": 6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "node_id": "node_070",
+          "category": "Section_Heading",
+          "snippet": "1.2 Control of Documents Procedure",
+          "page_number": 6,
+          "children": [
+            {
+              "node_id": "node_071",
+              "category": "Section_Heading",
+              "snippet": "Purpose",
+              "page_number": 6,
+              "children": [
+                {
+                  "node_id": "node_072",
+                  "category": "Text_Block",
+                  "snippet": "The purpose of this procedure is to ensure that all documents needed for the quality management syste",
+                  "page_number": 6
+                }
+              ]
+            },
+            {
+              "node_id": "node_073",
+              "category": "Section_Heading",
+              "snippet": "Scope",
+              "page_number": 6,
+              "children": [
+                {
+                  "node_id": "node_074",
+                  "category": "Text_Block",
+                  "snippet": "This procedure applies to all internal and external documents identified by the organization as requi",
+                  "page_number": 6
+                }
+              ]
+            },
+            {
+              "node_id": "node_075",
+              "category": "Section_Heading",
+              "snippet": "Definition of Terms",
+              "page_number": 6,
+              "children": [
+                {
+                  "node_id": "node_076",
+                  "category": "Table",
+                  "snippet": "Document | Information and its supporting medium. The medium can be paper, magnetic, electronic or op",
+                  "page_number": 6
+                },
+                {
+                  "node_id": "node_078",
+                  "category": "Table",
+                  "snippet": "May also include the following: o Organizational background (history, table of organization) o Qualit",
+                  "page_number": 7
+                }
+              ]
+            },
+            {
+              "node_id": "node_079",
+              "category": "Section_Heading",
+              "snippet": "Responsibilities",
+              "page_number": 7,
+              "children": [
+                {
+                  "node_id": "node_080",
+                  "category": "Table",
+                  "snippet": "QMR Reviews and approves documents included in the Quality Manual; approves the Agency-wide distribu",
+                  "page_number": 7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "node_id": "node_066",
+      "category": "Footer",
+      "snippet": "CONTROL OF DOCUMENTS 1",
+      "page_number": 5
+    },
+    {
+      "node_id": "node_077",
+      "category": "Footer",
+      "snippet": "2 CONTROL OF DOCUMENTS",
+      "page_number": 6
+    },
+    {
+      "node_id": "node_081",
+      "category": "Footer",
+      "snippet": "CONTROL OF DOCUMENTS 3",
+      "page_number": 7
+    }
+  ]
+}

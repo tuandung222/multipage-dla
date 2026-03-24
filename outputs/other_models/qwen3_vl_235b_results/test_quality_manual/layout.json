@@ -1,0 +1,1872 @@
+[
+  {
+    "page_id": 1,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          240,
+          35,
+          750,
+          208
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          178,
+          280,
+          820,
+          354
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          234,
+          484,
+          765,
+          522
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          176,
+          568,
+          823,
+          603
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          296,
+          705,
+          708,
+          760
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          452,
+          852,
+          547,
+          865
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          113,
+          867,
+          874,
+          899
+        ],
+        "category": "paragraph"
+      }
+    ]
+  },
+  {
+    "page_id": 2,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          50,
+          32,
+          175,
+          128
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          426,
+          41,
+          693,
+          63
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          525,
+          74,
+          594,
+          94
+        ],
+        "category": "title"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          205,
+          106,
+          437,
+          121
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          500,
+          106,
+          695,
+          121
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          787,
+          106,
+          885,
+          121
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          123,
+          210,
+          192,
+          223
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          175,
+          244,
+          870,
+          287
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          168,
+          304,
+          888,
+          404
+        ],
+        "category": "table"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          118,
+          440,
+          257,
+          453
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          174,
+          472,
+          826,
+          502
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          167,
+          518,
+          888,
+          684
+        ],
+        "category": "table"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          117,
+          700,
+          350,
+          714
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          117,
+          732,
+          858,
+          782
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          117,
+          795,
+          475,
+          809
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          576,
+          795,
+          753,
+          809
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          117,
+          825,
+          375,
+          849
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          479,
+          825,
+          740,
+          849
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          452,
+          919,
+          546,
+          932
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 20,
+        "bbox_2d": [
+          110,
+          936,
+          874,
+          960
+        ],
+        "category": "paragraph"
+      }
+    ]
+  },
+  {
+    "page_id": 3,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          47,
+          35,
+          172,
+          125
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          428,
+          40,
+          694,
+          63
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          522,
+          72,
+          599,
+          96
+        ],
+        "category": "title"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          203,
+          104,
+          441,
+          123
+        ],
+        "category": "author"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          500,
+          104,
+          711,
+          123
+        ],
+        "category": "author"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          785,
+          104,
+          889,
+          123
+        ],
+        "category": "author"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          130,
+          160,
+          260,
+          178
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          139,
+          160,
+          884,
+          897
+        ],
+        "category": "table"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          449,
+          916,
+          547,
+          932
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          108,
+          933,
+          867,
+          961
+        ],
+        "category": "table_footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 4,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          46,
+          33,
+          171,
+          124
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          424,
+          38,
+          694,
+          62
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          522,
+          67,
+          598,
+          92
+        ],
+        "category": "title"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          192,
+          99,
+          907,
+          126
+        ],
+        "category": "table"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          148,
+          152,
+          886,
+          585
+        ],
+        "category": "table"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          448,
+          915,
+          549,
+          932
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          108,
+          933,
+          879,
+          959
+        ],
+        "category": "table_footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 5,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          56,
+          42,
+          162,
+          124
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          430,
+          40,
+          694,
+          61
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          526,
+          71,
+          599,
+          91
+        ],
+        "category": "title"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          200,
+          106,
+          434,
+          120
+        ],
+        "category": "author"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          500,
+          106,
+          701,
+          120
+        ],
+        "category": "author"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          787,
+          106,
+          885,
+          120
+        ],
+        "category": "author"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          148,
+          163,
+          219,
+          176
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          171,
+          182,
+          290,
+          193
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          225,
+          211,
+          868,
+          272
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          225,
+          289,
+          867,
+          351
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          225,
+          368,
+          733,
+          384
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          225,
+          401,
+          866,
+          479
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          225,
+          496,
+          865,
+          543
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          225,
+          560,
+          876,
+          607
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          225,
+          624,
+          872,
+          671
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          401,
+          674,
+          642,
+          684
+        ],
+        "category": "figure_caption"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          239,
+          678,
+          800,
+          901
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          455,
+          919,
+          544,
+          931
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          112,
+          934,
+          876,
+          957
+        ],
+        "category": "footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 6,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          46,
+          33,
+          171,
+          128
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          430,
+          40,
+          696,
+          62
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          525,
+          73,
+          599,
+          94
+        ],
+        "category": "title"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          201,
+          105,
+          438,
+          122
+        ],
+        "category": "author"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          500,
+          105,
+          697,
+          122
+        ],
+        "category": "author"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          788,
+          105,
+          888,
+          122
+        ],
+        "category": "author"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          175,
+          192,
+          872,
+          372
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          175,
+          386,
+          288,
+          400
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          175,
+          417,
+          874,
+          446
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          175,
+          468,
+          285,
+          481
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          175,
+          498,
+          705,
+          513
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          175,
+          530,
+          742,
+          545
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          167,
+          547,
+          888,
+          626
+        ],
+        "category": "table"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          175,
+          657,
+          874,
+          739
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          175,
+          755,
+          874,
+          800
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          175,
+          816,
+          874,
+          863
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          450,
+          917,
+          548,
+          931
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          111,
+          934,
+          869,
+          962
+        ],
+        "category": "footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 7,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          56,
+          39,
+          169,
+          122
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          428,
+          41,
+          693,
+          61
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          528,
+          74,
+          594,
+          94
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          191,
+          101,
+          944,
+          126
+        ],
+        "category": "table"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          180,
+          162,
+          878,
+          226
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          180,
+          243,
+          876,
+          305
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          144,
+          339,
+          252,
+          351
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          178,
+          356,
+          826,
+          383
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          211,
+          403,
+          316,
+          414
+        ],
+        "category": "reference"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          120,
+          448,
+          338,
+          460
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          120,
+          482,
+          844,
+          513
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          120,
+          530,
+          853,
+          560
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          120,
+          578,
+          865,
+          608
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          120,
+          626,
+          731,
+          639
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          120,
+          656,
+          854,
+          686
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          120,
+          712,
+          846,
+          742
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          120,
+          760,
+          866,
+          805
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          120,
+          823,
+          849,
+          853
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          120,
+          871,
+          557,
+          887
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 20,
+        "bbox_2d": [
+          454,
+          920,
+          545,
+          931
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 21,
+        "bbox_2d": [
+          116,
+          939,
+          869,
+          953
+        ],
+        "category": "footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 8,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          52,
+          32,
+          174,
+          129
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          431,
+          41,
+          692,
+          62
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          524,
+          74,
+          597,
+          95
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          197,
+          104,
+          887,
+          123
+        ],
+        "category": "table"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          115,
+          165,
+          440,
+          179
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          115,
+          197,
+          579,
+          210
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          115,
+          227,
+          838,
+          257
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          115,
+          277,
+          878,
+          324
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          115,
+          344,
+          807,
+          374
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          115,
+          392,
+          854,
+          422
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          115,
+          441,
+          876,
+          505
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          115,
+          525,
+          630,
+          538
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          115,
+          556,
+          861,
+          570
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          115,
+          588,
+          473,
+          601
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          115,
+          620,
+          800,
+          633
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          115,
+          654,
+          626,
+          667
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          115,
+          686,
+          856,
+          716
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          115,
+          736,
+          825,
+          750
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          115,
+          768,
+          876,
+          798
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 20,
+        "bbox_2d": [
+          115,
+          816,
+          860,
+          865
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 21,
+        "bbox_2d": [
+          115,
+          884,
+          423,
+          898
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 22,
+        "bbox_2d": [
+          452,
+          918,
+          548,
+          934
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 23,
+        "bbox_2d": [
+          112,
+          934,
+          870,
+          954
+        ],
+        "category": "footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 9,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          52,
+          35,
+          169,
+          123
+        ],
+        "category": "figure"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          432,
+          41,
+          694,
+          62
+        ],
+        "category": "title"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          527,
+          73,
+          597,
+          95
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          203,
+          106,
+          439,
+          122
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          504,
+          106,
+          685,
+          122
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          788,
+          106,
+          886,
+          122
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          115,
+          181,
+          841,
+          210
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          115,
+          229,
+          787,
+          258
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          115,
+          277,
+          810,
+          292
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          115,
+          310,
+          870,
+          339
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          115,
+          358,
+          533,
+          374
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          115,
+          392,
+          862,
+          421
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          115,
+          440,
+          833,
+          455
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          115,
+          473,
+          872,
+          503
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          115,
+          521,
+          841,
+          536
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          115,
+          555,
+          406,
+          570
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          115,
+          588,
+          810,
+          618
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          115,
+          636,
+          835,
+          666
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          115,
+          684,
+          764,
+          700
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 20,
+        "bbox_2d": [
+          115,
+          719,
+          692,
+          734
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 21,
+        "bbox_2d": [
+          115,
+          752,
+          862,
+          767
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 22,
+        "bbox_2d": [
+          115,
+          785,
+          862,
+          815
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 23,
+        "bbox_2d": [
+          115,
+          833,
+          830,
+          863
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 24,
+        "bbox_2d": [
+          115,
+          882,
+          734,
+          897
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 25,
+        "bbox_2d": [
+          453,
+          917,
+          543,
+          931
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 26,
+        "bbox_2d": [
+          115,
+          935,
+          872,
+          957
+        ],
+        "category": "footnote"
+      }
+    ]
+  },
+  {
+    "page_id": 10,
+    "elements": [
+      {
+        "id": 1,
+        "bbox_2d": [
+          42,
+          28,
+          956,
+          131
+        ],
+        "category": "table"
+      },
+      {
+        "id": 2,
+        "bbox_2d": [
+          115,
+          179,
+          417,
+          193
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 3,
+        "bbox_2d": [
+          170,
+          179,
+          879,
+          242
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 4,
+        "bbox_2d": [
+          115,
+          259,
+          361,
+          272
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 5,
+        "bbox_2d": [
+          172,
+          259,
+          872,
+          291
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 6,
+        "bbox_2d": [
+          115,
+          305,
+          406,
+          319
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 7,
+        "bbox_2d": [
+          172,
+          305,
+          813,
+          338
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 8,
+        "bbox_2d": [
+          115,
+          352,
+          427,
+          366
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 9,
+        "bbox_2d": [
+          172,
+          352,
+          859,
+          385
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 10,
+        "bbox_2d": [
+          115,
+          400,
+          290,
+          413
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 11,
+        "bbox_2d": [
+          172,
+          400,
+          597,
+          421
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 12,
+        "bbox_2d": [
+          115,
+          432,
+          341,
+          445
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 13,
+        "bbox_2d": [
+          172,
+          432,
+          702,
+          453
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 14,
+        "bbox_2d": [
+          115,
+          469,
+          285,
+          483
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 15,
+        "bbox_2d": [
+          172,
+          469,
+          871,
+          519
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 16,
+        "bbox_2d": [
+          115,
+          535,
+          317,
+          549
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 17,
+        "bbox_2d": [
+          172,
+          535,
+          879,
+          568
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 18,
+        "bbox_2d": [
+          115,
+          583,
+          297,
+          596
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 19,
+        "bbox_2d": [
+          172,
+          583,
+          859,
+          616
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 20,
+        "bbox_2d": [
+          115,
+          631,
+          383,
+          644
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 21,
+        "bbox_2d": [
+          172,
+          631,
+          875,
+          663
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 22,
+        "bbox_2d": [
+          115,
+          679,
+          336,
+          692
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 23,
+        "bbox_2d": [
+          172,
+          679,
+          866,
+          712
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 24,
+        "bbox_2d": [
+          115,
+          727,
+          330,
+          740
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 25,
+        "bbox_2d": [
+          172,
+          727,
+          857,
+          760
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 26,
+        "bbox_2d": [
+          115,
+          775,
+          273,
+          788
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 27,
+        "bbox_2d": [
+          172,
+          775,
+          599,
+          796
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 28,
+        "bbox_2d": [
+          115,
+          808,
+          224,
+          822
+        ],
+        "category": "section_header"
+      },
+      {
+        "id": 29,
+        "bbox_2d": [
+          172,
+          808,
+          880,
+          879
+        ],
+        "category": "paragraph"
+      },
+      {
+        "id": 30,
+        "bbox_2d": [
+          447,
+          917,
+          550,
+          929
+        ],
+        "category": "abandon"
+      },
+      {
+        "id": 31,
+        "bbox_2d": [
+          110,
+          932,
+          878,
+          958
+        ],
+        "category": "footnote"
+      }
+    ]
+  }
+]

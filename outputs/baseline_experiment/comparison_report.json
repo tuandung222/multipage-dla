@@ -1,0 +1,84 @@
+{
+  "experiment": "Baseline E2E vs Multi-Phase Pipeline",
+  "pages_analyzed": [
+    1,
+    2,
+    3
+  ],
+  "model": "google/gemini-3.1-pro-preview",
+  "results": {
+    "single_page_e2e": {
+      "label": "Single-Page E2E",
+      "total_elements": 161,
+      "categories_count": 10,
+      "categories": [
+        "figure",
+        "footer",
+        "header",
+        "list",
+        "list_item",
+        "table",
+        "table_cell",
+        "table_row",
+        "text",
+        "title"
+      ],
+      "per_page_counts": {
+        "1": 14,
+        "2": 90,
+        "3": 57
+      },
+      "valid_boxes": 161,
+      "degenerate_boxes": 0,
+      "elements_with_parent": 123
+    },
+    "multi_page_e2e": {
+      "label": "Multi-Page E2E (3 pages)",
+      "total_elements": 26,
+      "categories_count": 5,
+      "categories": [
+        "Footer",
+        "Header",
+        "Table",
+        "Text",
+        "Title"
+      ],
+      "per_page_counts": {
+        "1": 7,
+        "2": 14,
+        "3": 5
+      },
+      "valid_boxes": 26,
+      "degenerate_boxes": 0,
+      "elements_with_parent": 11
+    },
+    "pipeline": {
+      "label": "Our Pipeline (Phase1 + Phase2)",
+      "total_elements": 21,
+      "categories_count": 13,
+      "categories": [
+        "Diagram",
+        "Footer",
+        "Header",
+        "Image",
+        "List_Block",
+        "Logo",
+        "Metadata_Block",
+        "Section_Header",
+        "Section_Heading",
+        "Table",
+        "Table_of_Contents",
+        "Text_Block",
+        "Title"
+      ],
+      "per_page_counts": {
+        "1": 6,
+        "2": 11,
+        "3": 4
+      },
+      "valid_boxes": 21,
+      "degenerate_boxes": 0,
+      "elements_with_parent": 7
+    }
+  }
+}

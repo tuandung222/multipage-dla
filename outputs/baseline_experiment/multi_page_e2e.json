@@ -1,0 +1,375 @@
+{
+  "categories_discovered": [
+    "Header",
+    "Title",
+    "Text",
+    "Table",
+    "Footer"
+  ],
+  "detected_elements": [
+    {
+      "node_id": "0",
+      "image_index": 0,
+      "category": "Header",
+      "box_2d": [
+        32,
+        41,
+        130,
+        958
+      ],
+      "content_snippet": "CUSTOM\nCOMPONENTS\n& ASSEMBLIES, INC.\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "1",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        286,
+        177,
+        354,
+        821
+      ],
+      "content_snippet": "Custom Components & Assemblies,\nInc.\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "2",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        489,
+        234,
+        523,
+        764
+      ],
+      "content_snippet": "ISO 9001:2015 Quality Manual\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "3",
+      "image_index": 0,
+      "category": "Title",
+      "box_2d": [
+        570,
+        175,
+        605,
+        823
+      ],
+      "content_snippet": "Quality Management System Manual\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "4",
+      "image_index": 0,
+      "category": "Text",
+      "box_2d": [
+        711,
+        295,
+        760,
+        509
+      ],
+      "content_snippet": "Issued By: Quality Manager\nIssued Date: 9-01-17\nApproved by: President\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "5",
+      "image_index": 0,
+      "category": "Text",
+      "box_2d": [
+        728,
+        590,
+        740,
+        700
+      ],
+      "content_snippet": "Revision: B\n",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "6",
+      "image_index": 0,
+      "category": "Footer",
+      "box_2d": [
+        850,
+        108,
+        901,
+        891
+      ],
+      "content_snippet": "Page 1 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unco",
+      "parent_node_id": null,
+      "page_number": 1
+    },
+    {
+      "node_id": "7",
+      "image_index": 1,
+      "category": "Header",
+      "box_2d": [
+        32,
+        41,
+        130,
+        958
+      ],
+      "content_snippet": "CUSTOM\nCOMPONENTS\n& ASSEMBLIES, INC.\nQuality System Manual\nQMS1\nIssued by: Quality Manager\nRevision",
+      "parent_node_id": null,
+      "page_number": 2
+    },
+    {
+      "node_id": "8",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        213,
+        120,
+        226,
+        184
+      ],
+      "content_snippet": "Approval\n",
+      "parent_node_id": null,
+      "page_number": 2
+    },
+    {
+      "node_id": "9",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        244,
+        176,
+        290,
+        872
+      ],
+      "content_snippet": "The signatures below certify that this management system manual has been reviewed and accepted.\nDemon",
+      "parent_node_id": "8",
+      "page_number": 2
+    },
+    {
+      "node_id": "10",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        306,
+        166,
+        406,
+        891
+      ],
+      "content_snippet": "Description\nName\nSignature\nPosition\nDate\nPrepared By\nCory Norris\nCory Norris\nQuality Manager\n9-01-1",
+      "parent_node_id": "8",
+      "page_number": 2
+    },
+    {
+      "node_id": "11",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        440,
+        117,
+        453,
+        257
+      ],
+      "content_snippet": "Amendment Record\n",
+      "parent_node_id": null,
+      "page_number": 2
+    },
+    {
+      "node_id": "12",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        471,
+        176,
+        501,
+        828
+      ],
+      "content_snippet": "This quality manual is reviewed to ensure its continuing relevance to the systems and process that it\n",
+      "parent_node_id": "11",
+      "page_number": 2
+    },
+    {
+      "node_id": "13",
+      "image_index": 1,
+      "category": "Table",
+      "box_2d": [
+        517,
+        166,
+        683,
+        891
+      ],
+      "content_snippet": "Page No.\nReason\nRevision\nDate\nALL PAGES\nRevised to the ISO\n9001:2015 Standard\nB\n09-01-17\n",
+      "parent_node_id": "11",
+      "page_number": 2
+    },
+    {
+      "node_id": "14",
+      "image_index": 1,
+      "category": "Title",
+      "box_2d": [
+        703,
+        117,
+        716,
+        352
+      ],
+      "content_snippet": "Company Proprietary Information\n",
+      "parent_node_id": null,
+      "page_number": 2
+    },
+    {
+      "node_id": "15",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        732,
+        117,
+        778,
+        860
+      ],
+      "content_snippet": "The Electronic Version of this document is the latest revision. It is the responsibility of the indivi",
+      "parent_node_id": "14",
+      "page_number": 2
+    },
+    {
+      "node_id": "16",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        796,
+        117,
+        809,
+        375
+      ],
+      "content_snippet": "Document Reference:\nQMS1\n",
+      "parent_node_id": "14",
+      "page_number": 2
+    },
+    {
+      "node_id": "17",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        796,
+        578,
+        809,
+        671
+      ],
+      "content_snippet": "Revision: B\n",
+      "parent_node_id": "14",
+      "page_number": 2
+    },
+    {
+      "node_id": "18",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        828,
+        117,
+        842,
+        249
+      ],
+      "content_snippet": "Uncontrolled Copy\n",
+      "parent_node_id": "14",
+      "page_number": 2
+    },
+    {
+      "node_id": "19",
+      "image_index": 1,
+      "category": "Text",
+      "box_2d": [
+        828,
+        482,
+        842,
+        597
+      ],
+      "content_snippet": "Controlled Copy\n",
+      "parent_node_id": "14",
+      "page_number": 2
+    },
+    {
+      "node_id": "20",
+      "image_index": 1,
+      "category": "Footer",
+      "box_2d": [
+        916,
+        108,
+        966,
+        891
+      ],
+      "content_snippet": "Page 2 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unco",
+      "parent_node_id": null,
+      "page_number": 2
+    },
+    {
+      "node_id": "21",
+      "image_index": 2,
+      "category": "Header",
+      "box_2d": [
+        32,
+        41,
+        130,
+        958
+      ],
+      "content_snippet": "CUSTOM\nCOMPONENTS\n& ASSEMBLIES, INC.\nQuality System Manual\nQMS1\nIssued by: Quality Manager\nRevision",
+      "parent_node_id": null,
+      "page_number": 3
+    },
+    {
+      "node_id": "22",
+      "image_index": 2,
+      "category": "Title",
+      "box_2d": [
+        165,
+        131,
+        178,
+        257
+      ],
+      "content_snippet": "Table of Contents\n",
+      "parent_node_id": null,
+      "page_number": 3
+    },
+    {
+      "node_id": "23",
+      "image_index": 2,
+      "category": "Text",
+      "box_2d": [
+        165,
+        846,
+        178,
+        882
+      ],
+      "content_snippet": "Page\n",
+      "parent_node_id": "22",
+      "page_number": 3
+    },
+    {
+      "node_id": "24",
+      "image_index": 2,
+      "category": "Text",
+      "box_2d": [
+        197,
+        147,
+        896,
+        882
+      ],
+      "content_snippet": "1. Scope..............................................................................................",
+      "parent_node_id": "22",
+      "page_number": 3
+    },
+    {
+      "node_id": "25",
+      "image_index": 2,
+      "category": "Footer",
+      "box_2d": [
+        916,
+        108,
+        966,
+        891
+      ],
+      "content_snippet": "Page 3 of 42\nIf this document is printed and not signed by the approved personnel, then it is an unco",
+      "parent_node_id": null,
+      "page_number": 3
+    }
+  ]
+}

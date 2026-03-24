@@ -1,0 +1,2131 @@
+[
+  {
+    "categories_discovered": [
+      "figure",
+      "title",
+      "text",
+      "footer"
+    ],
+    "detected_elements": [
+      {
+        "node_id": "0",
+        "category": "figure",
+        "box_2d": [
+          36,
+          242,
+          211,
+          757
+        ],
+        "content_snippet": "CUSTOM\nCOMPONENTS\n& ASSEMBLIES, INC.",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "1",
+        "category": "title",
+        "box_2d": [
+          286,
+          177,
+          355,
+          821
+        ],
+        "content_snippet": "Custom Components & Assemblies,\nInc.",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "2",
+        "category": "title",
+        "box_2d": [
+          488,
+          234,
+          523,
+          764
+        ],
+        "content_snippet": "ISO 9001:2015 Quality Manual",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "3",
+        "category": "title",
+        "box_2d": [
+          569,
+          175,
+          604,
+          823
+        ],
+        "content_snippet": "Quality Management System Manual",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "4",
+        "category": "text",
+        "box_2d": [
+          711,
+          313,
+          725,
+          382
+        ],
+        "content_snippet": "Issued By:",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "5",
+        "category": "text",
+        "box_2d": [
+          711,
+          400,
+          725,
+          509
+        ],
+        "content_snippet": "Quality Manager",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "6",
+        "category": "text",
+        "box_2d": [
+          728,
+          299,
+          740,
+          382
+        ],
+        "content_snippet": "Issued Date:",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "7",
+        "category": "text",
+        "box_2d": [
+          728,
+          400,
+          740,
+          451
+        ],
+        "content_snippet": "9-01-17",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "8",
+        "category": "text",
+        "box_2d": [
+          728,
+          589,
+          740,
+          650
+        ],
+        "content_snippet": "Revision:",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "9",
+        "category": "text",
+        "box_2d": [
+          728,
+          689,
+          740,
+          700
+        ],
+        "content_snippet": "B",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "10",
+        "category": "text",
+        "box_2d": [
+          745,
+          295,
+          760,
+          382
+        ],
+        "content_snippet": "Approved by:",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "11",
+        "category": "text",
+        "box_2d": [
+          745,
+          400,
+          758,
+          463
+        ],
+        "content_snippet": "President",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "12",
+        "category": "footer",
+        "box_2d": [
+          853,
+          453,
+          868,
+          545
+        ],
+        "content_snippet": "Page 1 of 42",
+        "parent_node_id": null,
+        "page_number": 1
+      },
+      {
+        "node_id": "13",
+        "category": "footer",
+        "box_2d": [
+          871,
+          117,
+          899,
+          870
+        ],
+        "content_snippet": "If this document is printed and not signed by the approved personnel, then it is an uncontrolled ref",
+        "parent_node_id": null,
+        "page_number": 1
+      }
+    ],
+    "_page_number": 1
+  },
+  {
+    "categories_discovered": [
+      "table",
+      "table_row",
+      "table_cell",
+      "text",
+      "header"
+    ],
+    "detected_elements": [
+      {
+        "node_id": "0",
+        "category": "header",
+        "box_2d": [
+          44,
+          430,
+          65,
+          695
+        ],
+        "content_snippet": "Quality System Manual",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "1",
+        "category": "header",
+        "box_2d": [
+          77,
+          526,
+          95,
+          598
+        ],
+        "content_snippet": "QMS1",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "2",
+        "category": "header",
+        "box_2d": [
+          109,
+          203,
+          124,
+          437
+        ],
+        "content_snippet": "Issued by: Quality Manager",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "3",
+        "category": "header",
+        "box_2d": [
+          109,
+          498,
+          121,
+          687
+        ],
+        "content_snippet": "Revision Date: 9-01-17",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "4",
+        "category": "header",
+        "box_2d": [
+          109,
+          788,
+          121,
+          885
+        ],
+        "content_snippet": "Revision: B",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "5",
+        "category": "text",
+        "box_2d": [
+          213,
+          120,
+          227,
+          184
+        ],
+        "content_snippet": "Approval",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "6",
+        "category": "text",
+        "box_2d": [
+          244,
+          176,
+          290,
+          872
+        ],
+        "content_snippet": "The signatures below certify that this management system manual has been reviewed and accepted.\nDemon",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "7",
+        "category": "table",
+        "box_2d": [
+          306,
+          166,
+          406,
+          891
+        ],
+        "content_snippet": "Description\nName\nSignature\nPosition\nDate\nPrepared By\nCory Norris\nCory Norris\nQuality Manager\n9-01-1",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "8",
+        "category": "table_row",
+        "box_2d": [
+          306,
+          166,
+          323,
+          891
+        ],
+        "content_snippet": "Description\nName\nSignature\nPosition\nDate",
+        "parent_node_id": "7",
+        "page_number": 2
+      },
+      {
+        "node_id": "9",
+        "category": "table_cell",
+        "box_2d": [
+          306,
+          166,
+          323,
+          314
+        ],
+        "content_snippet": "Description",
+        "parent_node_id": "8",
+        "page_number": 2
+      },
+      {
+        "node_id": "10",
+        "category": "table_cell",
+        "box_2d": [
+          306,
+          314,
+          323,
+          456
+        ],
+        "content_snippet": "Name",
+        "parent_node_id": "8",
+        "page_number": 2
+      },
+      {
+        "node_id": "11",
+        "category": "table_cell",
+        "box_2d": [
+          306,
+          456,
+          323,
+          600
+        ],
+        "content_snippet": "Signature",
+        "parent_node_id": "8",
+        "page_number": 2
+      },
+      {
+        "node_id": "12",
+        "category": "table_cell",
+        "box_2d": [
+          306,
+          600,
+          323,
+          752
+        ],
+        "content_snippet": "Position",
+        "parent_node_id": "8",
+        "page_number": 2
+      },
+      {
+        "node_id": "13",
+        "category": "table_cell",
+        "box_2d": [
+          306,
+          752,
+          323,
+          891
+        ],
+        "content_snippet": "Date",
+        "parent_node_id": "8",
+        "page_number": 2
+      },
+      {
+        "node_id": "14",
+        "category": "table_row",
+        "box_2d": [
+          323,
+          166,
+          340,
+          891
+        ],
+        "content_snippet": "Prepared By\nCory Norris\nCory Norris\nQuality Manager\n9-01-17",
+        "parent_node_id": "7",
+        "page_number": 2
+      },
+      {
+        "node_id": "15",
+        "category": "table_cell",
+        "box_2d": [
+          323,
+          166,
+          340,
+          314
+        ],
+        "content_snippet": "Prepared By",
+        "parent_node_id": "14",
+        "page_number": 2
+      },
+      {
+        "node_id": "16",
+        "category": "table_cell",
+        "box_2d": [
+          323,
+          314,
+          340,
+          456
+        ],
+        "content_snippet": "Cory Norris",
+        "parent_node_id": "14",
+        "page_number": 2
+      },
+      {
+        "node_id": "17",
+        "category": "table_cell",
+        "box_2d": [
+          323,
+          456,
+          340,
+          600
+        ],
+        "content_snippet": "Cory Norris",
+        "parent_node_id": "14",
+        "page_number": 2
+      },
+      {
+        "node_id": "18",
+        "category": "table_cell",
+        "box_2d": [
+          323,
+          600,
+          340,
+          752
+        ],
+        "content_snippet": "Quality Manager",
+        "parent_node_id": "14",
+        "page_number": 2
+      },
+      {
+        "node_id": "19",
+        "category": "table_cell",
+        "box_2d": [
+          323,
+          752,
+          340,
+          891
+        ],
+        "content_snippet": "9-01-17",
+        "parent_node_id": "14",
+        "page_number": 2
+      },
+      {
+        "node_id": "20",
+        "category": "table_row",
+        "box_2d": [
+          340,
+          166,
+          372,
+          891
+        ],
+        "content_snippet": "Reviewed By\nGreg Toellner\nGreg Toellner\nPurchasing\nManager\n9-01-17",
+        "parent_node_id": "7",
+        "page_number": 2
+      },
+      {
+        "node_id": "21",
+        "category": "table_cell",
+        "box_2d": [
+          340,
+          166,
+          372,
+          314
+        ],
+        "content_snippet": "Reviewed By",
+        "parent_node_id": "20",
+        "page_number": 2
+      },
+      {
+        "node_id": "22",
+        "category": "table_cell",
+        "box_2d": [
+          340,
+          314,
+          372,
+          456
+        ],
+        "content_snippet": "Greg Toellner",
+        "parent_node_id": "20",
+        "page_number": 2
+      },
+      {
+        "node_id": "23",
+        "category": "table_cell",
+        "box_2d": [
+          340,
+          456,
+          372,
+          600
+        ],
+        "content_snippet": "Greg Toellner",
+        "parent_node_id": "20",
+        "page_number": 2
+      },
+      {
+        "node_id": "24",
+        "category": "table_cell",
+        "box_2d": [
+          340,
+          600,
+          372,
+          752
+        ],
+        "content_snippet": "Purchasing\nManager",
+        "parent_node_id": "20",
+        "page_number": 2
+      },
+      {
+        "node_id": "25",
+        "category": "table_cell",
+        "box_2d": [
+          340,
+          752,
+          372,
+          891
+        ],
+        "content_snippet": "9-01-17",
+        "parent_node_id": "20",
+        "page_number": 2
+      },
+      {
+        "node_id": "26",
+        "category": "table_row",
+        "box_2d": [
+          372,
+          166,
+          406,
+          891
+        ],
+        "content_snippet": "Approved By\nMark Cruze\nMark Cruze\nPresident/Owner\n9-01-17",
+        "parent_node_id": "7",
+        "page_number": 2
+      },
+      {
+        "node_id": "27",
+        "category": "table_cell",
+        "box_2d": [
+          372,
+          166,
+          406,
+          314
+        ],
+        "content_snippet": "Approved By",
+        "parent_node_id": "26",
+        "page_number": 2
+      },
+      {
+        "node_id": "28",
+        "category": "table_cell",
+        "box_2d": [
+          372,
+          314,
+          406,
+          456
+        ],
+        "content_snippet": "Mark Cruze",
+        "parent_node_id": "26",
+        "page_number": 2
+      },
+      {
+        "node_id": "29",
+        "category": "table_cell",
+        "box_2d": [
+          372,
+          456,
+          406,
+          600
+        ],
+        "content_snippet": "Mark Cruze",
+        "parent_node_id": "26",
+        "page_number": 2
+      },
+      {
+        "node_id": "30",
+        "category": "table_cell",
+        "box_2d": [
+          372,
+          600,
+          406,
+          752
+        ],
+        "content_snippet": "President/Owner",
+        "parent_node_id": "26",
+        "page_number": 2
+      },
+      {
+        "node_id": "31",
+        "category": "table_cell",
+        "box_2d": [
+          372,
+          752,
+          406,
+          891
+        ],
+        "content_snippet": "9-01-17",
+        "parent_node_id": "26",
+        "page_number": 2
+      },
+      {
+        "node_id": "32",
+        "category": "text",
+        "box_2d": [
+          439,
+          117,
+          453,
+          258
+        ],
+        "content_snippet": "Amendment Record",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "33",
+        "category": "text",
+        "box_2d": [
+          471,
+          176,
+          501,
+          828
+        ],
+        "content_snippet": "This quality manual is reviewed to ensure its continuing relevance to the systems and process that i\ndescribes. A record of contextual additions or omission is given below:",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "34",
+        "category": "table",
+        "box_2d": [
+          517,
+          166,
+          683,
+          891
+        ],
+        "content_snippet": "Page No.\nReason\nRevision\nDate\nALL PAGES\nRevised to the ISO\n9001:2015 Standard\nB\n09-01-17\n",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "35",
+        "category": "table_row",
+        "box_2d": [
+          517,
+          166,
+          534,
+          891
+        ],
+        "content_snippet": "Page No.\nReason\nRevision\nDate",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "36",
+        "category": "table_cell",
+        "box_2d": [
+          517,
+          166,
+          534,
+          350
+        ],
+        "content_snippet": "Page No.",
+        "parent_node_id": "35",
+        "page_number": 2
+      },
+      {
+        "node_id": "37",
+        "category": "table_cell",
+        "box_2d": [
+          517,
+          350,
+          534,
+          530
+        ],
+        "content_snippet": "Reason",
+        "parent_node_id": "35",
+        "page_number": 2
+      },
+      {
+        "node_id": "38",
+        "category": "table_cell",
+        "box_2d": [
+          517,
+          530,
+          534,
+          710
+        ],
+        "content_snippet": "Revision",
+        "parent_node_id": "35",
+        "page_number": 2
+      },
+      {
+        "node_id": "39",
+        "category": "table_cell",
+        "box_2d": [
+          517,
+          710,
+          534,
+          891
+        ],
+        "content_snippet": "Date",
+        "parent_node_id": "35",
+        "page_number": 2
+      },
+      {
+        "node_id": "40",
+        "category": "table_row",
+        "box_2d": [
+          534,
+          166,
+          566,
+          891
+        ],
+        "content_snippet": "ALL PAGES\nRevised to the ISO\n9001:2015 Standard\nB\n09-01-17",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "41",
+        "category": "table_cell",
+        "box_2d": [
+          534,
+          166,
+          566,
+          350
+        ],
+        "content_snippet": "ALL PAGES",
+        "parent_node_id": "40",
+        "page_number": 2
+      },
+      {
+        "node_id": "42",
+        "category": "table_cell",
+        "box_2d": [
+          534,
+          350,
+          566,
+          530
+        ],
+        "content_snippet": "Revised to the ISO\n9001:2015 Standard",
+        "parent_node_id": "40",
+        "page_number": 2
+      },
+      {
+        "node_id": "43",
+        "category": "table_cell",
+        "box_2d": [
+          534,
+          530,
+          566,
+          710
+        ],
+        "content_snippet": "B",
+        "parent_node_id": "40",
+        "page_number": 2
+      },
+      {
+        "node_id": "44",
+        "category": "table_cell",
+        "box_2d": [
+          534,
+          710,
+          566,
+          891
+        ],
+        "content_snippet": "09-01-17",
+        "parent_node_id": "40",
+        "page_number": 2
+      },
+      {
+        "node_id": "45",
+        "category": "table_row",
+        "box_2d": [
+          566,
+          166,
+          583,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "46",
+        "category": "table_cell",
+        "box_2d": [
+          566,
+          166,
+          583,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "45",
+        "page_number": 2
+      },
+      {
+        "node_id": "47",
+        "category": "table_cell",
+        "box_2d": [
+          566,
+          350,
+          583,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "45",
+        "page_number": 2
+      },
+      {
+        "node_id": "48",
+        "category": "table_cell",
+        "box_2d": [
+          566,
+          530,
+          583,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "45",
+        "page_number": 2
+      },
+      {
+        "node_id": "49",
+        "category": "table_cell",
+        "box_2d": [
+          566,
+          710,
+          583,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "45",
+        "page_number": 2
+      },
+      {
+        "node_id": "50",
+        "category": "table_row",
+        "box_2d": [
+          583,
+          166,
+          600,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "51",
+        "category": "table_cell",
+        "box_2d": [
+          583,
+          166,
+          600,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "50",
+        "page_number": 2
+      },
+      {
+        "node_id": "52",
+        "category": "table_cell",
+        "box_2d": [
+          583,
+          350,
+          600,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "50",
+        "page_number": 2
+      },
+      {
+        "node_id": "53",
+        "category": "table_cell",
+        "box_2d": [
+          583,
+          530,
+          600,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "50",
+        "page_number": 2
+      },
+      {
+        "node_id": "54",
+        "category": "table_cell",
+        "box_2d": [
+          583,
+          710,
+          600,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "50",
+        "page_number": 2
+      },
+      {
+        "node_id": "55",
+        "category": "table_row",
+        "box_2d": [
+          600,
+          166,
+          616,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "56",
+        "category": "table_cell",
+        "box_2d": [
+          600,
+          166,
+          616,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "55",
+        "page_number": 2
+      },
+      {
+        "node_id": "57",
+        "category": "table_cell",
+        "box_2d": [
+          600,
+          350,
+          616,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "55",
+        "page_number": 2
+      },
+      {
+        "node_id": "58",
+        "category": "table_cell",
+        "box_2d": [
+          600,
+          530,
+          616,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "55",
+        "page_number": 2
+      },
+      {
+        "node_id": "59",
+        "category": "table_cell",
+        "box_2d": [
+          600,
+          710,
+          616,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "55",
+        "page_number": 2
+      },
+      {
+        "node_id": "60",
+        "category": "table_row",
+        "box_2d": [
+          616,
+          166,
+          633,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "61",
+        "category": "table_cell",
+        "box_2d": [
+          616,
+          166,
+          633,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "60",
+        "page_number": 2
+      },
+      {
+        "node_id": "62",
+        "category": "table_cell",
+        "box_2d": [
+          616,
+          350,
+          633,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "60",
+        "page_number": 2
+      },
+      {
+        "node_id": "63",
+        "category": "table_cell",
+        "box_2d": [
+          616,
+          530,
+          633,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "60",
+        "page_number": 2
+      },
+      {
+        "node_id": "64",
+        "category": "table_cell",
+        "box_2d": [
+          616,
+          710,
+          633,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "60",
+        "page_number": 2
+      },
+      {
+        "node_id": "65",
+        "category": "table_row",
+        "box_2d": [
+          633,
+          166,
+          650,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "66",
+        "category": "table_cell",
+        "box_2d": [
+          633,
+          166,
+          650,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "65",
+        "page_number": 2
+      },
+      {
+        "node_id": "67",
+        "category": "table_cell",
+        "box_2d": [
+          633,
+          350,
+          650,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "65",
+        "page_number": 2
+      },
+      {
+        "node_id": "68",
+        "category": "table_cell",
+        "box_2d": [
+          633,
+          530,
+          650,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "65",
+        "page_number": 2
+      },
+      {
+        "node_id": "69",
+        "category": "table_cell",
+        "box_2d": [
+          633,
+          710,
+          650,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "65",
+        "page_number": 2
+      },
+      {
+        "node_id": "70",
+        "category": "table_row",
+        "box_2d": [
+          650,
+          166,
+          666,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "71",
+        "category": "table_cell",
+        "box_2d": [
+          650,
+          166,
+          666,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "70",
+        "page_number": 2
+      },
+      {
+        "node_id": "72",
+        "category": "table_cell",
+        "box_2d": [
+          650,
+          350,
+          666,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "70",
+        "page_number": 2
+      },
+      {
+        "node_id": "73",
+        "category": "table_cell",
+        "box_2d": [
+          650,
+          530,
+          666,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "70",
+        "page_number": 2
+      },
+      {
+        "node_id": "74",
+        "category": "table_cell",
+        "box_2d": [
+          650,
+          710,
+          666,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "70",
+        "page_number": 2
+      },
+      {
+        "node_id": "75",
+        "category": "table_row",
+        "box_2d": [
+          666,
+          166,
+          683,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "34",
+        "page_number": 2
+      },
+      {
+        "node_id": "76",
+        "category": "table_cell",
+        "box_2d": [
+          666,
+          166,
+          683,
+          350
+        ],
+        "content_snippet": "",
+        "parent_node_id": "75",
+        "page_number": 2
+      },
+      {
+        "node_id": "77",
+        "category": "table_cell",
+        "box_2d": [
+          666,
+          350,
+          683,
+          530
+        ],
+        "content_snippet": "",
+        "parent_node_id": "75",
+        "page_number": 2
+      },
+      {
+        "node_id": "78",
+        "category": "table_cell",
+        "box_2d": [
+          666,
+          530,
+          683,
+          710
+        ],
+        "content_snippet": "",
+        "parent_node_id": "75",
+        "page_number": 2
+      },
+      {
+        "node_id": "79",
+        "category": "table_cell",
+        "box_2d": [
+          666,
+          710,
+          683,
+          891
+        ],
+        "content_snippet": "",
+        "parent_node_id": "75",
+        "page_number": 2
+      },
+      {
+        "node_id": "80",
+        "category": "text",
+        "box_2d": [
+          703,
+          117,
+          717,
+          352
+        ],
+        "content_snippet": "Company Proprietary Information",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "81",
+        "category": "text",
+        "box_2d": [
+          732,
+          117,
+          778,
+          861
+        ],
+        "content_snippet": "The Electronic Version of this document is the latest revision. It is the responsibility of the indi\nany paper material is the current revision. The printed version of this manual is uncontrolled excep\nwith a reference in the field below:",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "82",
+        "category": "text",
+        "box_2d": [
+          796,
+          117,
+          809,
+          375
+        ],
+        "content_snippet": "Document Reference: QMS1",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "83",
+        "category": "text",
+        "box_2d": [
+          796,
+          578,
+          809,
+          671
+        ],
+        "content_snippet": "Revision: B",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "84",
+        "category": "text",
+        "box_2d": [
+          828,
+          117,
+          842,
+          249
+        ],
+        "content_snippet": "Uncontrolled Copy",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "85",
+        "category": "text",
+        "box_2d": [
+          831,
+          315,
+          843,
+          324
+        ],
+        "content_snippet": "0",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "86",
+        "category": "text",
+        "box_2d": [
+          828,
+          482,
+          842,
+          597
+        ],
+        "content_snippet": "Controlled Copy",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "87",
+        "category": "text",
+        "box_2d": [
+          828,
+          681,
+          840,
+          690
+        ],
+        "content_snippet": "1",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "88",
+        "category": "text",
+        "box_2d": [
+          920,
+          453,
+          934,
+          545
+        ],
+        "content_snippet": "Page 2 of 42",
+        "parent_node_id": null,
+        "page_number": 2
+      },
+      {
+        "node_id": "89",
+        "category": "text",
+        "box_2d": [
+          938,
+          117,
+          965,
+          870
+        ],
+        "content_snippet": "If this document is printed and not signed by the approved personnel, then it is an uncontrolled ref\nand not to be used other than the intent it was printed for.",
+        "parent_node_id": null,
+        "page_number": 2
+      }
+    ],
+    "_page_number": 2
+  },
+  {
+    "categories_discovered": [
+      "table",
+      "table_row",
+      "table_cell",
+      "list",
+      "list_item",
+      "footer"
+    ],
+    "detected_elements": [
+      {
+        "node_id": "0",
+        "category": "table",
+        "box_2d": [
+          35,
+          46,
+          132,
+          953
+        ],
+        "content_snippet": "Quality System Manual\nQMS1\nIssued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+        "parent_node_id": null,
+        "page_number": 3
+      },
+      {
+        "node_id": "1",
+        "category": "table_row",
+        "box_2d": [
+          35,
+          46,
+          71,
+          953
+        ],
+        "content_snippet": "Quality System Manual",
+        "parent_node_id": "0",
+        "page_number": 3
+      },
+      {
+        "node_id": "2",
+        "category": "table_cell",
+        "box_2d": [
+          35,
+          46,
+          132,
+          171
+        ],
+        "content_snippet": "",
+        "parent_node_id": "1",
+        "page_number": 3
+      },
+      {
+        "node_id": "3",
+        "category": "table_cell",
+        "box_2d": [
+          35,
+          171,
+          71,
+          953
+        ],
+        "content_snippet": "Quality System Manual",
+        "parent_node_id": "1",
+        "page_number": 3
+      },
+      {
+        "node_id": "4",
+        "category": "table_row",
+        "box_2d": [
+          71,
+          171,
+          100,
+          953
+        ],
+        "content_snippet": "QMS1",
+        "parent_node_id": "0",
+        "page_number": 3
+      },
+      {
+        "node_id": "5",
+        "category": "table_cell",
+        "box_2d": [
+          71,
+          171,
+          100,
+          953
+        ],
+        "content_snippet": "QMS1",
+        "parent_node_id": "4",
+        "page_number": 3
+      },
+      {
+        "node_id": "6",
+        "category": "table_row",
+        "box_2d": [
+          100,
+          171,
+          132,
+          953
+        ],
+        "content_snippet": "Issued by: Quality Manager\nRevision Date: 9-01-17\nRevision: B",
+        "parent_node_id": "0",
+        "page_number": 3
+      },
+      {
+        "node_id": "7",
+        "category": "table_cell",
+        "box_2d": [
+          100,
+          171,
+          132,
+          468
+        ],
+        "content_snippet": "Issued by: Quality Manager",
+        "parent_node_id": "6",
+        "page_number": 3
+      },
+      {
+        "node_id": "8",
+        "category": "table_cell",
+        "box_2d": [
+          100,
+          468,
+          132,
+          718
+        ],
+        "content_snippet": "Revision Date: 9-01-17",
+        "parent_node_id": "6",
+        "page_number": 3
+      },
+      {
+        "node_id": "9",
+        "category": "table_cell",
+        "box_2d": [
+          100,
+          718,
+          132,
+          953
+        ],
+        "content_snippet": "Revision: B",
+        "parent_node_id": "6",
+        "page_number": 3
+      },
+      {
+        "node_id": "10",
+        "category": "list",
+        "box_2d": [
+          164,
+          132,
+          898,
+          883
+        ],
+        "content_snippet": "Table of Contents\nPage\n1. Scope......................................................................",
+        "parent_node_id": null,
+        "page_number": 3
+      },
+      {
+        "node_id": "11",
+        "category": "list_item",
+        "box_2d": [
+          164,
+          132,
+          180,
+          883
+        ],
+        "content_snippet": "Table of Contents\nPage",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "12",
+        "category": "list_item",
+        "box_2d": [
+          196,
+          147,
+          212,
+          883
+        ],
+        "content_snippet": "1. Scope..............................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "13",
+        "category": "list_item",
+        "box_2d": [
+          212,
+          148,
+          228,
+          883
+        ],
+        "content_snippet": "2. References.........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "14",
+        "category": "list_item",
+        "box_2d": [
+          228,
+          148,
+          244,
+          883
+        ],
+        "content_snippet": "3. Definitions..........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "15",
+        "category": "list_item",
+        "box_2d": [
+          244,
+          148,
+          260,
+          883
+        ],
+        "content_snippet": "4. About Our Organization...................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "16",
+        "category": "list_item",
+        "box_2d": [
+          260,
+          178,
+          276,
+          883
+        ],
+        "content_snippet": "4.1 Organizational Context................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "17",
+        "category": "list_item",
+        "box_2d": [
+          276,
+          177,
+          292,
+          883
+        ],
+        "content_snippet": "4.2 Relevant Interested Parties.........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "18",
+        "category": "list_item",
+        "box_2d": [
+          292,
+          176,
+          308,
+          883
+        ],
+        "content_snippet": "4.3 Quality Management System...........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "19",
+        "category": "list_item",
+        "box_2d": [
+          308,
+          175,
+          324,
+          883
+        ],
+        "content_snippet": "4.4 Quality Management System & Its Processes.........................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "20",
+        "category": "list_item",
+        "box_2d": [
+          324,
+          146,
+          340,
+          883
+        ],
+        "content_snippet": "5. Leadership & Governance................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "21",
+        "category": "list_item",
+        "box_2d": [
+          340,
+          178,
+          356,
+          883
+        ],
+        "content_snippet": "5.1 Leadership and commitment...........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "22",
+        "category": "list_item",
+        "box_2d": [
+          356,
+          206,
+          372,
+          883
+        ],
+        "content_snippet": "5.1.1 General ........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "23",
+        "category": "list_item",
+        "box_2d": [
+          372,
+          208,
+          388,
+          883
+        ],
+        "content_snippet": "5.1.2 Customer Focus..................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "24",
+        "category": "list_item",
+        "box_2d": [
+          388,
+          179,
+          404,
+          883
+        ],
+        "content_snippet": "5.2 Quality Policy........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "25",
+        "category": "list_item",
+        "box_2d": [
+          404,
+          208,
+          420,
+          883
+        ],
+        "content_snippet": "5.2.1 Establishing the Quality Policy.................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "26",
+        "category": "list_item",
+        "box_2d": [
+          420,
+          206,
+          436,
+          883
+        ],
+        "content_snippet": "5.2.2 Communicating the Quality Policy................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "27",
+        "category": "list_item",
+        "box_2d": [
+          436,
+          206,
+          452,
+          883
+        ],
+        "content_snippet": "5.2.3 Quality Policy Statement .......................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "28",
+        "category": "list_item",
+        "box_2d": [
+          452,
+          181,
+          468,
+          883
+        ],
+        "content_snippet": "5.3 Roles, Responsibilities and Authorities.............................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "29",
+        "category": "list_item",
+        "box_2d": [
+          468,
+          179,
+          484,
+          883
+        ],
+        "content_snippet": "5.4 Communication.......................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "30",
+        "category": "list_item",
+        "box_2d": [
+          484,
+          206,
+          500,
+          883
+        ],
+        "content_snippet": "5.4.1 Internal Communication..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "31",
+        "category": "list_item",
+        "box_2d": [
+          500,
+          205,
+          516,
+          883
+        ],
+        "content_snippet": "5.4.2 External Communication..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "32",
+        "category": "list_item",
+        "box_2d": [
+          516,
+          147,
+          532,
+          883
+        ],
+        "content_snippet": "6. Management System Planning.............................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "33",
+        "category": "list_item",
+        "box_2d": [
+          532,
+          177,
+          548,
+          883
+        ],
+        "content_snippet": "6.1 Addressing Risks & Opportunities....................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "34",
+        "category": "list_item",
+        "box_2d": [
+          548,
+          177,
+          564,
+          883
+        ],
+        "content_snippet": "6.2 Quality Objectives..................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "35",
+        "category": "list_item",
+        "box_2d": [
+          564,
+          176,
+          580,
+          883
+        ],
+        "content_snippet": "6.3 Planning For Change.................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "36",
+        "category": "list_item",
+        "box_2d": [
+          580,
+          148,
+          596,
+          883
+        ],
+        "content_snippet": "7. Support................................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "37",
+        "category": "list_item",
+        "box_2d": [
+          596,
+          178,
+          612,
+          883
+        ],
+        "content_snippet": "7.1 Resources...........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "38",
+        "category": "list_item",
+        "box_2d": [
+          612,
+          206,
+          628,
+          883
+        ],
+        "content_snippet": "7.1.1 General.........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "39",
+        "category": "list_item",
+        "box_2d": [
+          628,
+          207,
+          644,
+          883
+        ],
+        "content_snippet": "7.1.2 People..........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "40",
+        "category": "list_item",
+        "box_2d": [
+          644,
+          205,
+          660,
+          883
+        ],
+        "content_snippet": "7.1.3 Infrastructure..................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "41",
+        "category": "list_item",
+        "box_2d": [
+          660,
+          205,
+          676,
+          883
+        ],
+        "content_snippet": "7.1.4 Operational Environment.........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "42",
+        "category": "list_item",
+        "box_2d": [
+          676,
+          205,
+          692,
+          883
+        ],
+        "content_snippet": "7.1.5 Organizational Know.............................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "43",
+        "category": "list_item",
+        "box_2d": [
+          692,
+          151,
+          708,
+          883
+        ],
+        "content_snippet": "8. Product & Service Development..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "44",
+        "category": "list_item",
+        "box_2d": [
+          708,
+          182,
+          724,
+          883
+        ],
+        "content_snippet": "8.1 Operational Planning & Control......................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "45",
+        "category": "list_item",
+        "box_2d": [
+          724,
+          180,
+          740,
+          883
+        ],
+        "content_snippet": "8.2 Customer Requirement................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "46",
+        "category": "list_item",
+        "box_2d": [
+          740,
+          209,
+          756,
+          883
+        ],
+        "content_snippet": "8.2.1 Customer Communication..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "47",
+        "category": "list_item",
+        "box_2d": [
+          756,
+          208,
+          772,
+          883
+        ],
+        "content_snippet": "8.2.2 Determining Requirements........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "48",
+        "category": "list_item",
+        "box_2d": [
+          772,
+          208,
+          788,
+          883
+        ],
+        "content_snippet": "8.2.3 Review Of Requirements..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "49",
+        "category": "list_item",
+        "box_2d": [
+          788,
+          208,
+          804,
+          883
+        ],
+        "content_snippet": "8.2.4 Changes in Requirements.........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "50",
+        "category": "list_item",
+        "box_2d": [
+          804,
+          176,
+          820,
+          883
+        ],
+        "content_snippet": "8.3 Design & Development..................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "51",
+        "category": "list_item",
+        "box_2d": [
+          820,
+          178,
+          836,
+          883
+        ],
+        "content_snippet": "8.4 Control Of Suppliers & External Process.............................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "52",
+        "category": "list_item",
+        "box_2d": [
+          836,
+          206,
+          852,
+          883
+        ],
+        "content_snippet": "8.4.1 General.........................................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "53",
+        "category": "list_item",
+        "box_2d": [
+          852,
+          207,
+          868,
+          883
+        ],
+        "content_snippet": "8.4.2 Purchasing Controls.............................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "54",
+        "category": "list_item",
+        "box_2d": [
+          868,
+          207,
+          884,
+          883
+        ],
+        "content_snippet": "8.4.3 Purchasing Information..........................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "55",
+        "category": "list_item",
+        "box_2d": [
+          883,
+          176,
+          898,
+          883
+        ],
+        "content_snippet": "8.5 Production & Service Provisions.....................................................................",
+        "parent_node_id": "10",
+        "page_number": 3
+      },
+      {
+        "node_id": "56",
+        "category": "footer",
+        "box_2d": [
+          921,
+          117,
+          965,
+          870
+        ],
+        "content_snippet": "Page 3 of 42\nIf this document is printed and not signed by the approved personnel, then it is an un",
+        "parent_node_id": null,
+        "page_number": 3
+      }
+    ],
+    "_page_number": 3
+  }
+]
