@@ -105,6 +105,13 @@
 \end{frame}
 
 %====================================================
+%========== TABLE OF CONTENTS ==========================
+%====================================================
+\begin{frame}{Nội dung trình bày}
+    \tableofcontents
+\end{frame}
+
+%====================================================
 % SLIDE: Công việc đã thực hiện
 %====================================================
 \begin{frame}{Tiến độ thực hiện (từ Báo cáo 1)}
@@ -194,18 +201,18 @@
         \midrule
         \multicolumn{3}{l}{\textit{Các thông tin trên đủ cho single-page. Nhưng khi mở rộng sang multi-page, cần thêm:}} \\
         \midrule
-        $\text{parent\_id}$ & Quan hệ cha-con (hierarchy) & Paragraph 1.1.1 $\rightarrow$ thuộc Section\_Heading 1.1 \\
+        $\text{parent\_node\_id}$ & Quan hệ cha-con (hierarchy) & Paragraph 1.1.1 $\rightarrow$ thuộc Section\_Heading 1.1 \\
         \midrule
         $\text{node\_id}$ & Định danh toàn cục duy nhất & \texttt{node\_045} — không trùng qua mọi trang \\
         \midrule
-        $\text{continuation}$ & Liên kết xuyên trang & ``Nối tiếp \texttt{node\_012} từ trang trước'' \\
+        $\text{continues\_previous\_node}$ & Liên kết xuyên trang & ``Nối tiếp \texttt{node\_012} từ trang trước'' \\
         \bottomrule
         \end{tabular}
         }
     \end{table}
 
     \vspace{0.2em}
-    {\small \textit{3 dòng cuối (parent\_id, node\_id, continuation) là phần} \textbf{mở rộng của chúng ta} \textit{so với DLA truyền thống.}}
+    {\small \textit{3 dòng cuối (parent\_node\_id, node\_id, continues\_previous\_node) là phần} \textbf{mở rộng của chúng ta} \textit{so với DLA truyền thống.}}
 \end{frame}
 
 %====================================================
@@ -259,49 +266,48 @@
 % SLIDE 1.4: Bộ nhớ (Trailing State) mô hình hóa thế nào
 %====================================================
 \begin{frame}{1.4 \; Bộ nhớ tích lũy $\mathcal{S}_t$ — Mô hình hóa chi tiết}
-    \textbf{Bộ nhớ} $\mathcal{S}_t$ là một cấu trúc dữ liệu được \textbf{cập nhật sau mỗi trang} và \textbf{truyền sang trang kế tiếp}.\\
-    Tương tự \textit{hidden state} $h_t$ trong mạng hồi quy (RNN): $\;h_t = f(x_t, h_{t-1})$.
+    \textbf{Bộ nhớ} $\mathcal{S}_t$ là một cấu trúc dữ liệu JSON được \textbf{MLLM tự sinh ra} sau mỗi trang và \textbf{truyền sang trang kế tiếp} qua prompt.\\
+    Tương tự \textit{hidden state} $h_t$ trong RNN: $h_t = f(x_t, h_{t-1})$ — nhưng ở đây MLLM vừa là $f$ vừa tự quyết định nội dung $h_t$.
 
-    \vspace{0.4em}
+    \vspace{0.3em}
     \begin{table}[]
         \centering
         \resizebox{\textwidth}{!}{
-        \begin{tabular}{lp{4.5cm}p{7cm}}
+        \begin{tabular}{lp{4.2cm}p{7.2cm}}
         \toprule
-        \textbf{Trường trong $\mathcal{S}_t$} & \textbf{Lưu trữ gì} & \textbf{Ví dụ (sau khi phân tích trang 7)} \\
+        \textbf{Trường (khớp code)} & \textbf{Lưu trữ gì} & \textbf{Ví dụ cụ thể (sau khi phân tích trang 7)} \\
         \midrule
-        \texttt{last\_node\_id} & Bộ đếm ID toàn cục & \texttt{``node\_089''} $\rightarrow$ trang 8 bắt đầu từ \texttt{node\_090} \\
+        \texttt{last\_assigned\_node\_id} & Bộ đếm ID toàn cục & \texttt{"node\_089"} $\rightarrow$ trang 8 bắt đầu từ \texttt{node\_090} \\
         \midrule
-        \texttt{active\_parent\_stack} & Ngăn xếp các heading đang ``mở'' (ngoài $\rightarrow$ trong) &
-            \texttt{[} \\
-            & & \texttt{\ \ \{id: node\_060, cat: Section\_Heading, text: ``3. Terms''\},} \\
-            & & \texttt{\ \ \{id: node\_061, cat: Section\_Header, text: ``3.1 Definitions''\}} \\
-            & & \texttt{]} \\
-            & & $\rightarrow$ Trang 8: mọi definition entry có \texttt{parent = node\_061} \\
+        \texttt{active\_parent\_stack} & Ngăn xếp heading đang ``mở'' &
+            \texttt{[\{node\_id: "node\_060", category: "Section\_Heading",} \\
+            & (ngoài $\rightarrow$ trong) & \texttt{\ snippet: "3. Terms and Definitions"\}]} \\
+            & & $\rightarrow$ Trang 8: mọi entry có \texttt{parent\_node\_id = "node\_060"} \\
         \midrule
-        \texttt{element\_cut\_off} & Phần tử bị cắt cuối trang &
-            \texttt{\{id: node\_089, cat: Text\_Block, text: ``...chưa hết câu''\}} \\
-            & & $\rightarrow$ Trang 8: phần tử đầu tiên sẽ mang \texttt{continues = node\_089} \\
+        \texttt{element\_cut\_off\_at\_bottom} & Phần tử bị cắt cuối trang &
+            \texttt{\{node\_id: "node\_089", category: "Text\_Block",} \\
+            & & \texttt{\ snippet: "...chưa hết câu"\}} \\
+            & & $\rightarrow$ Trang 8: phần tử đầu mang \texttt{continues\_previous\_node = "node\_089"} \\
         \midrule
-        \texttt{new\_categories} & Nhãn mới phát sinh & \texttt{[``Definition\_Entry'': lý do...]} — bổ sung vào vocabulary \\
+        \texttt{suggested\_new\_categories} & Nhãn mới phát sinh (nếu có) & \texttt{[\{proposed: "Definition\_Entry", reason: "..."\}]} \\
         \bottomrule
         \end{tabular}
         }
     \end{table}
 
-    \vspace{0.3em}
+    \vspace{0.2em}
     \begin{columns}[T]
         \column{0.48\textwidth}
         {\small \textbf{Visual context} $\mathcal{I}_{t-k:t-1}$ (ảnh trang kề):
         \begin{itemize}
-            \item Cho biết trang trông \textbf{như thế nào}
-            \item Giới hạn: chỉ ``nhìn'' được $k$ trang gần nhất
+            \item Cho MLLM thấy trang trông \textbf{như thế nào}
+            \item Giới hạn: chỉ ``nhìn'' được $k$ trang gần nhất ($k{=}1$ trong implementation)
         \end{itemize}}
 
         \column{0.48\textwidth}
-        {\small \textbf{Bộ nhớ} $\mathcal{S}_{t-1}$ (trailing state):
+        {\small \textbf{Trailing state} $\mathcal{S}_{t-1}$ (metadata tích lũy):
         \begin{itemize}
-            \item Cho biết trang đó \textbf{nằm ở đâu} trong cấu trúc tài liệu
+            \item Cho MLLM biết trang \textbf{nằm ở đâu} trong cấu trúc tổng thể
             \item Tích lũy từ \textit{tất cả} trang trước — không bị giới hạn bởi $k$
         \end{itemize}}
     \end{columns}
@@ -534,7 +540,7 @@
             \includegraphics[width=0.68\linewidth]{Beamer/figures/pipeline_multipage_p04.jpg}\\
             \vspace{0.1em}
             {\scriptsize \texttt{node\_013}: Table\_of\_Contents\\
-            $\rightarrow$ \texttt{continues\_previous}: \texttt{node\_012}}
+            $\rightarrow$ \texttt{continues\_previous\_node}: \texttt{node\_012}}
         \end{center}
     \end{columns}
 
@@ -756,7 +762,7 @@
             $\rightarrow$ MLLM ghi nhận: \texttt{element\_cut\_off = node\_012}\[0.4em]
             \textbf{Trang 4:} ToC tiếp tục từ mục 8.5.\
             $\rightarrow$ MLLM đọc $, tạo \texttt{node\_013} với\
-            \quad \texttt{continues\_previous = node\_012}\[0.4em]
+            \quad \texttt{continues\_previous\_node = node\_012}\[0.4em]
             \textbf{Pha 3:} Tự động merge thành 1 ToC duy nhất.
             }
         \end{exampleblock}
@@ -850,7 +856,7 @@
     \STATE
     \STATE \textcolor{purple}{\textbf{--- Phase 3: Tree Assembly (Rule-based) ---}}
     \STATE $\mathcal{Y} \leftarrow \bigcup_{t=1}^{n} Y_t$ \hfill \textcolor{gray}{\textit{// Collect all page outputs}}
-    \FOR{each node $v \in \mathcal{Y}$ where $v$.\texttt{continues\_previous} $\neq$ null}
+    \FOR{each node $v \in \mathcal{Y}$ where $v$.\texttt{continues\_previous\_node} $\neq$ null}
         \STATE Merge $v$ into predecessor node, concatenate snippets
     \ENDFOR
     \STATE $T \leftarrow \text{BuildTree}(\mathcal{Y})$ using \texttt{parent\_node\_id} edges
