@@ -10,7 +10,7 @@ A **multi-phase, MLLM-powered pipeline** for analyzing complex multi-page docume
 
 Traditional Document Layout Analysis learns a mapping from a single document image to a set of layout entities:
 
-$$\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \bigl\{ (b_i,\; c_i) \bigr\}_{i=1}^{N}$$
+$$\mathcal{F}(\mathcal{I}) \rightarrow \mathcal{Y} = \lbrace (b_i, c_i) \rbrace_{i=1}^{N}$$
 
 where:
 - $b_i = [x_{\min}, y_{\min}, x_{\max}, y_{\max}]$ — **Bounding box** coordinates
@@ -22,7 +22,7 @@ This formulation treats each page independently and ignores inter-element relati
 
 Modern approaches extend DLA to capture **structural relationships** between elements, formulated as a document graph:
 
-$$\mathcal{Y} = (\mathcal{V},\; \mathcal{E})$$
+$$\mathcal{Y} = (\mathcal{V}, \mathcal{E})$$
 
 where $\mathcal{V}$ is the set of layout regions (nodes) and $\mathcal{E}$ is the set of relationships (edges) encoding reading order, hierarchical structure (parent-child), and logical grouping.
 
@@ -30,14 +30,14 @@ where $\mathcal{V}$ is the set of layout regions (nodes) and $\mathcal{E}$ is th
 
 We extend the problem further to **multi-page documents** where analyzing a single page requires context from adjacent pages:
 
-$$\mathcal{F}\bigl(\mathcal{I}_t \;\big|\; \mathcal{I}_{t-1},\; \mathcal{S}_{t-1}\bigr) \;\rightarrow\; \bigl(\mathcal{Y}_t,\; \mathcal{S}_t\bigr)$$
+$$\mathcal{F}(\mathcal{I}_t \mid \mathcal{I}_{t-1}, \mathcal{S}_{t-1}) \rightarrow (\mathcal{Y}_t, \mathcal{S}_t)$$
 
 where:
 - $\mathcal{I}_t$ — Current page image
 - $\mathcal{I}_{t-1}$ — Previous page image (adjacent context)
 - $\mathcal{S}_{t-1}$ — **Trailing state** from all previously analyzed pages (accumulated context)
 - $\mathcal{Y}_t = (\mathcal{V}_t,\; \mathcal{E}_t)$ — Detected layout graph for page $t$, including:
-  - $\mathcal{V}_t = \bigl\{ (b_i,\; c_i,\; \text{id}_i,\; \text{parent}_i) \bigr\}$ — Nodes with bounding boxes, categories, unique IDs, and parent links
+  - $\mathcal{V}_t = \lbrace (b_i, c_i, \text{id}_i, \text{parent}_i) \rbrace$ — Nodes with bounding boxes, categories, unique IDs, and parent links
   - $\mathcal{E}_t$ — Edges encoding hierarchy, reading order, and **cross-page continuations**
 - $\mathcal{S}_t$ — Updated trailing state passed to page $t+1$
 
@@ -259,7 +259,166 @@ Output: T = Document Tree             // hierarchical tree with bounding boxes, 
 
 ---
 
-## 5. Baseline Experiment: E2E vs Multi-Phase
+## 5. MLLM Prompts
+
+The quality of the pipeline depends critically on prompt design. Below are the actual prompts used in each phase.
+
+### 5.1 Phase 1 Prompt: Category Discovery
+
+> Sent to the MLLM along with a sliding window of page images.
+
+```
+[Role]
+You are an Industrial-Grade Document Layout Analysis (DLA) Agent. Your primary
+function is to visually analyze multi-page document inputs and define a pragmatic,
+highly generalizable set of layout categories (labels) for an automated processing
+pipeline.
+
+[Objective]
+Observe the provided multi-page document, reason about its visual and logical
+hierarchy, and output a consolidated, practical list of layout categories.
+
+[Design Philosophy & Constraints]
+- Be Pragmatic & Robust: Do NOT over-complicate or become overly granular.
+  In a production pipeline, too many micro-categories cause fragmentation,
+  chunking issues, and logic failures.
+- Focus on Macro-Structures: Group elements by their logical boundaries and
+  downstream extraction purpose. (e.g., Instead of creating separate labels
+  for "bulleted_list_item", "numbered_list_item", or individual lines, use
+  a unified macro-level "List_Block" if it serves the same parsing purpose).
+- Ignore Micro-Noise: Do not create separate categories for minor visual
+  variations unless they fundamentally change how the text should be read
+  or processed.
+- Downstream-Aware: Every defined category MUST have a clear justification
+  for WHY it needs to be isolated (e.g., 'Requires Table Structure Recognition',
+  'Acts as a semantic boundary for text chunking', 'Safe to discard as noise').
+
+[Task Instructions]
+1. Holistically scan all provided document pages.
+2. Identify the recurring, structurally significant components based on the
+   design philosophy.
+3. Reason about how these components should be grouped for a clean, efficient
+   data extraction pipeline.
+4. Output your final reasoning and category list in the exact JSON format below.
+
+[Expected JSON Output Format]
+{
+  "reasoning_process": "A brief, 2-3 sentence explanation of your observation
+    across the pages and why you chose to group certain elements together.",
+  "categories": [
+    {
+      "class_name": "StandardizedName (e.g., Title, Text_Block, Table, ...)",
+      "description": "Clear, concise definition of the visual and logical
+        boundaries of this category.",
+      "downstream_purpose": "Practical reason for this category in a data
+        pipeline."
+    }
+  ]
+}
+```
+
+### 5.2 Phase 2 Prompt: Structural Parsing
+
+> Sent to the MLLM for each page, along with the previous page image, the current page image, the trailing state JSON, and the category definitions from Phase 1.
+
+```
+# [Role]
+You are an Industrial-Grade Visual Spatial Analyzer and Structural Logic Agent
+operating within a Sequential Document Parsing Pipeline.
+
+# [Objective]
+Analyze the CURRENT page image, locate every instance of the defined layout
+categories, assign globally sequential node IDs, and infer logical & hierarchical
+relationships — using the Trailing State from the previous page to maintain
+cross-page continuity.
+
+# [Layout Categories]
+Locate and classify elements strictly into one of the following categories:
+
+{category_definitions}   ← injected from Phase 1 output
+
+However, if you encounter a visually distinct element that genuinely does NOT fit
+ANY of the above categories, you MUST still detect it using the closest existing
+category, AND report it in the `suggested_new_categories` section.
+
+# [Rules & Constraints]
+
+## 1. Physical Bounding Boxes (`box_2d`)
+- Format: [ymin, xmin, ymax, xmax], normalized to a 1000x1000 grid.
+- Boxes must be tight around each element. Do NOT skip any visible element.
+
+## 2. Global ID Sequencing (`node_id`)
+- Resume counting from `last_assigned_node_id` + 1.
+- Follow reading order: top→bottom, left→right within the page.
+
+## 3. Hierarchical Parenting (`parent_node_id`)
+- If an element at the top of this page logically belongs to an open section
+  from the previous page, set `parent_node_id` to the matching entry in
+  `active_parent_stack`.
+- Top-level elements → null.
+
+## 4. Cross-Page Continuation (`continues_previous_node`)
+- If the very first content element on this page is a direct continuation of
+  text/list cut off at the bottom of the previous page (see
+  `element_cut_off_at_bottom` in the Trailing State), set this field to
+  that node's ID. Otherwise → null.
+
+## 5. Content Snippet (`content_snippet`)
+- First 100 characters only — for grounding/verification, NOT full extraction.
+
+## 6. Producing the Trailing State for the Next Page
+At the end of your response, output a `trailing_state_for_next` object:
+- `last_assigned_node_id`: the highest node_id assigned on this page.
+- `active_parent_stack`: list of section headings that remain "open" at the
+  bottom of this page (outermost→innermost).
+- `element_cut_off_at_bottom`: if the last element appears truncated, provide
+  its node_id, category, and snippet. Otherwise → null.
+
+## 7. New Category Suggestions (`suggested_new_categories`)
+- If you detect an element that does NOT fit well into any defined category,
+  classify it with the closest match AND add an entry here.
+
+# [Expected JSON Output]
+{
+  "page_metadata": {
+    "current_image_index": "integer",
+    "total_nodes_detected_on_page": "integer"
+  },
+  "detected_elements": [
+    {
+      "node_id": "string",
+      "image_index": "integer",
+      "category": "string",
+      "box_2d": [ymin, xmin, ymax, xmax],
+      "content_snippet": "string (max 100 chars)",
+      "parent_node_id": "string | null",
+      "continues_previous_node": "string | null",
+      "reasoning": "Brief 1-sentence justification."
+    }
+  ],
+  "trailing_state_for_next": {
+    "last_assigned_node_id": "string",
+    "active_parent_stack": [
+      { "node_id": "string", "category": "string", "snippet": "string" }
+    ],
+    "element_cut_off_at_bottom": {
+      "node_id": "string", "category": "string", "snippet": "string"
+    } or null
+  },
+  "suggested_new_categories": [
+    {
+      "proposed_class_name": "string",
+      "description": "string",
+      "encountered_on_node_id": "string",
+      "reason": "string"
+    }
+  ]
+}
+```
+
+---
+
+## 6. Baseline Experiment: E2E vs Multi-Phase
 
 We ran both approaches on the same 3 pages of an ISO 9001 Quality Manual using the same SOTA MLLM (temperature=0):
 
@@ -279,7 +438,7 @@ Visual comparison available in `outputs/baseline_experiment/`.
 
 ---
 
-## 6. Example Documents
+## 7. Example Documents
 
 ### Document 1: ISO 9001:2015 Quality Manual
 
@@ -302,18 +461,18 @@ Visual comparison available in `outputs/baseline_experiment/`.
 
 ---
 
-## 7. Research Roadmap
+## 8. Research Roadmap
 
 This pipeline is the first step toward a larger research agenda:
 
-### 7.1 Proposed Labeling Pipeline
+### 8.1 Proposed Labeling Pipeline
 
 Combine **vision-based detectors** (SOTA bounding box detection) with **SOTA MLLMs** (category assignment + relation reasoning):
 - Detectors provide accurate bounding boxes (what they do best)
 - MLLMs rewrite categories and resolve hierarchical relations (what they do best)
 - Result: high-quality benchmark + training dataset without expensive human annotation
 
-### 7.2 Planned Experiments
+### 8.2 Planned Experiments
 
 1. **Inference-based approaches**: Test SOTA parsing pipelines (PaddleOCR, MinerU) combined with MLLM reasoning for category/relation assignment
 2. **Prompt-based end-to-end MLLM**: Send page image sequences + instructions, output layout analysis directly
@@ -322,7 +481,7 @@ Combine **vision-based detectors** (SOTA bounding box detection) with **SOTA MLL
    - *Direction B*: Fine-tune an end-to-end VLM that takes PDF image sequences and outputs full layout analysis
 4. **Model optimization**: If fine-tuning succeeds, apply compression/distillation for production deployment
 
-### 7.3 Data Goals
+### 8.3 Data Goals
 
 - Collect PDFs with complex layouts requiring cross-page context for analysis
 - Build automated labeling pipeline using this system
@@ -330,7 +489,7 @@ Combine **vision-based detectors** (SOTA bounding box detection) with **SOTA MLL
 
 ---
 
-## 8. Key Design Decisions
+## 9. Key Design Decisions
 
 ### Phase 1: Why separate category discovery?
 
@@ -358,7 +517,7 @@ All information needed for tree construction is already in the Phase 2 JSON (`pa
 
 ---
 
-## 9. Project Structure
+## 10. Project Structure
 
 ```
 multipage_dla/
@@ -397,7 +556,7 @@ multipage_dla/
     └── phase3_mermaid.md
 ```
 
-## 10. Quick Start
+## 11. Quick Start
 
 ### Setup
 
